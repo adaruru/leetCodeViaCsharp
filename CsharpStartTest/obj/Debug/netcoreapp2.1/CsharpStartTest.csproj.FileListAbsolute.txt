@@ -9,3 +9,14 @@ D:\下載\my on going learning\女中題庫\CsharpStartTest\CsharpStartTest\obj\
 D:\下載\my on going learning\女中題庫\CsharpStartTest\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.AssemblyInfo.cs
 D:\下載\my on going learning\女中題庫\CsharpStartTest\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.dll
 D:\下載\my on going learning\女中題庫\CsharpStartTest\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.pdb
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\bin\Debug\netcoreapp2.1\CsharpStartTest.deps.json
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\bin\Debug\netcoreapp2.1\CsharpStartTest.runtimeconfig.json
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\bin\Debug\netcoreapp2.1\CsharpStartTest.runtimeconfig.dev.json
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\bin\Debug\netcoreapp2.1\CsharpStartTest.dll
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\bin\Debug\netcoreapp2.1\CsharpStartTest.pdb
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.csprojAssemblyReference.cache
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.csproj.CoreCompileInputs.cache
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.AssemblyInfoInputs.cache
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.AssemblyInfo.cs
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.dll
+D:\ProgramData\git file\leetCodeViaCsharp\CsharpStartTest\obj\Debug\netcoreapp2.1\CsharpStartTest.pdb

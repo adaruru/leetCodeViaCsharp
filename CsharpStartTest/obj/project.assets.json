@@ -695,11 +695,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\下載\\my on going learning\\女中題庫\\CsharpStartTest\\CsharpStartTest\\CsharpStartTest.csproj",
+      "projectUniqueName": "D:\\ProgramData\\git file\\leetCodeViaCsharp\\CsharpStartTest\\CsharpStartTest.csproj",
       "projectName": "CsharpStartTest",
-      "projectPath": "D:\\下載\\my on going learning\\女中題庫\\CsharpStartTest\\CsharpStartTest\\CsharpStartTest.csproj",
+      "projectPath": "D:\\ProgramData\\git file\\leetCodeViaCsharp\\CsharpStartTest\\CsharpStartTest.csproj",
       "packagesPath": "C:\\Users\\Neil\\.nuget\\packages\\",
-      "outputPath": "D:\\下載\\my on going learning\\女中題庫\\CsharpStartTest\\CsharpStartTest\\obj\\",
+      "outputPath": "D:\\ProgramData\\git file\\leetCodeViaCsharp\\CsharpStartTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\ProgramData\\Xamarin\\NuGet\\",

@@ -17,6 +17,7 @@ namespace CsharpStartTest
 
             //JudgeZeroa022_PalindromeString.main();
             //Judgezeroa010_PrimeFactorization.main();
+            Judgezeroc459_NarcissisticNumber.main();
 
             //Leet001_2Sum1.main();
             //Leet001_2Sum2.main();
@@ -25,8 +26,9 @@ namespace CsharpStartTest
             //Leet002_QustAddTwoNumber.main();
             //Leet007_ReverseInteger_1.main();
             //Leet007_ReverseInteger_2.main();
-            Leet008_StringToIntegerATOI_1.main();
+            //Leet008_StringToIntegerATOI_1.main();
             //Leet008_StringToIntegerATOI_2.main();
+            //Leet008_StringToIntegerATOI_3.main();
             //Leet009_PalindromeNumber.main();
             //Leet012_IntegerToRoman.main();
             //Leet013_RomanToInteger.main();

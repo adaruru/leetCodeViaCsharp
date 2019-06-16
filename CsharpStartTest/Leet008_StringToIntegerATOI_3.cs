@@ -4,6 +4,7 @@ using System.Text;
 
 namespace CsharpStartTest
 {
+    
     class Leet008_StringToIntegerATOI_3
     {
         public static void main()
@@ -19,78 +20,53 @@ namespace CsharpStartTest
             if (string.IsNullOrEmpty(str)) return 0;
 
             int sign = 1;
+            int index = 0;
 
-            if (str[0] == '-')
+            if (str[0] == '+' || str[0] == '-')
             {
-                sign = -1;
+                sign = str[0] == '-' ? -1 : 1;
+                index++;
             }
+            
             else if (!Char.IsDigit(str[0])) return 0;
 
             string newStr = "";
 
-            for (int i = 0; i < str.Length; i++)
+            for (int i = index; i < str.Length; i++)
             {
-                if (Char.IsDigit(str[i]))
+                if (!Char.IsDigit(str[i]))
                 {
-                    newStr += str[i];
+                    break;
                 }
+                newStr += str[i];
             }
             if (string.IsNullOrEmpty(newStr)) return 0;
-            double x = double.Parse(newStr) * sign;
+            double res = double.Parse(newStr) * sign;
 
-
-            if (x > Math.Pow(2, 32))
-            {
-                return (int)Math.Pow(2, 32);
-            }
-            else if (x < -1 * Math.Pow(2, 32))
-            {
-                return -1 * (int)Math.Pow(2, 32);
-            }
+            /*
+            if (res>Math.Pow(2, 31) - 1) return(int)Math.Pow(2, 31) - 1;
+            else if (res< -(Math.Pow(2, 31))) return (int)-(Math.Pow(2, 31));
             else
-                return (int)x;
+                return (int)res;
+            */
+            int result;
+            double douresult;
+            if (int.TryParse(newStr, out result))
+            {
+                return result * sign;
+            }
+            else if (double.TryParse(newStr, out douresult))
+            {
+                if (douresult * sign > 0) return int.MaxValue;
+                else return int.MinValue;
+            }
+            //不會到這行 只是要確認有回傳值
+            return 0;
+
         }
     }
 }
 
 
-/*
- 取得數字會跳過+、-、小數點，以下作法無解
-
-            str=str.Trim();
-            if (string.IsNullOrEmpty(str)) return 0;
-
-            int sign = 1;
-
-            if (str[0] == '-')
-            {
-                sign = -1;
-            }
-            else if (!Char.IsDigit(str[0])) return 0;
-
-            string newStr = "";
-
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (Char.IsDigit(str[i]))
-                {
-                    newStr += str[i];
-                }
-            }
-            if (string.IsNullOrEmpty(newStr)) return 0;
-            double x = double.Parse(newStr)*sign;
 
 
-            if (x > Math.Pow(2, 32))
-            {
-                return (int)Math.Pow(2, 32);
-            }
-            else if (x < -1 * Math.Pow(2, 32))
-            {
-                return -1 * (int)Math.Pow(2, 32);
-            }
-            else
-                return (int)x ;
-
-
-*/
