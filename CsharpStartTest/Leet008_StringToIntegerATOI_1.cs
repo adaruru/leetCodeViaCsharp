@@ -36,10 +36,6 @@ namespace CsharpStartTest
 
                 res = res * 10 + str[index] - '0';
 
-                res = res * 10;
-                res = res + str[index];
-                res = res - '0';
-
                 if (res * sign > Math.Pow(2, 31) - 1) return (int)Math.Pow(2, 31) - 1;
                 //直接加負號
                 if (res * sign < -(Math.Pow(2, 31))) return (int)-(Math.Pow(2, 31));
