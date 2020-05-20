@@ -6,19 +6,61 @@ namespace CsharpStartTest
 {
     class printStar
     {
-        public static void main() {
+        public static void main()
+        {
             int x = Convert.ToInt32(Console.ReadLine());
             PrintLineNoBreak(x);
             PrintLineWithBreak(x);
             PrintTriangle(x);
             PrintPyramid(x);
+            Console.WriteLine("----------------------------------------------");
             PrintPyramidWithSapce(x);
+            Console.WriteLine("----------------------------------------------");
             PrintDiamond(x);
-            PrintHollowPyramid(x - 2);
+            Console.WriteLine("----------------------------------------------");
+            PrintHollowPyramid(x);
+            Console.WriteLine("----------------------------------------------");
+            if (x % 2 == 0)
+            {
+                Console.Write("只能輸入奇數");
+            }
+            else { PrintOddHourglass(x); }
+        }
+
+        private static void PrintOddHourglass(int n)
+        {
+            //正三角形
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 0; j < ((n - i) * 2) - 1; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine(" ");
+            }
+            //倒三角形
+            Console.Write("X");
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i; j++)
+                {
+                    Console.Write(" ");
+                }
+                for (int j = 0; j < (i * 2) - 1; j++)
+                {
+                    Console.Write("*");
+                }
+                Console.WriteLine(" ");
+            }
         }
         private static void PrintHollowPyramid(int n)
         {
             //輸入n 但是n+2階的解
+            n = n - 2;
 
             //做中間是n-1 蓋子的的右上一格+1變n 要跟著右移再+1 變n+1
             for (int i = 0; i < n + 1; i++)
@@ -61,6 +103,8 @@ namespace CsharpStartTest
             {
                 Console.Write("*");
             }
+            //給下一題換行
+            Console.WriteLine("");
         }
         private static void PrintPyramidWithSapce(int x)
         {

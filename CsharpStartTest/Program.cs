@@ -17,7 +17,7 @@ namespace CsharpStartTest
 
             //JudgeZeroa022_PalindromeString.main();
             //Judgezeroa010_PrimeFactorization.main();
-            Judgezeroc459_NarcissisticNumber.main();
+            //Judgezeroc459_NarcissisticNumber.main();
 
             //Leet001_2Sum1.main();
             //Leet001_2Sum2.main();
@@ -45,13 +45,8 @@ namespace CsharpStartTest
             //Leet101_SymmetricTree.main();
 
             //Mentor3_hw2_ChangeCharCaseInString.main();
-
-
-
-
-            //printStar.main();
-
-
+            
+            printStar.main();
 
         }
 
