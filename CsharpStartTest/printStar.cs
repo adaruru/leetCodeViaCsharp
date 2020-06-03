@@ -9,23 +9,77 @@ namespace CsharpStartTest
         public static void main()
         {
             int x = Convert.ToInt32(Console.ReadLine());
-            PrintLineNoBreak(x);
-            PrintLineWithBreak(x);
-            PrintTriangle(x);
-            PrintPyramid(x);
-            Console.WriteLine("----------------------------------------------");
-            PrintPyramidWithSapce(x);
-            Console.WriteLine("----------------------------------------------");
-            PrintDiamond(x);
-            Console.WriteLine("----------------------------------------------");
-            PrintHollowPyramid(x);
-            Console.WriteLine("----------------------------------------------");
-            if (x % 2 == 0)
-            {
-                Console.Write("只能輸入奇數");
-            }
-            else { PrintOddHourglass(x); }
+            printHourglass(x);
+            //PrintLineNoBreak(x);
+            //PrintLineWithBreak(x);
+            //PrintTriangle(x);
+            //PrintPyramid(x);
+            //Console.WriteLine("----------------------------------------------");
+            //PrintPyramidWithSapce(x);
+            //Console.WriteLine("----------------------------------------------");
+            //PrintDiamond(x);
+            //Console.WriteLine("----------------------------------------------");
+            //PrintHollowPyramid(x);
+            //Console.WriteLine("----------------------------------------------");
+            //if (x % 2 == 0)
+            //{
+            //    Console.Write("只能輸入奇數");
+            //}
+            //else { PrintOddHourglass(x); }
         }
+
+        // 印沙漏
+        public static void printHourglass(int n)
+        {
+            bool isRevers = true;
+            int starts = n;
+            int spaces = 0;
+
+            for (int level = 0; level < n; level++)
+            {
+                //印空白
+                if (spaces != 0)
+                {
+                    for (int i = 0; i < spaces; i++)
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                // 印星星
+                for (int i = 0; i < starts; i++)
+                {
+                    Console.Write("*");
+                }
+                //判斷空白 & 星星數量
+                if (isRevers)
+                {
+                    starts -= 2;
+                    spaces += 1;
+                }
+                else
+                {
+                    starts += 2;
+                    spaces -= 1;
+                }
+                // 判斷是否反轉
+                if (starts == 1)
+                {
+                    isRevers = false;
+                }
+                // 換行
+                Console.WriteLine("");
+            }
+        }
+
+
+
+
+
+
+
+
+
+
 
         private static void PrintOddHourglass(int n)
         {
