@@ -10,7 +10,7 @@ namespace CsharpStartTest
     {
         static void Main(string[] args)
         {
-            //BubbleSort.main();
+            BubbleSort.main();
             //Day4_Class_vs_Instance.main();
 
 

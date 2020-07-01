@@ -8,6 +8,7 @@ namespace CsharpStartTest
     {
         public static void main()
         {
+            Console.WriteLine("請輸入要排序的數字已空格區隔");
             string[] strArr = Console.ReadLine().Split(" ");
             List<int> intLst = new List<int>();
             foreach (string i in strArr)
@@ -32,7 +33,7 @@ namespace CsharpStartTest
         {
             while (true)
             {
-                int count=0;
+                int count = 0;
                 for (int i = 1; i < intArr.Length; i++)
                 {
                     if (intArr[i - 1] > intArr[i])
