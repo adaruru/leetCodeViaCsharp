@@ -53,8 +53,12 @@ namespace CsharpStartTest
             
             #region my Test tool
 
-            var check = new DateFormat();
-            check.ToChineseDate(); 
+            //var check = new DateFormat();
+            //check.ToChineseDate(); 
+
+            var convert = new DataConvert();
+            convert.ConvertDirect();
+            convert.ConvertTool();
 
             #endregion
 
