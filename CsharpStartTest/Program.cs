@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dataProcessCheck;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace CsharpStartTest
     {
         static void Main(string[] args)
         {
-            BubbleSort.main();
+            #region LeetCodePractice
+
+            //BubbleSort.main();
             //Day4_Class_vs_Instance.main();
-
-
 
             //JudgeZeroa022_PalindromeString.main();
             //Judgezeroa010_PrimeFactorization.main();
@@ -45,8 +46,17 @@ namespace CsharpStartTest
             //Leet101_SymmetricTree.main();
 
             //Mentor3_hw2_ChangeCharCaseInString.main();
+
+            //printStar.main(); 
+            #endregion
+
             
-            printStar.main();
+            #region my Test tool
+
+            var check = new DateFormat();
+            check.ToChineseDate(); 
+
+            #endregion
 
         }
 
