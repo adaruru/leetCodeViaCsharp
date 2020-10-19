@@ -50,22 +50,44 @@ namespace CsharpStartTest
             //printStar.main(); 
             #endregion
 
-            
+
             #region my Test tool
 
-            //var check = new DateFormat();
-            //check.ToChineseDate(); 
+            /*
+             * 基礎練習
+            */
+            //字串處理
+            var strProcess = new StrProcess();
 
+            //資料轉型
             var convert = new DataConvert();
-            convert.ConvertDirect();
-            convert.ConvertTool();
+            //convert.ConvertDirect();
+            //convert.ConvertTool();
+
+            //資料列表練習
+            //var listPractice = new ListTypeDataPractice();
+            //listPractice.DictionaryPravtice();
+
+            /*
+             * 應用練習
+             */
+            
+            //日期時間格式
+            var check = new DateFormat();
+            check.ToChineseDate();
+
+            //正則驗證
+            var reg = new RegValidate();
+            reg.regValidEmail();
+
+
 
             #endregion
 
         }
 
     }
-   
+
 }
 
 
