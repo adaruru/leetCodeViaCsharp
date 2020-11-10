@@ -10,23 +10,38 @@ namespace dataProcessCheck
     //正則驗證資料
     public class RegValidate
     {
-        public void regValidEmail() {
-           
+        /// <summary>
+        /// 驗證email
+        /// </summary>
+        public void regValidEmail()
+        {
+            /*
+             * 
+             */
+
             string email = "123asd@asd.sdf.com";
             string email2 = "123asasdad@asddd.sdf.comdddd";//false comdddd大於3碼
-            string[] testPlan = { email , email2 };
+            string[] testPlan = { email, email2 };
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            ///正則由斜線區分 /^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.]) +\.([A-Za-z]{2,8})$/
+            ///const emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
+            Regex regex2 = new Regex(@"^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.]) +\.([A-Za-z]{2,8})$");
             Match match = regex.Match(email);
-            
+
             //Console.WriteLine("regTest:" + email + "=>" + match.Success);
             //Console.WriteLine("regTest:" + email2 + "=>" + match.Success);
-            foreach (var mail in testPlan) {
+            foreach (var mail in testPlan)
+            {
                 Match mach = regex.Match(mail);
                 Console.WriteLine("regTest:" + mail + "=>" + mach.Success);
             }
 
 
         }
+
+        /// <summary>
+        /// 驗證
+        /// </summary>
         public void sample()
         {
             // Define a regular expression for repeated words.
