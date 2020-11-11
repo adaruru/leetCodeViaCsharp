@@ -61,7 +61,7 @@ namespace CsharpStartTest
 
             //資料轉型
             var convert = new DataConvert();
-            //convert.ConvertDirect();
+            convert.ConvertDirect();
             //convert.ConvertTool();
 
             //資料列表練習
@@ -73,12 +73,12 @@ namespace CsharpStartTest
              */
             
             //日期時間格式
-            var check = new DateFormat();
-            check.ToChineseDate();
+            //var check = new DateFormat();
+            //check.ToChineseDate();
 
-            //正則驗證
-            var reg = new RegValidate();
-            reg.regValidEmail();
+            ////正則驗證
+            //var reg = new RegValidate();
+            //reg.regValidEmail();
 
 
 

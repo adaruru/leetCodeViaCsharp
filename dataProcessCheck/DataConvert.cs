@@ -16,10 +16,38 @@ namespace dataProcessCheck
             int convertInt1 = (int)b; //無條件捨去
             int convertInt2 = (int)c; //無條件捨去
 
+            string sNull = null;
+            string sEmpty = "";
+
+
+            string s1 = "234";
+            string s2 = "00234";
+            string s3 = "  00234";
+            string s4 = "  00234  ";
+
+           
+            int i1 = Convert.ToInt32(s1);
+            int i2 = Convert.ToInt32(s2);
+            int i3 = Convert.ToInt32(s3);
+            int i4 = Convert.ToInt32(s4);
+
+            int iNull = Convert.ToInt32(sNull);
+            int iEmpty = Convert.ToInt32(sEmpty);
+
             Console.WriteLine(convertInt1);
             Console.WriteLine(convertInt2);
+
+            Console.WriteLine(iNull);
+            Console.WriteLine(iEmpty);
+            Console.WriteLine(i1);
+            Console.WriteLine(i2);
+            Console.WriteLine(i3);
+            Console.WriteLine(i4);
+
         }
-        public void ConvertTool() {
+
+        public void ConvertTool()
+        {
             //正數 四捨五入 超過5才會進位
             int aa3 = Convert.ToInt32(6.4);//輸出6
             int aa4 = Convert.ToInt32(6.5);//輸出6<--沒有進位
