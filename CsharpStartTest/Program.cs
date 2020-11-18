@@ -57,21 +57,27 @@ namespace CsharpStartTest
              * 基礎練習
             */
             //字串處理
-            var strProcess = new StrProcess();
+            //var strProcess = new StrProcess();
 
             //資料轉型
-            var convert = new DataConvert();
-            convert.ConvertDirect();
+            //var convert = new DataConvert();
+            //convert.ConvertDirect();
             //convert.ConvertTool();
 
             //資料列表練習
             //var listPractice = new ListTypeDataPractice();
             //listPractice.DictionaryPravtice();
+            //listPractice.ListPractice();
+            //listPractice.getRangePractice();
+
+            //物件練習
+            var ob = new ObjectPractice();
+            ob.ObjectFiltSetValue();
 
             /*
              * 應用練習
              */
-            
+
             //日期時間格式
             //var check = new DateFormat();
             //check.ToChineseDate();

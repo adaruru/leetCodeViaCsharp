@@ -24,5 +24,22 @@ namespace dataProcessCheck
 			Console.WriteLine(dateString2);
 			Console.WriteLine(dateString3);
 		}
+
+        /// <summary>
+        /// 取得現在民國日期時間{yyy.MM.dd-HH}
+        /// </summary>
+        /// <returns></returns>
+        private string GetTaiwanCalendarDateTime()
+        {
+            System.Globalization.TaiwanCalendar tc = new System.Globalization.TaiwanCalendar();
+            DateTime d = DateTime.Now;
+            int hour = d.Hour;
+            if (d.Minute != 0 || d.Second != 0)//判斷非整點無條件進位
+            {
+                hour++;//直接+1 23點多顯示24
+            }
+            var result = string.Format("{0:000}.{1:00}.{2:00}-{3:00}", tc.GetYear(d), tc.GetMonth(d), tc.GetDayOfMonth(d), hour);
+            return result;
+        }
     }
 }
