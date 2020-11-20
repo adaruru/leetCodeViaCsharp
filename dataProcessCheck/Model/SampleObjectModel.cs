@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace dataProcessCheck.Model
 {
-    class ValuesFromMeModel
+    class SampleObjectModel
     {
         public string ValuelikeString { get; set; }
         public string ValueIsString { get; set; }
-        public string ValueString { get; set; }
     }
 }
