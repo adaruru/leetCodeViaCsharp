@@ -72,7 +72,9 @@ namespace CsharpStartTest
 
             //物件練習
             var ob = new ObjectPractice();
-            ob.ObjectFiltSetValue();
+            //ob.ObjectFiltSetValue();
+            ob.ObjectAllSetValues();
+
 
             /*
              * 應用練習

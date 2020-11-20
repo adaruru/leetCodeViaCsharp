@@ -10,6 +10,7 @@ namespace dataProcessCheck
     public class ObjectPractice
     {
         /// <summary>
+        /// 遍歷屬性 只讓"部分"符合條件者賦值
         /// 當我物件長得有夠像，且賦值來源又都差不多的時候
         /// </summary>
         public void ObjectFiltSetValue()
@@ -33,7 +34,44 @@ namespace dataProcessCheck
                 properity.SetValue(item, value.ValuelikeString);
             }
             var result = item;
-
         }
+
+        /// <summary>
+        /// 遍歷屬性 "全部"賦值
+        /// </summary>
+        public void ObjectAllSetValues()
+        {
+            //必須要目標物件屬性數量一致
+            var listStr = new List<string>();
+            listStr.Add("我示1");
+            listStr.Add("我要遍歷\"全部\"");
+            listStr.Add("我來自");
+            listStr.Add("外部");
+            listStr.Add("資料");
+            listStr.Add("可能不會像");
+            listStr.Add("樓上");
+            listStr.Add("那麼整齊");
+            listStr.Add("可是又想");
+            listStr.Add("做一次加");
+            SetValues(listStr);
+        }
+
+        /// <summary>
+        /// 通過遍歷屬性賦值
+        /// </summary>
+        /// <returns></returns>
+        private NameAlikeModel SetValues(List<string>  listStr)
+        {
+            var item = new NameAlikeModel();
+
+            System.Reflection.PropertyInfo[] properties = item.GetType().GetProperties();
+            for (int i = 0; i < properties.Length; i++)
+            {
+                //遍歷物件 賦值1~物件數量數
+                properties[i].SetValue(item, listStr[i]);
+            }
+            return item;
+        }
+
     }
 }
