@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 //using System.Timers;
 using System.Diagnostics;
 using System.Threading;
+using System.Reflection;
+using System.ComponentModel.Design;
+using System.Data;
 
 namespace dataProcessCheck
 {
@@ -16,6 +19,36 @@ namespace dataProcessCheck
     {
         //private System.Timers.Timer Mytimer;
         private Stopwatch StopWatch;
+
+        /// <summary>
+        /// 遍歷物件屬性、值
+        /// </summary>
+        public void ObjectGetValues()
+        {
+
+            var value = new ValuesFromMeModel()
+            {
+                ValueIsString = "111",
+                ValuelikeString = "222",
+                ValueString = "333"
+            };
+
+            var properties = value.GetType().GetProperties();
+
+            //Type myType = typeof(ValuesFromMeModel);
+            //FieldInfo[] fieldInfos = myType.GetFields();
+            //for (int i = 0; i < fieldInfos.Length; i++)
+            //{
+            //    var v = (ValuesFromMeModel)fieldInfos[i].GetValue(value);
+            //    Console.WriteLine("Name: " + v);
+            //}
+
+            foreach (var item in properties)
+            {
+                Console.WriteLine("property: " + item.Name + ",    Name: " + item.GetValue(value, null) + ",  dbType:  " + (DbType?)Enum.GetNames(typeof(DbType)).ToList().IndexOf(item.PropertyType.Name) + "  , dbEnum value:  " + Enum.GetNames(typeof(DbType)).ToList().IndexOf(item.PropertyType.Name));
+            }
+        }
+
         /// <summary>
         /// 遍歷屬性 只讓"部分"符合條件者賦值
         /// 當我物件長得有夠像，且賦值來源又都差不多的時候
@@ -65,6 +98,7 @@ namespace dataProcessCheck
 
         /// <summary>
         /// 通過遍歷屬性賦值
+        /// 練習計時器使用
         /// </summary>
         /// <returns></returns>
         private NameAlikeModel SetValues(List<string> listStr)
@@ -78,13 +112,17 @@ namespace dataProcessCheck
             var item = new NameAlikeModel();
             // Thread.Sleep(10000); //等個10秒看有沒有跑10秒
             Thread.Sleep(100); //等個0.1秒看有沒有跑0.1秒
+
+
             System.Reflection.PropertyInfo[] properties = item.GetType().GetProperties();
             for (int i = 0; i < properties.Length; i++)
             {
                 //遍歷物件 賦值1~物件數量數
                 properties[i].SetValue(item, listStr[i]);
             }
-            
+
+
+
             Console.WriteLine("停止計時");
             //Mytimer.Stop(); //停止計時
             StopWatch.Stop(); //停止計時
@@ -100,22 +138,23 @@ namespace dataProcessCheck
             return item;
         }
 
-        //物件list練習 linq練習
-        public void ObjectListSetVaue()
+        /// <summary>
+        /// C# 也需要deep copy 噁心 跟js一樣噁心
+        /// </summary>
+        public void CheckCopy()
         {
-
-            var jsonStr = string.Empty;
-            List<SampleObjectModel> ob = JsonConvert.DeserializeObject<List<SampleObjectModel>>("");
-
-            //物件list某個幾格屬性另外賦值 此時select初的class也可以放別的
-            var updateBoxList = ob.Select(x => new SampleObjectModel
+            var value = new ValuesFromMeModel()
             {
-                ValueIsString = x.ValueIsString,//不變的來源資料
-                ValuelikeString = "3 空戶" //我想要賦予的新值,且大家都一樣
-            }).ToList();
+                ValueIsString = "111",
+                ValuelikeString = "222",
+                ValueString = "333"
+            };
 
-            //物件List某個屬性轉list
-            List<string> valueIsStrings = ob.Select(x => x.ValueIsString).ToList();
+            var v2 = (ValuesFromMeModel)value.Clone();
+            v2.ValueIsString = "我改變了";
+            var v3 = value;
         }
+
+
     }
 }
