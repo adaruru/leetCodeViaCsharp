@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace dataProcessCheck.Model
 {
-    class ValuesFromMeModel:ICloneable
+    class ValuesFromMeModel : ICloneable//使該物件可以被深複製
     {
         public string ValuelikeString { get; set; }
         public string ValueIsString { get; set; }

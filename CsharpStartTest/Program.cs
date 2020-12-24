@@ -74,8 +74,8 @@ namespace CsharpStartTest
             var ob = new ObjectPractice();
             //ob.ObjectFiltSetValue();
             //ob.ObjectAllSetValues();
-            //ob.ObjectGetValues();
-            ob.CheckCopy();
+            ob.ObjectGetValues();
+            //ob.CheckCopy();
 
 
             /*

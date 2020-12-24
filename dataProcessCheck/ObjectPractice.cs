@@ -11,6 +11,8 @@ using System.Threading;
 using System.Reflection;
 using System.ComponentModel.Design;
 using System.Data;
+using Dapper;
+using System.Data.SqlServerCe;
 
 namespace dataProcessCheck
 {
@@ -45,7 +47,12 @@ namespace dataProcessCheck
 
             foreach (var item in properties)
             {
-                Console.WriteLine("property: " + item.Name + ",    Name: " + item.GetValue(value, null) + ",  dbType:  " + (DbType?)Enum.GetNames(typeof(DbType)).ToList().IndexOf(item.PropertyType.Name) + "  , dbEnum value:  " + Enum.GetNames(typeof(DbType)).ToList().IndexOf(item.PropertyType.Name));
+                Console.WriteLine(
+                    "Name: " + item.Name
+                    + ",  value: " + item.GetValue(value, null)
+                    + ",  dbType:" + (DbType?)Enum.GetNames(typeof(DbType)).ToList().IndexOf(item.PropertyType.Name)
+                    + "  , dbEnum value:  " + Enum.GetNames(typeof(DbType)).ToList().IndexOf(item.PropertyType.Name)
+                    );
             }
         }
 
@@ -155,6 +162,42 @@ namespace dataProcessCheck
             var v3 = value;
         }
 
+        /// <summary>
+        /// 我要update set所有資料，可是如果資料為null我就不要update他
+        /// </summary>
+        public void SetAll()
+        {
+            var parameters = new DynamicParameters();
+            var viewModel= new ValuesFromMeModel()
+            {
+                ValueIsString = "111",
+                ValuelikeString = "222",
+                ValueString = "333"
+            };
+
+            string updateSql = @"
+--更新設定檔
+UPDATE T_Set_POInfo
+";
+            string strSet = @" SET BRPOST = @BRPOST \r\n";
+            //取得我viewModel所有資料
+            var properties = viewModel.GetType().GetProperties();
+            foreach (var item in properties)
+            {
+                //當我確定model有值才更新資料，GetValue return object 還要再回傳string
+                if (!string.IsNullOrEmpty(item.GetValue(viewModel).ToString()))
+                {
+                    //set column 後 sql cmd 換行
+                    strSet += " ," + item.Name + " = @" + item.Name + "\r\n";
+                    parameters.Add("@" + item.Name, item.GetValue(viewModel), DbType.String);
+                }
+            }
+
+            string strPk = @"WHERE BRPOST = @BRPOST";
+            string strSql = updateSql + strSet + strPk;
+
+            var result = new SqlCeConnection("my sql connection str").Execute(strSql, parameters);
+        }
 
     }
 }
