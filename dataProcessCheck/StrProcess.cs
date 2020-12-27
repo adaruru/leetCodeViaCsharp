@@ -73,7 +73,7 @@ namespace dataProcessCheck
 
             Console.WriteLine(firstname.StartsWith("S")); //Check wheter first character of string is same as specified value
 
-            Console.WriteLine(firstname.Substring(2, 5));
+            Console.WriteLine("firstname.Substring(2, 5) : .." + firstname.Substring(2, 5) + "..");
             //Returns substring
 
             Console.WriteLine(firstname.ToCharArray());
