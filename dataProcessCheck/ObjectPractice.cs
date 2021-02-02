@@ -13,6 +13,7 @@ using System.ComponentModel.Design;
 using System.Data;
 using Dapper;
 using System.Data.SqlServerCe;
+using AutoMapper;
 
 namespace dataProcessCheck
 {
@@ -81,6 +82,41 @@ namespace dataProcessCheck
                 properity.SetValue(item, value.ValuelikeString);
             }
             var result = item;
+
+
+            var cardData = new NameAlikeModel();
+            PropertyInfo[] cardDataPara = cardData.GetType().GetProperties();
+            for (int j = 0; j < 10; j++)
+            {
+                cardData.GetType().GetProperty($"WKMALKNDNM6C{j + 1}").SetValue(cardData, "");
+                cardData.GetType().GetProperty($"MYMAILNO20X{j + 1}").SetValue(cardData, "");
+                cardData.GetType().GetProperty($"WK_IMPDATE{j + 1}").SetValue(cardData, "");
+            }
+
+            //var BoxMailKindArr = new[] { "1", "2", "3", "5", "6", "7", "8", "10", "9A", "11", "BC", "DE", "H", "P" };
+            //var LostMailKindArr = new[] { "1", "2", "3", "5", "6", "7", "8", "9A", "10", "11", "BC", "DE", "F", "G", "H", "P" };
+            //var StateCodeArr = new[] { "1", "2", "3", "4" };
+            //foreach (var s in StateCodeArr)
+            //{
+            //    foreach (var k in LostMailKindArr)
+            //    {
+            //        if (s == "1")
+            //        {
+            //            var bxCnt = BoxMails.Where(o => o.STACODE != "D" && o.MALKND == k).Count();
+            //            var lmCnt = LostMails.Where(o => o.STACODE != "D" && o.MALKND == k).Count();
+            //            ReportPara.GetType().GetProperty($"BXMALKND_{k}_1_7")?.SetValue(ReportPara, bxCnt);
+            //            ReportPara.GetType().GetProperty($"LMMALKND_{k}_1_7")?.SetValue(ReportPara, bxCnt);
+            //        }
+            //        else
+            //        {
+            //            var bxCnt = BoxMails.Where(o => o.STACODE == s && o.MALKND == k).Count();
+            //            var lmCnt = LostMails.Where(o => o.STACODE == s && o.MALKND == k).Count();
+            //            ReportPara.GetType().GetProperty($"BXMALKND_{k}_{s}_7")?.SetValue(ReportPara, bxCnt);
+            //            ReportPara.GetType().GetProperty($"LMMALKND_{k}_{s}_7")?.SetValue(ReportPara, lmCnt);
+            //        }
+            //    }
+            //}
+
         }
 
         /// <summary>
@@ -147,6 +183,7 @@ namespace dataProcessCheck
 
         /// <summary>
         /// C# 也需要deep copy 噁心 跟js一樣噁心
+        /// 
         /// </summary>
         public void CheckCopy()
         {
@@ -154,12 +191,37 @@ namespace dataProcessCheck
             {
                 ValueIsString = "111",
                 ValuelikeString = "222",
-                ValueString = "333"
+                ValueString = "333",
+
+            };
+            //1.
+            //model extend clone can cut the reference effect
+            var v1 = (ValuesFromMeModel)value.Clone();
+            var result = v1;
+
+            //2.
+            //direct use equal is call by reference will be change by asign value change
+            var v2 = value;
+            v2.ValueIsString = "我改變了";
+            result = v2;
+
+
+            var father = new ValueFather
+            {
+                ValueForFather = "123"
             };
 
-            var v2 = (ValuesFromMeModel)value.Clone();
-            v2.ValueIsString = "我改變了";
-            var v3 = value;
+            //3.
+            //invalid cast 不能直接強轉 father被繼承 少不能倒給多
+            //ValuesFromMeModel v3 = (ValuesFromMeModel)father;
+
+            //4.
+            //through mapper and inheritence dont have reference effect
+            var config = new MapperConfiguration(cfg => cfg.CreateMap<ValueFather, ValuesFromMeModel>());
+            var mapper = new Mapper(config);
+            ValuesFromMeModel v4 = mapper.Map<ValuesFromMeModel>(father);
+            father.ValueForFather = "父親改變了";
+            result = v4;
         }
 
         /// <summary>
@@ -168,7 +230,7 @@ namespace dataProcessCheck
         public void SetAll()
         {
             var parameters = new DynamicParameters();
-            var viewModel= new ValuesFromMeModel()
+            var viewModel = new ValuesFromMeModel()
             {
                 ValueIsString = "111",
                 ValuelikeString = "222",
@@ -197,6 +259,15 @@ UPDATE T_Set_POInfo
             string strSql = updateSql + strSet + strPk;
 
             var result = new SqlCeConnection("my sql connection str").Execute(strSql, parameters);
+        }
+
+        /// <summary> 將SourceType型態的物件映射到TargetType型態的物件並回傳 </summary>
+        public TargetType TransformData<SourceType, TargetType>(SourceType inputData)
+        {
+            var MapperConfig = new MapperConfiguration(cfg => cfg.CreateMap<SourceType, TargetType>());
+            var Mapper = new Mapper(MapperConfig);
+
+            return Mapper.Map<TargetType>(inputData);
         }
 
     }

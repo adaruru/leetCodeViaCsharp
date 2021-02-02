@@ -17,32 +17,40 @@ namespace dataProcessCheck
             int convertInt2 = (int)c; //無條件捨去
 
             string sNull = null;
-            string sEmpty = "";
+            string stringEmpty = "";
 
 
             string s1 = "234";
             string s2 = "00234";
             string s3 = "  00234";
             string s4 = "  00234  ";
+            string s5 = "  023400";
+            string s6= "  0234000";
 
-           
+
             int i1 = Convert.ToInt32(s1);
             int i2 = Convert.ToInt32(s2);
             int i3 = Convert.ToInt32(s3);
             int i4 = Convert.ToInt32(s4);
+            int i5 = Convert.ToInt32(s5);
+            int i6 = Convert.ToInt32(s6);
 
             int iNull = Convert.ToInt32(sNull);
-            int iEmpty = Convert.ToInt32(sEmpty);
+            
+            // RUN TIME不會過
+            //int iEmpty = Convert.ToInt32(stringEmpty);
 
             Console.WriteLine(convertInt1);
             Console.WriteLine(convertInt2);
 
             Console.WriteLine(iNull);
-            Console.WriteLine(iEmpty);
+            //Console.WriteLine(iEmpty);
             Console.WriteLine(i1);
             Console.WriteLine(i2);
             Console.WriteLine(i3);
             Console.WriteLine(i4);
+            Console.WriteLine(i5);
+            Console.WriteLine(i6);
 
         }
 

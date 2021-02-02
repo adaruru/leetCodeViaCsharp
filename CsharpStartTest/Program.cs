@@ -57,16 +57,17 @@ namespace CsharpStartTest
              * 基礎練習
             */
             //字串處理
-            //var strProcess = new StrProcess();
+            var strProcess = new StrProcess();
 
             //資料轉型
-            //var convert = new DataConvert();
+            var convert = new DataConvert();
             //convert.ConvertDirect();
             //convert.ConvertTool();
 
             //資料列表練習
-            //var listPractice = new ListTypeDataPractice();
+            var listPractice = new ListTypeDataPractice();
             //listPractice.DictionaryPravtice();
+            //listPractice.ArrayPractice();
             //listPractice.ListPractice();
             //listPractice.getRangePractice();
 
@@ -74,8 +75,8 @@ namespace CsharpStartTest
             var ob = new ObjectPractice();
             //ob.ObjectFiltSetValue();
             //ob.ObjectAllSetValues();
-            ob.ObjectGetValues();
-            //ob.CheckCopy();
+            //ob.ObjectGetValues();
+            ob.CheckCopy();
 
 
             /*

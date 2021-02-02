@@ -73,6 +73,7 @@ namespace dataProcessCheck
 
             Console.WriteLine(firstname.StartsWith("S")); //Check wheter first character of string is same as specified value
 
+            //firstname = "Steven Clark";
             Console.WriteLine("firstname.Substring(2, 5) : .." + firstname.Substring(2, 5) + "..");
             //Returns substring
 
@@ -82,5 +83,28 @@ namespace dataProcessCheck
             Console.WriteLine(firstname.Trim());
             //It removes starting and ending white spaces from string.
         }
+
+        /// <summary>
+        /// 轉全形的函數(SBC case)
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        private string ToSBC(string input)
+        {
+            //半形轉全形：
+            char[] c = input.ToCharArray();
+            for (int i = 0; i < c.Length; i++)
+            {
+                if (c[i] == 32)
+                {
+                    c[i] = (char)12288;
+                    continue;
+                }
+                if (c[i] < 127)
+                    c[i] = (char)(c[i] + 65248);
+            }
+            return new string(c);
+        }
+
     }
 }

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=10.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.10.1.1\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dapper.2.0.78\lib\net461\Dapper.dll</HintPath>
     </Reference>
@@ -50,9 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertionHelper.cs" />
     <Compile Include="DataConvert.cs" />
     <Compile Include="DateFormat.cs" />
+    <Compile Include="Formatter.cs" />
     <Compile Include="ListTypeDataPractice.cs" />
+    <Compile Include="MainProfile.cs" />
     <Compile Include="Model\NameAlikeModel.cs" />
     <Compile Include="Model\SampleObjectModel.cs" />
     <Compile Include="Model\ValuesFromMeModel.cs" />
@@ -64,6 +70,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

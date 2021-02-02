@@ -15,6 +15,14 @@ namespace dataProcessCheck
         {
 
         }
+
+        public void ArrayPractice()
+        {
+            var failArray = new[] { "1", "2", "3", "5", "6", "7", "8", "9A", "BC", "DE", "G", "H" };
+            var count = failArray.Count();
+            string fialStr = string.Join("、", failArray.Where(s => !string.IsNullOrEmpty(s)));
+            Console.WriteLine(count + " : " + fialStr);
+        }
         /// <summary>
         /// 簡單list拆分法
         /// </summary>
@@ -84,12 +92,12 @@ namespace dataProcessCheck
             //物件List某個屬性過濾存在與a列表相符 且移除空相符
             List<SampleObjectModel> b = ob.Where(o => a.Contains(o.ValueIsString)).Where(o => o.ValueIsString != null).ToList();
             //物件List某個屬性過濾存在與 "目標資料"相符
-            List<SampleObjectModel> c = ob.Where(o => o.ValueIsString == "123").ToList();          
+            List<SampleObjectModel> c = ob.Where(o => o.ValueIsString == "123").ToList();
             //物件List某個屬性過濾存在與b物件的 "所有屬性"相符
             List<SampleObjectModel> d = ob.Where(o => b.Contains(o)).ToList();
             //物件List 當我ValueIsString需要distinct成很多group  每group只取一筆ValuelikeString最小的資料一筆 
             List<SampleObjectModel> e = ob.GroupBy(o => o.ValueIsString).Select(x => x.OrderByDescending(o => o.ValuelikeString).FirstOrDefault()).ToList();
-       
+
         }
 
 
