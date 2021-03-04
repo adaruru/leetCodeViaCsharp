@@ -291,6 +291,9 @@ UPDATE T_Set_POInfo
             return Mapper.Map<TargetType>(inputData);
         }
 
+        /// <summary>
+        /// default不是萬解
+        /// </summary>
         public void ObjectSetDefault()
         {
             //init 就會塞入預設值
@@ -302,7 +305,8 @@ UPDATE T_Set_POInfo
             obj.ValueIsString = null;
             obj.ValuelikeString = null;
 
-            //這樣也不行
+            //這樣也不行 反正就是如果你有給東西 就會複寫預設值
+            //呼叫物件實 不可為null的要自己判斷虛實
             var obj2 = new ObjectWithDefaultValue()
             {
                 ValueIsString = null,
