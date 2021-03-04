@@ -60,6 +60,7 @@
     <Compile Include="ListTypeDataPractice.cs" />
     <Compile Include="MainProfile.cs" />
     <Compile Include="Model\NameAlikeModel.cs" />
+    <Compile Include="Model\ObjectWithDefaultValue.cs" />
     <Compile Include="Model\SampleObjectModel.cs" />
     <Compile Include="Model\ValuesFromMeModel.cs" />
     <Compile Include="ObjectPractice.cs" />

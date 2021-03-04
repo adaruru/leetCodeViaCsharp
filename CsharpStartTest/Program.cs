@@ -76,7 +76,8 @@ namespace CsharpStartTest
             //ob.ObjectFiltSetValue();
             //ob.ObjectAllSetValues();
             //ob.ObjectGetValues();
-            ob.CheckCopy();
+            //ob.CheckCopy();
+            ob.ObjectSetDefault();
 
 
             /*

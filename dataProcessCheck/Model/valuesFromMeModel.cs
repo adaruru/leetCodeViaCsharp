@@ -20,4 +20,14 @@ namespace dataProcessCheck.Model
     class ValueFather {
         public string ValueForFather { get; set; }
     }
+
+    /// <summary>
+    /// 和 ValuesFromMeModel一模一樣 單沒有繼承關係
+    /// </summary>
+    class LikeValuesFromMeModel
+    {
+        public string ValuelikeString { get; set; }
+        public string ValueIsString { get; set; }
+        public string ValueString { get; set; }
+    }
 }

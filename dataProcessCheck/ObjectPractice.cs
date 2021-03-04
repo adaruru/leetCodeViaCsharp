@@ -187,7 +187,7 @@ namespace dataProcessCheck
         /// </summary>
         public void CheckCopy()
         {
-            var value = new ValuesFromMeModel()
+            var form = new ValuesFromMeModel()
             {
                 ValueIsString = "111",
                 ValuelikeString = "222",
@@ -196,12 +196,12 @@ namespace dataProcessCheck
             };
             //1.
             //model extend clone can cut the reference effect
-            var v1 = (ValuesFromMeModel)value.Clone();
+            var v1 = (ValuesFromMeModel)form.Clone();
             var result = v1;
 
             //2.
             //direct use equal is call by reference will be change by asign value change
-            var v2 = value;
+            var v2 = form;
             v2.ValueIsString = "我改變了";
             result = v2;
 
@@ -222,6 +222,26 @@ namespace dataProcessCheck
             ValuesFromMeModel v4 = mapper.Map<ValuesFromMeModel>(father);
             father.ValueForFather = "父親改變了";
             result = v4;
+
+            //5.
+            //through mapper dont have reference effect, even there's no inherent relate
+            var config1 = new MapperConfiguration(cfg => cfg.CreateMap<ValuesFromMeModel, LikeValuesFromMeModel>());
+            var mapper2 = new Mapper(config1);
+            LikeValuesFromMeModel v5 = mapper2.Map<LikeValuesFromMeModel>(form);
+            var result2 = v5;
+
+            //6. 一模一樣的物件 到給他 不可以 clone他只會回傳一樣的類型
+            //LikeValuesFromMeModel v6 = (LikeValuesFromMeModel)form.Clone();
+            //var result3 = v6;
+
+            //7. dumbest way
+            var v7 = new LikeValuesFromMeModel
+            {
+                ValueIsString = form.ValueIsString,
+                ValuelikeString = form.ValuelikeString,
+                ValueString = form.ValueString
+            };
+
         }
 
         /// <summary>
@@ -250,6 +270,7 @@ UPDATE T_Set_POInfo
                 if (!string.IsNullOrEmpty(item.GetValue(viewModel).ToString()))
                 {
                     //set column 後 sql cmd 換行
+                    //可是這是字串插值 弱掃不會給過
                     strSet += " ," + item.Name + " = @" + item.Name + "\r\n";
                     parameters.Add("@" + item.Name, item.GetValue(viewModel), DbType.String);
                 }
@@ -268,6 +289,26 @@ UPDATE T_Set_POInfo
             var Mapper = new Mapper(MapperConfig);
 
             return Mapper.Map<TargetType>(inputData);
+        }
+
+        public void ObjectSetDefault()
+        {
+            //init 就會塞入預設值
+            var obj = new ObjectWithDefaultValue()
+            {
+                numberInt = 223
+            };
+            //當我另外給她空值 這個就沒有用了
+            obj.ValueIsString = null;
+            obj.ValuelikeString = null;
+
+            //這樣也不行
+            var obj2 = new ObjectWithDefaultValue()
+            {
+                ValueIsString = null,
+                ValuelikeString = null,
+            };
+            var a = obj2;
         }
 
     }
