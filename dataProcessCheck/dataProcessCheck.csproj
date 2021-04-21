@@ -56,7 +56,7 @@
     <Compile Include="ConvertionHelper.cs" />
     <Compile Include="DataConvert.cs" />
     <Compile Include="DateFormat.cs" />
-    <Compile Include="Formatter.cs" />
+    <Compile Include="RegFormatter.cs" />
     <Compile Include="ListTypeDataPractice.cs" />
     <Compile Include="MainProfile.cs" />
     <Compile Include="Model\NameAlikeModel.cs" />

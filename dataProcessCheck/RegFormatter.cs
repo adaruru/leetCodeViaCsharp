@@ -13,7 +13,7 @@ namespace dataProcessCheck
     ///  如 "(\d|\d{3})(?=(\d{2})$)"，則就不能依上述的方式替換
     ///  例如 D2、D4 中的例子
     /// </summary>
-    partial class Formatter
+    partial class RegFormatter
     {
         private const string constDateMark = " /-.";
 
@@ -210,7 +210,7 @@ namespace dataProcessCheck
     /// <summary>
     /// EditMask A Series
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         /// <summary>
         /// 局號輸出格式
@@ -241,7 +241,7 @@ namespace dataProcessCheck
     /// <summary>
     /// EditMask D Series
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         /// <summary>
         /// YYYYMMDD
@@ -396,7 +396,7 @@ namespace dataProcessCheck
     /// <summary>
     /// EditMask T Series
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         /// <summary>
         /// 電話格式
@@ -450,7 +450,7 @@ namespace dataProcessCheck
     /// <summary>
     /// EditMask N Series
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         /// <summary>
         /// 需右靠，假設長度為 8
@@ -650,7 +650,7 @@ namespace dataProcessCheck
     /// <summary>
     /// 當輸入字串長度大於定義檔定義長度，根據定義檔長度限制輸入字串
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         private static string AlignLength(int lenght, int nFrac, string strReportData)
         {
@@ -726,7 +726,7 @@ namespace dataProcessCheck
     /// <summary>
     /// EditMask H Series
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         private static string DataEditMaskH(string strEditMask, string strReportData)
         {
@@ -741,7 +741,7 @@ namespace dataProcessCheck
     /// <summary>
     /// EditMask E Series
     /// </summary>
-    public partial class Formatter
+    public partial class RegFormatter
     {
         private static string DataEditMaskE1_4(string strEditMask, string strReportData)
         {

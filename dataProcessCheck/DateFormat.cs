@@ -53,6 +53,8 @@ namespace dataProcessCheck
         {
             var TXNDATE = DateTime.Now.ToString("yyyyMMdd"); //西元:年月日
             var TXNTIME = DateTime.Now.ToString("HHmmss"); //時間:時分秒
+            var TXNDateAndTime = DateTime.Now.ToString("dddd, dd MMMM yyyy HH:mm:ss");//Friday, 29 May 2015 05:50:06
+            var DateTimeTogether = DateTime.Now.ToString("yyyyMMddHHmmss");//20210326133122(14碼 年至秒數)
             return "";
         }
 

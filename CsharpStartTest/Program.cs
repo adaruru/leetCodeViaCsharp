@@ -61,6 +61,8 @@ namespace CsharpStartTest
 
             //資料轉型
             var convert = new DataConvert();
+            //convert.StringDecimalPoint();
+            convert.ConvertTry();
             //convert.ConvertDirect();
             //convert.ConvertTool();
 
@@ -77,7 +79,7 @@ namespace CsharpStartTest
             //ob.ObjectAllSetValues();
             //ob.ObjectGetValues();
             //ob.CheckCopy();
-            ob.ObjectSetDefault();
+            //ob.ObjectSetDefault();
 
 
             /*
@@ -85,8 +87,9 @@ namespace CsharpStartTest
              */
 
             //日期時間格式
-            //var check = new DateFormat();
+            var check = new DateFormat();
             //check.ToChineseDate();
+            //check.SimpleFormat();
 
             ////正則驗證
             //var reg = new RegValidate();
