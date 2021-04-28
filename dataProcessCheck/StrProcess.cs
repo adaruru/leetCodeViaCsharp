@@ -8,7 +8,15 @@ namespace dataProcessCheck
 {
     public class StrProcess
     {
-        public void StrSubstring()
+        public void StrSubAll()
+        {
+            var s = "0123456789";
+           // var s1 = s.Sub();
+           // var s2 = s.Substr(3, 5);
+            var s3 = s.Substring(3, 5); //34567 startIndex 位置 length 幾個數字
+            Console.WriteLine(s3);
+        }
+        public void StrFuncTry()
         {
             string firstname;
             string lastname;

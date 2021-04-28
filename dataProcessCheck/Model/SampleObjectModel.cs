@@ -10,5 +10,7 @@ namespace dataProcessCheck.Model
     {
         public string ValuelikeString { get; set; }
         public string ValueIsString { get; set; }
+        public string Pro1 { get; set; }
+        public string Pro2 { get; set; }
     }
 }

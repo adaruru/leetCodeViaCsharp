@@ -39,6 +39,9 @@ namespace CsharpStartTest
             //Leet020_ValidParentheses.main();
 
             //Leet058_LengthOfLastWord.main();
+            Leet066_PlusOne.main();
+            //Leet070_ClimbingStairs.main();
+
             //Leet079_WordSearch1.main();
             //Leet079_WordSearch2.main();
             //Leet069_Sqrt.main();
@@ -58,11 +61,13 @@ namespace CsharpStartTest
             */
             //字串處理
             var strProcess = new StrProcess();
+            //strProcess.StrSubAll();
+            //strProcess.StrFuncTry(); 
 
             //資料轉型
             var convert = new DataConvert();
             //convert.StringDecimalPoint();
-            convert.ConvertTry();
+            //convert.ConvertTry();
             //convert.ConvertDirect();
             //convert.ConvertTool();
 
