@@ -55,14 +55,14 @@ namespace CsharpStartTest
             //此解無法 10位以上的數字無法轉32位元int
             //ToCharArray在select to string 還是值得參考
             //新知:int 1 tochar '1' 在convert int 會變 49 char要再轉string不然會數字會跑掉
-            //var digitsStr = string.Join("", digits);
-            //int number = 0;
-            //if (Int32.TryParse(digitsStr, out number))
-            //{
-            //    var numberString = (number + 1).ToString();
-            //    var resultArray = numberString.ToCharArray(0, numberString.Length).Select(c => c.ToString()).ToArray();
-            //    digits = Array.ConvertAll(resultArray, ch => Convert.ToInt32(ch));
-            //}
+            var digitsStr = string.Join("", digits);
+            int number = 0;
+            if (Int32.TryParse(digitsStr, out number))
+            {
+                var numberString = (number + 1).ToString();
+                var resultArray = numberString.ToCharArray(0, numberString.Length).Select(c => c.ToString()).ToArray();
+                digits = Array.ConvertAll(resultArray, ch => Convert.ToInt32(ch));
+            }
 
             return digits;
         }
