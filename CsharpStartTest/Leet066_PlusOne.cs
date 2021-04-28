@@ -30,18 +30,39 @@ namespace CsharpStartTest
         ///該數字加一後 在每一位轉成array
         static int[] PlusOne(int[] digits)
         {
-            var digitsStr = string.Join("", digits);
-            int number = 0;
-            if (Int32.TryParse(digitsStr, out number))
+            var length = digits.Length;
+            digits[length - 1]++;
+            for (int i = 0; i < length; i++)
             {
-                var numberString = (number + 1).ToString();
-                var resultArray = numberString.ToCharArray(0, numberString.Length).Select(c => c.ToString()).ToArray();
-                digits = Array.ConvertAll(resultArray, ch => Convert.ToInt32(ch));
+                if ((length - 1 - i) > 0)
+                {
+                    if (digits[length - 1 - i] > 9)//需要進位的時候
+                    {
+                        digits[length - 1 - i] = 0;
+                        digits[length - 2 - i]++;
+                    }
+                }
+                else
+                {
+                    if (digits[length - 1 - i] > 9)//需要進位的時候
+                    {
+                        digits[length - 1 - i] = 0;
+                        digits = new[] { 1 }.Concat(digits).ToArray();
+                    }
+                }
             }
-            else
-            {
-               
-            }
+
+            //此解無法 10位以上的數字無法轉32位元int
+            //ToCharArray在select to string 還是值得參考
+            //新知:int 1 tochar '1' 在convert int 會變 49 char要再轉string不然會數字會跑掉
+            //var digitsStr = string.Join("", digits);
+            //int number = 0;
+            //if (Int32.TryParse(digitsStr, out number))
+            //{
+            //    var numberString = (number + 1).ToString();
+            //    var resultArray = numberString.ToCharArray(0, numberString.Length).Select(c => c.ToString()).ToArray();
+            //    digits = Array.ConvertAll(resultArray, ch => Convert.ToInt32(ch));
+            //}
 
             return digits;
         }

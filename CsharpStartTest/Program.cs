@@ -40,12 +40,9 @@ namespace CsharpStartTest
 
             //Leet058_LengthOfLastWord.main();
             Leet066_PlusOne.main();
-            //Leet070_ClimbingStairs.main();
-
-            //Leet079_WordSearch1.main();
-            //Leet079_WordSearch2.main();
             //Leet069_Sqrt.main();
-
+            //Leet070_ClimbingStairs.main();
+            //Leet079_WordSearch.main();
             //Leet101_SymmetricTree.main();
 
             //Mentor3_hw2_ChangeCharCaseInString.main();
@@ -59,6 +56,7 @@ namespace CsharpStartTest
             /*
              * 基礎練習
             */
+
             //字串處理
             var strProcess = new StrProcess();
             //strProcess.StrSubAll();

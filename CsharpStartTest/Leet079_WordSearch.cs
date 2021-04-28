@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CsharpStartTest
 {
-    class Leet079_WordSearch2
+    class Leet079_WordSearch
     {
         public static void main()
         {
@@ -26,10 +26,13 @@ namespace CsharpStartTest
                 }
             }
             string CheckWord = Console.ReadLine();
-            bool result = Exist(checkArr, CheckWord);
-            Console.Write(result);
+            bool result1 = Exist1(checkArr, CheckWord);
+            bool result2 = Exist2(checkArr, CheckWord);
+            Console.Write(result1);
+            Console.Write(result2);
         }
-        static bool Exist(char[][] board, string word)
+
+        static bool Exist1(char[][] board, string word)
         {
             if (board.Length == 0) return false;
             /*
@@ -44,15 +47,17 @@ namespace CsharpStartTest
                 visited[i] = new bool[board[0].Length];
 
             //Check個Array每一個開頭搜尋符合word的開頭
-            for (int i = 0; i < board.Length; i++) {
+            for (int i = 0; i < board.Length; i++)
+            {
                 for (int j = 0; j < board[0].Length; j++)
                 {
                     if (Checker(board, word, 0, i, j, visited))
                         return true;
                 }
             }
-        return false;
+            return false;
         }
+
         static bool Checker(char[][] board, string word, int index, int i, int j, bool[][] visited)
         {
             if (index == word.Length) return true;
@@ -69,6 +74,17 @@ namespace CsharpStartTest
             visited[i][j] = false;
 
             return res;
+        }
+
+        static bool Exist2(char[][] board, string word)
+        {
+
+            /*
+             [,,,]固定陣列Length會回傳所有i總數(i*i*i)，[][][]不固定陣列僅回傳一維i數
+             GetLength回傳一維i數
+             */
+            return true;
+
         }
 
     }
