@@ -61,6 +61,7 @@ namespace CsharpStartTest
             var strProcess = new StrProcess();
             //strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
+            strProcess.StrFormat();
 
             //資料轉型
             var convert = new DataConvert();

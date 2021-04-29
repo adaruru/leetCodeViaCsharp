@@ -43,7 +43,7 @@ namespace dataProcessCheck
         }
 
         /// <summary>
-        /// List拆分法 GetRange練習
+        /// #List拆分法 #GetRange練習 #List拆一半
         /// </summary>
         public void getRangePractice()
         {
@@ -54,23 +54,21 @@ namespace dataProcessCheck
             var devide3 = list.GetRange(0, list.Count / 2 + 1); //12345
             var devide4 = list.GetRange(list.Count / 2 + 1, list.Count - (list.Count / 2 + 1));//6789
 
-            Console.WriteLine("list");
-            foreach (var d in list)
-            {
-                Console.Write(d);
-            }
+            Console.WriteLine("list : "+ string.Join("", list));
+
             Console.WriteLine("");
             Console.WriteLine("devide1");
-            foreach (var d in devide1)
-            {
-                Console.Write(d);
-            }
+            Console.Write(string.Format("{0,-6}", string.Join("", devide1)));
+            Console.WriteLine(string.Format("{0,-6}", string.Join("", devide2)));
             Console.WriteLine("");
             Console.WriteLine("devide2");
-            foreach (var d in devide2)
-            {
-                Console.Write(d);
-            }
+            Console.Write(string.Format("{0,-6}", string.Join("", devide3)));
+            Console.WriteLine(string.Format("{0,-6}", string.Join("", devide4)));
+
+            //foreach (var d in devide2)
+            //{
+            //    Console.Write(d);
+            //}
         }
 
         //物件list練習 linq練習

@@ -11,11 +11,12 @@ namespace dataProcessCheck
         public void StrSubAll()
         {
             var s = "0123456789";
-           // var s1 = s.Sub();
-           // var s2 = s.Substr(3, 5);
+            // var s1 = s.Sub();
+            // var s2 = s.Substr(3, 5);
             var s3 = s.Substring(3, 5); //34567 startIndex 位置 length 幾個數字
             Console.WriteLine(s3);
         }
+
         public void StrFuncTry()
         {
             string firstname;
@@ -112,6 +113,31 @@ namespace dataProcessCheck
                     c[i] = (char)(c[i] + 65248);
             }
             return new string(c);
+        }
+
+        /// <summary>
+        /// 補空 補0 補滿位
+        /// </summary>
+        public void StrFormat()
+        {
+            List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            string strJoin = string.Join("", list);
+            Console.WriteLine("list : " + strJoin);
+
+            //字串左補空 字串滿12碼靠右
+            string padLeft = strJoin.PadLeft(12, ' ');
+            string formatToRight = string.Format("{0,12}", strJoin);
+            Console.WriteLine("12碼靠右 : " + padLeft);
+            Console.WriteLine("12碼靠右 : " + formatToRight);
+
+            //字串右補空 字串滿12碼靠左
+            string padRight = strJoin.PadRight(12, ' ');
+            string formatToLeft = string.Format("{0,-12}", strJoin);
+            Console.WriteLine("12碼靠左 : " + padRight);
+            Console.WriteLine("12碼靠左 : " + formatToLeft);
+
+            Console.WriteLine("去空: [" + formatToLeft.Trim() + "]");
         }
 
     }
