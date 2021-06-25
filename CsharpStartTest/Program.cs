@@ -61,7 +61,8 @@ namespace CsharpStartTest
             var strProcess = new StrProcess();
             //strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
-            strProcess.StrFormat();
+            //strProcess.StrFormat();
+            //strProcess.IsNullCheck();
 
             //資料轉型
             var convert = new DataConvert();
@@ -72,6 +73,7 @@ namespace CsharpStartTest
 
             //資料列表練習
             var listPractice = new ListTypeDataPractice();
+            listPractice.ListIndexPractice();
             //listPractice.DictionaryPravtice();
             //listPractice.ArrayPractice();
             //listPractice.ListPractice();

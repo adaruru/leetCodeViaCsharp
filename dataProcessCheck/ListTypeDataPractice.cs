@@ -23,6 +23,15 @@ namespace dataProcessCheck
             string fialStr = string.Join("、", failArray.Where(s => !string.IsNullOrEmpty(s)));
             Console.WriteLine(count + " : " + fialStr);
         }
+        public void ListIndexPractice()
+        {
+            var failList = new List<string>() { "1", "2", "3", "5", "6", "7", "8", "9A", "BC", "DE", "G", "H" };
+
+            var checkContain = failList.IndexOf("9A");
+            var checkNotContain = failList.IndexOf("9");
+            Console.WriteLine("checkContain" + checkContain); //9A contain return index 7 （base 0）
+            Console.WriteLine("checkNotContain" + checkNotContain); //Not contain return -1
+        }
         /// <summary>
         /// 簡單list拆分法
         /// </summary>
@@ -54,7 +63,7 @@ namespace dataProcessCheck
             var devide3 = list.GetRange(0, list.Count / 2 + 1); //12345
             var devide4 = list.GetRange(list.Count / 2 + 1, list.Count - (list.Count / 2 + 1));//6789
 
-            Console.WriteLine("list : "+ string.Join("", list));
+            Console.WriteLine("list : " + string.Join("", list));
 
             Console.WriteLine("");
             Console.WriteLine("devide1");
@@ -71,7 +80,7 @@ namespace dataProcessCheck
             //}
         }
 
-        //物件list練習 linq練習
+        //物件list練習 linq練習 重要
         public void ObjectListSetVaue()
         {
 
@@ -108,15 +117,12 @@ namespace dataProcessCheck
             List<SampleObjectModel> c = ob.Where(o => o.ValueIsString == "123").ToList();
             //物件List某個屬性過濾存在與b物件的 "所有屬性"相符
             List<SampleObjectModel> d = ob.Where(o => b.Contains(o)).ToList();
-           
+
             //先GroupBy 再order select 物件List 當我ValueIsString需要distinct成很多group  每group只取一筆ValuelikeString最小的資料一筆 
             List<SampleObjectModel> e = ob.GroupBy(o => o.ValueIsString).Select(x => x.OrderByDescending(o => o.ValuelikeString).FirstOrDefault()).ToList();
             //先order 再distinct 一樣意思 有distinct擴展 code就比較漂亮
-            List<SampleObjectModel> f= ob.OrderByDescending(o => o.ValuelikeString).Distinct(o => o.ValuelikeString).ToList();
+            List<SampleObjectModel> f = ob.OrderByDescending(o => o.ValuelikeString).Distinct(o => o.ValuelikeString).ToList();
             //更多資訊:https://www.cnblogs.com/ldp615/archive/2011/08/01/distinct-entension.html
-
-
-
         }
 
 

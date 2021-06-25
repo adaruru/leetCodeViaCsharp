@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Castle.Core.Internal;
 
 namespace dataProcessCheck
 {
@@ -11,8 +12,8 @@ namespace dataProcessCheck
         public void StrSubAll()
         {
             var s = "0123456789";
-            // var s1 = s.Sub();
-            // var s2 = s.Substr(3, 5);
+            // var s1 = s.Sub();          js才有
+            // var s2 = s.Substr(3, 5);   js才有
             var s3 = s.Substring(3, 5); //34567 startIndex 位置 length 幾個數字
             Console.WriteLine(s3);
         }
@@ -22,75 +23,78 @@ namespace dataProcessCheck
             string firstname;
             string lastname;
 
-
             firstname = "Steven Clark";
             lastname = "Clark";
 
-
-            Console.WriteLine(firstname.Clone());
             // Make String Clone
-            Console.WriteLine(firstname.CompareTo(lastname));
+            Console.WriteLine(firstname.Clone());
+
             //Compare two string value and returns 0 for true and 1 for false
+            Console.WriteLine(firstname.CompareTo(lastname));
 
-            Console.WriteLine(firstname.Contains("ven")); //Check whether specified value exists or not in string
+            //Check whether specified value exists or not in string
+            Console.WriteLine(firstname.Contains("ven"));
+            //Check whether specified value is the last character of string
+            Console.WriteLine(firstname.EndsWith("n"));
 
-            Console.WriteLine(firstname.EndsWith("n")); //Check whether specified value is the last character of string
-            Console.WriteLine(firstname.Equals(lastname));
             //Compare two string and returns true and false
+            Console.WriteLine(firstname.Equals(lastname));
 
 
-            Console.WriteLine(firstname.GetHashCode());
             //Returns HashCode of String
+            Console.WriteLine(firstname.GetHashCode());
 
+            //Returns type of string
             Console.WriteLine(firstname.GetType());
-            //Returns type of string
 
+            //Returns type of string
             Console.WriteLine(firstname.GetTypeCode());
-            //Returns type of string
 
-            Console.WriteLine(firstname.IndexOf("e")); //Returns the first index position of specified value the first index position of specified value
+            //Returns the first index position of specified value the first index position of specified value
+            Console.WriteLine(firstname.IndexOf("e"));
 
-
-            Console.WriteLine(firstname.ToLower());
             //Covert string into lower case
+            Console.WriteLine(firstname.ToLower());
 
-            Console.WriteLine(firstname.ToUpper());
             //Convert string into Upper case
+            Console.WriteLine(firstname.ToUpper());
 
             Console.WriteLine(firstname.Insert(0, "Hello")); //Insert substring into string
 
-            Console.WriteLine(firstname.IsNormalized());
             //Check Whether string is in Unicode normalization from C
+            Console.WriteLine(firstname.IsNormalized());
 
 
-            Console.WriteLine(firstname.LastIndexOf("e")); //Returns the last index position of specified value
+            //Returns the last index position of specified value
+            Console.WriteLine(firstname.LastIndexOf("e"));
 
-            Console.WriteLine(firstname.Length);
             //Returns the Length of String
+            Console.WriteLine(firstname.Length);
 
-            Console.WriteLine(firstname.Remove(5));
             //Deletes all the characters from begining to specified index.
+            Console.WriteLine(firstname.Remove(5));
 
             Console.WriteLine(firstname.Replace('e', 'i')); // Replace the character
 
-            string[] split = firstname.Split(new char[] { 'e' }); //Split the string based on specified value
-
+            //Split the string based on specified value
+            string[] split = firstname.Split(new char[] { 'e' });
 
             Console.WriteLine(split[0]);
             Console.WriteLine(split[1]);
             Console.WriteLine(split[2]);
 
-            Console.WriteLine(firstname.StartsWith("S")); //Check wheter first character of string is same as specified value
+            //Check wheter first character of string is same as specified value
+            Console.WriteLine(firstname.StartsWith("S"));
 
             //firstname = "Steven Clark";
-            Console.WriteLine("firstname.Substring(2, 5) : .." + firstname.Substring(2, 5) + "..");
             //Returns substring
+            Console.WriteLine("firstname.Substring(2, 5) : .." + firstname.Substring(2, 5) + "..");
 
-            Console.WriteLine(firstname.ToCharArray());
             //Converts an string into char array.
+            Console.WriteLine(firstname.ToCharArray());
 
-            Console.WriteLine(firstname.Trim());
             //It removes starting and ending white spaces from string.
+            Console.WriteLine(firstname.Trim());
         }
 
         /// <summary>
@@ -138,6 +142,24 @@ namespace dataProcessCheck
             Console.WriteLine("12碼靠左 : " + formatToLeft);
 
             Console.WriteLine("去空: [" + formatToLeft.Trim() + "]");
+        }
+
+        public void IsNullCheck()
+        {
+            var a = "1234567890";
+            var b = a == "1" ? "0" : null;
+            var c = "";
+
+            var check = string.IsNullOrEmpty(a);
+            //安裝Castle.Core 且 using Castle.Core.Internal; 可以直接對物件判斷
+            //效果等同 string.IsNullOrEmpty(a);
+            var checka = a.IsNullOrEmpty();
+            var checkb = b.IsNullOrEmpty();
+            var checkc = c.IsNullOrEmpty();
+            Console.WriteLine("check: " + check);
+            Console.WriteLine("checka: " + checka);
+            Console.WriteLine("checkb: " + checkb);
+            Console.WriteLine("checkc: " + checkc);
         }
 
     }
