@@ -39,11 +39,12 @@ namespace CsharpStartTest
             //Leet020_ValidParentheses.main();
 
             //Leet058_LengthOfLastWord.main();
-            Leet066_PlusOne.main();
+            //Leet066_PlusOne.main();
             //Leet069_Sqrt.main();
             //Leet070_ClimbingStairs.main();
             //Leet079_WordSearch.main();
             //Leet101_SymmetricTree.main();
+            Leet322_CoinChange.main();
 
             //Mentor3_hw2_ChangeCharCaseInString.main();
 
@@ -73,7 +74,7 @@ namespace CsharpStartTest
 
             //資料列表練習
             var listPractice = new ListTypeDataPractice();
-            listPractice.ListIndexPractice();
+            //listPractice.ListIndexPractice();
             //listPractice.DictionaryPravtice();
             //listPractice.ArrayPractice();
             //listPractice.ListPractice();

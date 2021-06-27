@@ -16,8 +16,7 @@ namespace CsharpStartTest
         public static void main()
         {
             Console.Write("Plus one array : ");
-
-            int[] digits = Array.ConvertAll(Console.ReadLine().Split(" "), str => int.Parse(str));
+            int[] digits = Array.ConvertAll(Console.ReadLine().Split(), str => int.Parse(str));
             var digitsResult = PlusOne(digits);
             string resultStr = string.Join(',', digitsResult);
             var result = "[" + resultStr + "]";
@@ -31,22 +30,25 @@ namespace CsharpStartTest
         static int[] PlusOne(int[] digits)
         {
             var length = digits.Length;
-            digits[length - 1]++;
-            for (int i = 0; i < length; i++)
+            digits[length - 1]++;//last index value plus 1
+            for (int i = 0; i < length; i++)//遍歷array
             {
+                //is not final one (last index > current index)
                 if ((length - 1 - i) > 0)
                 {
-                    if (digits[length - 1 - i] > 9)//需要進位的時候
+                    if (digits[length - 1 - i] > 9)//需要進位的時候 2位數
                     {
-                        digits[length - 1 - i] = 0;
-                        digits[length - 2 - i]++;
+                        digits[length - 1 - i] = 0;//current 設0
+                        digits[length - 2 - i]++; //next 進位
                     }
                 }
-                else
+                else //is final one (last index = current index)
                 {
+                    //即使到了最大位數仍需進位
                     if (digits[length - 1 - i] > 9)//需要進位的時候
                     {
-                        digits[length - 1 - i] = 0;
+                        digits[length - 1 - i] = 0;//current 設0
+                        //digit length 多一位 ==> [1],digits[]相連
                         digits = new[] { 1 }.Concat(digits).ToArray();
                     }
                 }
