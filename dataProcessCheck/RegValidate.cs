@@ -70,5 +70,33 @@ namespace dataProcessCheck
             }
 
         }
+
+        public void boolPractice()
+        {
+            var a = true;
+            var b = true;
+            var c = a && b;
+
+            var d = !a && !b;
+
+
+            var e = !(a && b);
+            var f = (a || b);
+            var g = !a || !b;
+            var h = !(a || b);
+            var i = !(!a && !b);
+            var j = !(!a || !b);
+            Console.WriteLine("   a && b    :" + c);
+            Console.WriteLine("!(!a || !b)  :" + j);
+            Console.WriteLine("----------------------");
+            Console.WriteLine(" !a || !b    :" + g);
+            Console.WriteLine("!(a && b)    :" + e);     
+            Console.WriteLine("----------------------");
+            Console.WriteLine(" !a && !b    :" + d);
+            Console.WriteLine("!(a || b)    :" + h);
+            Console.WriteLine("----------------------");
+            Console.WriteLine(" (a || b)    :" + f);
+            Console.WriteLine(" !(!a && !b) :" + i);
+        }
     }
 }

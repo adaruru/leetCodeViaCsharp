@@ -11,9 +11,18 @@ namespace dataProcessCheck
 {
     public class ListTypeDataPractice
     {
-        public void DictionaryPravtice()
-        {
 
+        public void DictionaryPractice()
+        {
+            Dictionary<int, int> numsDictionary = new Dictionary<int, int>();
+            int[] nums = { 1, 3, 4, 23, 55, 22, 45, 2 };
+            for (int i = 0; i < nums.Length; i++)
+            {
+                //跟list一樣 加入用add
+                numsDictionary.Add(nums[i], i);//array vlaue set dic key
+            }
+            Console.WriteLine("23存在，所以ContainsKey:" + numsDictionary.ContainsKey(23));//set dic key 更好找
+            Console.WriteLine("23存在，numsDictionary[23] 看到設好的 array index value:" + numsDictionary[23]);//set dic key 更好找
         }
 
         public void ArrayPractice()
@@ -22,16 +31,38 @@ namespace dataProcessCheck
             var count = failArray.Count();
             string fialStr = string.Join("、", failArray.Where(s => !string.IsNullOrEmpty(s)));
             Console.WriteLine(count + " : " + fialStr);
+
+            var checkIndex = Array.IndexOf(failArray, "9A");
+            var checkNoIndex = Array.IndexOf(failArray, "9");
+            var checkContain = failArray.Contains("9A");
+            var checkNotContain = failArray.Contains("9");
+            var checkAny = failArray.Any(o => o == "9A");
+            var checkNoAny = failArray.Any(o => o == "9");
+
+            Console.WriteLine("checkIndex" + checkIndex); //9A contain return index 7 （base 0）
+            Console.WriteLine("checkNoIndex" + checkNoIndex); //Not contain return -1
+            Console.WriteLine("checkContain" + checkContain); //9A contain return index 7 （base 0）
+            Console.WriteLine("checkNotContain" + checkNotContain); //Not contain return -1
+            Console.WriteLine("checkAny" + checkAny); //9A any exist return true
+            Console.WriteLine("checkNoAny" + checkNoAny); //9 any Not exist return false
         }
         public void ListIndexPractice()
         {
-            var failList = new List<string>() { "1", "2", "3", "5", "6", "7", "8", "9A", "BC", "DE", "G", "H" };
+            var failList = new List<string>() { "10", "2", "3", "5", "6", "7", "8", "9A", "BC", "DE", "G", "H", "99" };
 
-            var checkContain = failList.IndexOf("9A");
-            var checkNotContain = failList.IndexOf("9");
-            Console.WriteLine("checkContain" + checkContain); //9A contain return index 7 （base 0）
-            Console.WriteLine("checkNotContain" + checkNotContain); //Not contain return -1
+            var checkIndex = failList.IndexOf("9A");
+            var checkNoIndex = failList.IndexOf("9");
+            var checkContain = failList.Contains("9A");
+            var checkNotContain = failList.Contains("10");
+            var checkAny = failList.Any(o => o == "9A");
+            var checkNoAny = failList.Any(o => o == "9");
+
+            Console.WriteLine("checkContain" + checkIndex); //9A contain return index 7 （base 0）
+            Console.WriteLine("checkNoIndex" + checkNoIndex); //Not contain return -1
+            Console.WriteLine("checkContain" + checkContain); //9A contain return true
+            Console.WriteLine("checkNotContain" + checkNotContain); //Not contain false -1
         }
+
         /// <summary>
         /// 簡單list拆分法
         /// </summary>
@@ -47,8 +78,6 @@ namespace dataProcessCheck
                 else
                 { grid2.Add(grid[i]); }
             }
-
-
         }
 
         /// <summary>

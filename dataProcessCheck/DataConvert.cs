@@ -140,6 +140,9 @@ namespace dataProcessCheck
             int bb7 = Convert.ToInt32(-7.4);//輸出-7
             int bb8 = Convert.ToInt32(-7.5);//輸出-8<--有進位
             int bb9 = Convert.ToInt32(-7.9);//輸出-8
+
+            int? t3 = 3;
+            double dd3 = Convert.ToDouble(t3);
         }
     }
 }

@@ -44,7 +44,8 @@ namespace CsharpStartTest
             //Leet070_ClimbingStairs.main();
             //Leet079_WordSearch.main();
             //Leet101_SymmetricTree.main();
-            Leet322_CoinChange.main();
+            //Todo:
+            //Leet518_CoinChange.main();
 
             //Mentor3_hw2_ChangeCharCaseInString.main();
 
@@ -75,10 +76,12 @@ namespace CsharpStartTest
             //資料列表練習
             var listPractice = new ListTypeDataPractice();
             //listPractice.ListIndexPractice();
-            //listPractice.DictionaryPravtice();
+            //listPractice.DictionaryPractice();
             //listPractice.ArrayPractice();
             //listPractice.ListPractice();
             //listPractice.getRangePractice();
+
+
 
             //物件練習
             var ob = new ObjectPractice();
@@ -99,8 +102,9 @@ namespace CsharpStartTest
             //check.SimpleFormat();
 
             ////正則驗證
-            //var reg = new RegValidate();
+            var reg = new RegValidate();
             //reg.regValidEmail();
+            reg.boolPractice();
 
 
 
