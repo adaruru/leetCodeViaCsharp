@@ -144,6 +144,43 @@ namespace dataProcessCheck
             Console.WriteLine("去空: [" + formatToLeft.Trim() + "]");
         }
 
+        public void StringConcat()
+        {
+
+            List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            string[] strArr = { "A", "B", "C", "D", "E" };
+
+
+            string intStrJoin = string.Join("$", list); //TODO：查明why 加 0, 2) 會有錯 
+            string strJoin = string.Join("$", strArr, 0, 3);//A$B$C start index, count
+            Console.WriteLine("intStrJoin : " + intStrJoin);
+            Console.WriteLine("strJoin : " + strJoin);
+
+            //變成物件的字串表現 System.Collections.Generic.List`1[System.Int32]System.String[]
+            Console.WriteLine("intStrConcat : " + string.Concat(list, strArr));
+            //value type 可以很多
+            Console.WriteLine("intStrConcat : " + string.Concat(' ', 12, 0.2, 'b', "C"));
+            //IEnumerable 只能放一個 且沒辦法像 join 指定位置與數量
+            Console.WriteLine("intStrConcat : " + string.Concat(list));
+            Console.WriteLine("StrConcat : " + string.Concat(strArr));
+
+            Console.WriteLine("intStrAdd : " + list[0] + list[1]);
+            Console.WriteLine("strAdd : " + strArr[0] + list[0]);
+
+            var intSb = new StringBuilder(list[0]);
+            intSb.Append(list[1]).Append(list[2]).Append(list[3]);
+            var strSb = new StringBuilder(strArr[0]);
+            strSb.Append(strArr[1]).Append(strArr[2]).Append(strArr[3]);
+
+            var apend = "01234567890";
+
+            Console.WriteLine("intStringBuilder : " + intSb);
+            Console.WriteLine("strStringBuilder : " + strSb);
+
+            Console.WriteLine("intStringBuilder : " + intSb.Append(apend, 0, 4).ToString());
+            Console.WriteLine("strStringBuilder : " + strSb.Append(apend, 0, 4).ToString());
+        }
+
         public void IsNullCheck()
         {
             var a = "1234567890";

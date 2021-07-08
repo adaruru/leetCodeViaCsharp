@@ -61,6 +61,7 @@ namespace CsharpStartTest
 
             //字串處理
             var strProcess = new StrProcess();
+            strProcess.StringConcat();
             //strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
             //strProcess.StrFormat();
@@ -104,7 +105,7 @@ namespace CsharpStartTest
             ////正則驗證
             var reg = new RegValidate();
             //reg.regValidEmail();
-            reg.boolPractice();
+            //reg.boolPractice();
 
 
 
