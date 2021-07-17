@@ -61,7 +61,7 @@ namespace CsharpStartTest
 
             //字串處理
             var strProcess = new StrProcess();
-            strProcess.StringConcat();
+            //strProcess.StringConcat();
             //strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
             //strProcess.StrFormat();
@@ -91,7 +91,7 @@ namespace CsharpStartTest
             //ob.ObjectGetValues();
             //ob.CheckCopy();
             //ob.ObjectSetDefault();
-
+            ob.seeIfTimeSpan();
 
             /*
              * 應用練習

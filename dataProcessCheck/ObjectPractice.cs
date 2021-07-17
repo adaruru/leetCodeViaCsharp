@@ -315,5 +315,41 @@ UPDATE T_Set_POInfo
             var a = obj2;
         }
 
+        /// <summary>
+        /// if可以花到多少時間
+        /// </summary>
+        /// <returns></returns>
+        public void seeIfTimeSpan()
+        {
+            StopWatch = new Stopwatch();
+            //Mytimer.Enabled = true;  //啟動計時器 MyTimer.Interval = 1000; //設定計時器時間間隔，單位為ms
+
+            //Mytimer.Start(); //重新計時
+            Console.WriteLine("重新計時");
+            StopWatch.Start();//重新計時
+
+            for (int i = 0; i < 1000000000; i++)
+            {
+                if (i < 1000000000)
+                {
+                    //
+                }
+            }
+
+            Console.WriteLine("停止計時");
+            //Mytimer.Stop(); //停止計時
+            StopWatch.Stop(); //停止計時
+                              // Get the elapsed time as a TimeSpan value.
+            TimeSpan ts = StopWatch.Elapsed;
+
+            //Format and display the TimeSpan value. 可以格式化初耗時毫秒、微秒
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+                ts.Hours, ts.Minutes, ts.Seconds,
+                ts.Milliseconds / 10);
+            Console.WriteLine("10000000 RunTime " + elapsedTime);   //00:00:00.02
+            Console.WriteLine("1000000000 RunTime " + elapsedTime); //00:00:02.15
+
+
+        }
     }
 }

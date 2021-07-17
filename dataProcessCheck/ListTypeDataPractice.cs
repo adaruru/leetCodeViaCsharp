@@ -41,8 +41,8 @@ namespace dataProcessCheck
 
             Console.WriteLine("checkIndex" + checkIndex); //9A contain return index 7 （base 0）
             Console.WriteLine("checkNoIndex" + checkNoIndex); //Not contain return -1
-            Console.WriteLine("checkContain" + checkContain); //9A contain return index 7 （base 0）
-            Console.WriteLine("checkNotContain" + checkNotContain); //Not contain return -1
+            Console.WriteLine("checkContain" + checkContain); //contain return true
+            Console.WriteLine("checkNotContain" + checkNotContain); //Not contain return false
             Console.WriteLine("checkAny" + checkAny); //9A any exist return true
             Console.WriteLine("checkNoAny" + checkNoAny); //9 any Not exist return false
         }
