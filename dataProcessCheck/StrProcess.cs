@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,14 @@ namespace dataProcessCheck
 {
     public class StrProcess
     {
+        public void playGround()
+        {
+            var EFFDATE = "20210728";
+            var pasResult = DateTime.TryParseExact(EFFDATE, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
+
+            Console.WriteLine("EFFDATE pasResult: "+ EFFDATE+" :"+ pasResult);
+        }
+
         public void StrSubAll()
         {
             var s = "0123456789";
@@ -117,6 +126,24 @@ namespace dataProcessCheck
                     c[i] = (char)(c[i] + 65248);
             }
             return new string(c);
+        }
+
+        /// <summary>
+        /// 注意 pad 完必須重新賦值 不然是不回覆蓋到原本的值(a)
+        /// </summary>
+        public void StrPadPractice()
+        {
+            var a = "123 223";
+            a = "";
+            //a = null; //null ex 
+            string padLeftHalf = a.PadLeft(12, ' ');
+            string padLeftFull = a.PadLeft(12, '　');
+            Console.WriteLine("12碼靠右半形 : " + padLeftHalf + " 長度：" + padLeftHalf.Length);
+            Console.WriteLine("12碼靠右全形 : " + padLeftFull + " 長度：" + padLeftFull.Length);
+            string padRightHale = a.PadRight(12, ' ');
+            string padRightFull = a.PadRight(12, '　');
+            Console.WriteLine("12碼靠左半形 : " + padRightHale + " 長度：" + padRightHale.Length);
+            Console.WriteLine("12碼靠右全形 : " + padRightFull + " 長度：" + padRightFull.Length);
         }
 
         /// <summary>
