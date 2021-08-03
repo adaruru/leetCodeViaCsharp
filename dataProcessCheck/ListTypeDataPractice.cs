@@ -154,6 +154,64 @@ namespace dataProcessCheck
             //更多資訊:https://www.cnblogs.com/ldp615/archive/2011/08/01/distinct-entension.html
         }
 
+        /// <summary>
+        /// list資料產報表
+        /// </summary>
+        public void ListExportFile()
+        {
+            var mailList = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" };
+            //結餘表有明細
+            int pageId = 0; //頁次
+            int pageItemNums = 3; //單頁筆數
+            int usedCount = 0; //可扣小計
+
+            for (int i = 0; i < mailList.Count; i++)
+            {
+                var itemId = i + 1;
+                if (itemId % pageItemNums == 1)
+                {
+                    //表頭
+                    Console.WriteLine("第: " + ++pageId + "頁");
+                }
+
+                //小計Count1
+                if (itemId % 3 == 0)
+                {
+                    var count = itemId - usedCount;
+                    usedCount += count;
+                    Console.WriteLine("");
+                    Console.WriteLine("小計: " + count + "筆");
+                }
+
+                //明細
+                Console.Write("明細: " + mailList[i] + ",");
+
+                //小計Count1
+                if (itemId == mailList.Count)
+                {
+                    var count = itemId - usedCount;
+                    usedCount += count;
+                    Console.WriteLine("");
+                    Console.WriteLine("最後小計: " + count + "筆");
+                }
+
+                if (itemId % pageItemNums == 0 || itemId == mailList.Count)
+                {
+                    var TOTALPAGE = mailList.Count % pageItemNums == 0 ?
+                                            (mailList.Count / pageItemNums).ToString() :
+                                            (mailList.Count / pageItemNums + 1).ToString();
+                    Console.WriteLine("");
+                    Console.WriteLine("總頁數: " + TOTALPAGE);
+
+
+                    if (itemId % pageItemNums == 0)
+                    {
+                        Console.WriteLine("----------------換頁-----------------");
+                    }
+                }
+            }
+        }
 
     }
 }
+

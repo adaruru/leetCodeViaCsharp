@@ -61,9 +61,9 @@ namespace CsharpStartTest
 
             //字串處理
             var strProcess = new StrProcess();
-            strProcess.playGround();
+            //strProcess.playGround();
             //strProcess.StringConcat();
-            //strProcess.StrSubAll();
+            strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
             //strProcess.StrFormat();
             //strProcess.StrPadPractice();
@@ -83,6 +83,7 @@ namespace CsharpStartTest
             //listPractice.ArrayPractice();
             //listPractice.ListPractice();
             //listPractice.getRangePractice();
+            //listPractice.ListExportFile();
 
 
 

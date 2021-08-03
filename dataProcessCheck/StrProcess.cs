@@ -15,16 +15,19 @@ namespace dataProcessCheck
             var EFFDATE = "20210728";
             var pasResult = DateTime.TryParseExact(EFFDATE, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
 
-            Console.WriteLine("EFFDATE pasResult: "+ EFFDATE+" :"+ pasResult);
+            Console.WriteLine("EFFDATE pasResult: " + EFFDATE + " :" + pasResult);
         }
 
         public void StrSubAll()
         {
             var s = "0123456789";
+            var id = "PTL274O3";
             // var s1 = s.Sub();          js才有
             // var s2 = s.Substr(3, 5);   js才有
             var s3 = s.Substring(3, 5); //34567 startIndex 位置 length 幾個數字
+            var a = id.Substring(6, 1);
             Console.WriteLine(s3);
+            Console.WriteLine(a);
         }
 
         public void StrFuncTry()
