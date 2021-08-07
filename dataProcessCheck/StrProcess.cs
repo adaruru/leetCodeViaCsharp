@@ -38,28 +38,31 @@ namespace dataProcessCheck
             firstname = "Steven Clark";
             lastname = "Clark";
 
-            // Make String Clone
+            // Make String Clone ex:Steven Clark
             Console.WriteLine(firstname.Clone());
 
             //Compare two string value and returns 0 for true and 1 for false
-            Console.WriteLine(firstname.CompareTo(lastname));
+            Console.WriteLine(firstname.CompareTo(lastname)); //equal then 1
 
-            //Check whether specified value exists or not in string
+            //Check whether specified value exists or not in string //contain then truue
             Console.WriteLine(firstname.Contains("ven"));
-            //Check whether specified value is the last character of string
+            
+            //Check whether specified value is the last character of string // not end with then false
             Console.WriteLine(firstname.EndsWith("n"));
+            //Check wheter first character of string is same as specified value
+            Console.WriteLine(firstname.StartsWith("S"));
 
-            //Compare two string and returns true and false
+            //Compare two string and returns true and false //not equal then false
             Console.WriteLine(firstname.Equals(lastname));
 
 
-            //Returns HashCode of String
+            //Returns HashCode of String 1935778300
             Console.WriteLine(firstname.GetHashCode());
 
-            //Returns type of string
+            //Returns type of string : System.String
             Console.WriteLine(firstname.GetType());
 
-            //Returns type of string
+            //Returns type of string : String
             Console.WriteLine(firstname.GetTypeCode());
 
             //Returns the first index position of specified value the first index position of specified value
@@ -71,11 +74,11 @@ namespace dataProcessCheck
             //Convert string into Upper case
             Console.WriteLine(firstname.ToUpper());
 
-            Console.WriteLine(firstname.Insert(0, "Hello")); //Insert substring into string
+            //Insert substring into string
+            Console.WriteLine(firstname.Insert(0, "Hello")); 
 
             //Check Whether string is in Unicode normalization from C
             Console.WriteLine(firstname.IsNormalized());
-
 
             //Returns the last index position of specified value
             Console.WriteLine(firstname.LastIndexOf("e"));
@@ -86,7 +89,8 @@ namespace dataProcessCheck
             //Deletes all the characters from begining to specified index.
             Console.WriteLine(firstname.Remove(5));
 
-            Console.WriteLine(firstname.Replace('e', 'i')); // Replace the character
+            // Replace the character :Stivin Clark
+            Console.WriteLine(firstname.Replace('e', 'i'));
 
             //Split the string based on specified value
             string[] split = firstname.Split(new char[] { 'e' });
@@ -95,8 +99,7 @@ namespace dataProcessCheck
             Console.WriteLine(split[1]);
             Console.WriteLine(split[2]);
 
-            //Check wheter first character of string is same as specified value
-            Console.WriteLine(firstname.StartsWith("S"));
+            
 
             //firstname = "Steven Clark";
             //Returns substring
