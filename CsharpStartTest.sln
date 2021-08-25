@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsharpStartTest", "CsharpSt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dataProcessCheck", "dataProcessCheck\dataProcessCheck.csproj", "{01C8DA13-FB18-4E1F-B70E-A37279ABF69F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{909D11A9-DF54-4740-AFB2-75B193E3FCC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{086CB042-1A42-446F-AA0C-D096E8015B7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{01C8DA13-FB18-4E1F-B70E-A37279ABF69F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C8DA13-FB18-4E1F-B70E-A37279ABF69F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C8DA13-FB18-4E1F-B70E-A37279ABF69F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{909D11A9-DF54-4740-AFB2-75B193E3FCC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{909D11A9-DF54-4740-AFB2-75B193E3FCC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{909D11A9-DF54-4740-AFB2-75B193E3FCC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{909D11A9-DF54-4740-AFB2-75B193E3FCC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086CB042-1A42-446F-AA0C-D096E8015B7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086CB042-1A42-446F-AA0C-D096E8015B7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086CB042-1A42-446F-AA0C-D096E8015B7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086CB042-1A42-446F-AA0C-D096E8015B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

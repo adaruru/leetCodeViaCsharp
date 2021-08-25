@@ -65,6 +65,7 @@
     <Compile Include="DateFormat.cs" />
     <Compile Include="Extension\CommonEqualityComparer.cs" />
     <Compile Include="Extension\DistinctExtensions.cs" />
+    <Compile Include="OtherTest.cs" />
     <Compile Include="RegFormatter.cs" />
     <Compile Include="ListTypeDataPractice.cs" />
     <Compile Include="MainProfile.cs" />

@@ -12,8 +12,6 @@ namespace CsharpStartTest
         static void Main(string[] args)
         {
             #region LeetCodePractice
-
-            //BubbleSort.main();
             //Day4_Class_vs_Instance.main();
 
             //JudgeZeroa022_PalindromeString.main();
@@ -49,21 +47,27 @@ namespace CsharpStartTest
 
             //Mentor3_hw2_ChangeCharCaseInString.main();
 
-            //printStar.main(); 
             #endregion
 
 
             #region my Test tool
 
+            //演算法實作
+            //Algorithm.BubbleSort();
+
+
             /*
              * 基礎練習
             */
+            //printStar.main(); 
+            //OtherTest.LotteryGame();//6 碼樂透程式
+            //OtherTest.plusToTarget();//遞迴 n 加到 1
 
             //字串處理
             var strProcess = new StrProcess();
             //strProcess.playGround();
             //strProcess.StringConcat();
-            strProcess.StrSubAll();
+            // strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
             //strProcess.StrFormat();
             //strProcess.StrPadPractice();
@@ -81,6 +85,7 @@ namespace CsharpStartTest
             //listPractice.ListIndexPractice();
             //listPractice.DictionaryPractice();
             //listPractice.ArrayPractice();
+            //listPractice.ListOrderBy();
             //listPractice.ListPractice();
             //listPractice.getRangePractice();
             //listPractice.ListExportFile();
