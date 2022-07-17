@@ -65,7 +65,7 @@ namespace CsharpStartTest
 
             //字串處理
             var strProcess = new StrProcess();
-            //strProcess.playGround();
+            strProcess.playGround();
             //strProcess.StringConcat();
             // strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
@@ -75,6 +75,7 @@ namespace CsharpStartTest
 
             //資料轉型
             var convert = new DataConvert();
+            //convert.StrListParse();
             //convert.StringDecimalPoint();
             //convert.ConvertTry();
             //convert.ConvertDirect();
@@ -120,7 +121,6 @@ namespace CsharpStartTest
             #endregion
 
         }
-
     }
 
 }

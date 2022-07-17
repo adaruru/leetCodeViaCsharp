@@ -10,7 +10,19 @@ namespace dataProcessCheck
 {
     public class StrProcess
     {
+
         public void playGround()
+        {
+            var userId = "ada";
+            var UnitId = "001";
+            var creditCaseFilters = new List<string>();
+
+            creditCaseFilters.Add($"CMId == {userId} || ((CMId==null && UnitId == \"{UnitId}\") || UnitIds.Split(',').Contains(\"{UnitId}\")");
+            var a = $"CMId == {userId} || ((CMId==null && UnitId == \"{UnitId}\") || UnitIds.Split(',').Contains(\"{UnitId}\")";
+
+            Console.WriteLine(a);
+        }
+        public void playGround2()
         {
             var EFFDATE = "20210728";
             var pasResult = DateTime.TryParseExact(EFFDATE, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
@@ -46,7 +58,7 @@ namespace dataProcessCheck
 
             //Check whether specified value exists or not in string //contain then truue
             Console.WriteLine(firstname.Contains("ven"));
-            
+
             //Check whether specified value is the last character of string // not end with then false
             Console.WriteLine(firstname.EndsWith("n"));
             //Check wheter first character of string is same as specified value
@@ -75,7 +87,7 @@ namespace dataProcessCheck
             Console.WriteLine(firstname.ToUpper());
 
             //Insert substring into string
-            Console.WriteLine(firstname.Insert(0, "Hello")); 
+            Console.WriteLine(firstname.Insert(0, "Hello"));
 
             //Check Whether string is in Unicode normalization from C
             Console.WriteLine(firstname.IsNormalized());
@@ -99,7 +111,7 @@ namespace dataProcessCheck
             Console.WriteLine(split[1]);
             Console.WriteLine(split[2]);
 
-            
+
 
             //firstname = "Steven Clark";
             //Returns substring

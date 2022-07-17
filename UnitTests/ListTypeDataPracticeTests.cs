@@ -33,7 +33,6 @@ namespace dataProcessCheckTests
             //assert
             // Assert.AreEqual(expected, output);
             CollectionAssert.AreEqual(expected, output, StructuralComparisons.StructuralComparer);
-
         }
     }
 }

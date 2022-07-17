@@ -144,5 +144,46 @@ namespace dataProcessCheck
             int? t3 = 3;
             double dd3 = Convert.ToDouble(t3);
         }
+
+        public void StrListParse()
+        {
+            var skipLetterAndNull = new List<string>() { "10", "2", "3", "5", "6", "7", "8", "9A", "BC", "DE", "G", "H", "99", null, "", "1991" };
+
+            //parse fail return 0
+            int[] numFailTo0 = skipLetterAndNull
+                .Select(rs =>
+                {
+                    int.TryParse(rs, out var i);
+                    return i;
+                }).ToArray();
+
+            //parse fail return 22 or selfdefine
+            int[] numFailTo22 = skipLetterAndNull
+                .Select(rs =>
+                {
+                    var a = int.TryParse(rs, out var i) ? i : 22;
+                    return a;
+                }).ToArray();
+
+            //parse fail skip
+            int[] numFailThenSkip = skipLetterAndNull
+                .Select(rs =>
+                {
+                    int.TryParse(rs, out var i);
+                    return i;
+                }).Where(o => o != 0).ToArray();
+
+            //parse fail skip
+            int y = 0;
+            int[] numbers = skipLetterAndNull
+                .Where(x => int.TryParse(x, out y))
+                .Select(x => y).ToArray();
+
+
+            Console.WriteLine(string.Join(",", numFailTo0));//parse fail return 0
+            Console.WriteLine(string.Join(",", numFailTo22));//parse fail return 22
+            Console.WriteLine(string.Join(",", numFailThenSkip));//parse fail skip
+            Console.WriteLine(string.Join(",", numbers));//parse fail skip
+        }
     }
 }
