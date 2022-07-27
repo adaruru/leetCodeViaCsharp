@@ -65,7 +65,7 @@ namespace LeetCode
 
             //字串處理
             var strProcess = new StrProcess();
-            //strProcess.playGround();
+            strProcess.playGround();
             //strProcess.StringConcat();
             // strProcess.StrSubAll();
             //strProcess.StrFuncTry(); 
@@ -121,7 +121,6 @@ namespace LeetCode
             #endregion
 
         }
-
     }
 
 }
