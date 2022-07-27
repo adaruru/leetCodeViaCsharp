@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Judgezeroa010_PrimeFactorization
     {

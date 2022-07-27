@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class printStar
     {
@@ -90,7 +90,7 @@ namespace CsharpStartTest
                 {
                     Console.Write(" ");
                 }
-                for (int j = 0; j < ((n - i) * 2) - 1; j++)
+                for (int j = 0; j < (n - i) * 2 - 1; j++)
                 {
                     Console.Write("*");
                 }
@@ -104,7 +104,7 @@ namespace CsharpStartTest
                 {
                     Console.Write(" ");
                 }
-                for (int j = 0; j < (i * 2) - 1; j++)
+                for (int j = 0; j < i * 2 - 1; j++)
                 {
                     Console.Write("*");
                 }
@@ -141,7 +141,7 @@ namespace CsharpStartTest
                     Console.Write("*");
                 }
                 //i*2 不夠，+1是因為第一排是兩個空格
-                for (int j = 0; j < (i * 2) + 1; j++)
+                for (int j = 0; j < i * 2 + 1; j++)
                 {
                     Console.Write(" ");
                 }
@@ -153,7 +153,7 @@ namespace CsharpStartTest
                 Console.WriteLine("");
             }
             //原本是n*2-1 但因為是n+2的解 蓋子變((n+2)*2)-1 
-            for (int i = 0; i < ((n + 2) * 2) - 1; i++)
+            for (int i = 0; i < (n + 2) * 2 - 1; i++)
             {
                 Console.Write("*");
             }
@@ -184,7 +184,7 @@ namespace CsharpStartTest
                 {
                     Console.Write(" ");
                 }
-                for (int j = 1; j <= (i * 2) - 1; j++)
+                for (int j = 1; j <= i * 2 - 1; j++)
                 {
                     Console.Write("*");
                 }
@@ -196,7 +196,7 @@ namespace CsharpStartTest
                 {
                     Console.Write(" ");
                 }
-                for (int j = ((n - i) * 2) - 1; j >= 1; j--)
+                for (int j = (n - i) * 2 - 1; j >= 1; j--)
                 {
                     Console.Write("*");
                 }
@@ -241,7 +241,7 @@ namespace CsharpStartTest
                 {
                     Console.Write(" ");
                 }
-                for (int j = 1; j <= (i * 2) - 1; j++)
+                for (int j = 1; j <= i * 2 - 1; j++)
                 {
                     Console.Write("*");
                 }

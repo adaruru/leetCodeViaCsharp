@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet001_2Sum2
     {
-        public static void main() {
+        public static void main()
+        {
             string[] numberStrings = Console.ReadLine().Split(' ');
             List<int> numList = new List<int>();
             for (int i = 0; i < numberStrings.Length; i++)
@@ -27,18 +28,19 @@ namespace CsharpStartTest
         {
             //O(N)
             //sort之後取值找回原本的index，如果一樣將會重複取值，此題不適用
-            int[] beforsort= (int[]) nums.Clone();
+            int[] beforsort = (int[])nums.Clone();
 
             Array.Sort(nums);
 
-            int start =0;
+            int start = 0;
             int end = nums.Length - 1;
-            while (start < end) {
+            while (start < end)
+            {
                 if (nums[start] + nums[end] == target)
                 {
                     int numstart = Array.IndexOf(beforsort, nums[start]);
                     int numsend = Array.IndexOf(beforsort, nums[end]);
-                    int[] result = { numstart,numsend};
+                    int[] result = { numstart, numsend };
                     return result;
                 }
                 else if (nums[start] + nums[end] > target)

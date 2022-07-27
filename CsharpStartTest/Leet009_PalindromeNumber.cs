@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet009_PalindromeNumber
     {
@@ -13,7 +13,7 @@ namespace CsharpStartTest
         }
         static bool IsPalindrome(int x)
         {
-            if (x <= 0 || (x % 10 == 0 && x != 0))
+            if (x <= 0 || x % 10 == 0 && x != 0)
             {
                 return false;
             }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     /// <summary>
     ///Given two binary strings a and b, return their sum as a binary string.
@@ -31,8 +31,8 @@ namespace CsharpStartTest
             int[] bArray = Array.ConvertAll(b.ToCharArray(0, b.Length), ch => Convert.ToInt32(ch.ToString()));
 
 
-            var lengthS = (a.Length < b.Length) ? a.Length : b.Length;
-            var lengthB = (a.Length > b.Length) ? a.Length : b.Length;
+            var lengthS = a.Length < b.Length ? a.Length : b.Length;
+            var lengthB = a.Length > b.Length ? a.Length : b.Length;
 
             int[] digit = new int[] { 0 };
             int[] digitR = new int[lengthB];

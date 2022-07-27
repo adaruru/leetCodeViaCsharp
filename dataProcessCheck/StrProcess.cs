@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.Core.Internal;
 
-namespace dataProcessCheck
+namespace DataProcessCheck
 {
     public class StrProcess
     {

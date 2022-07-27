@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet020_ValidParentheses
     {
@@ -13,10 +13,10 @@ namespace CsharpStartTest
         }
         static bool isParentheses(string s)
         {
-            Stack<String> right = new Stack<String>();
+            Stack<string> right = new Stack<string>();
             for (int i = 0; i < s.Length; i++)
             {
-                String indexStr = s.Substring(i, 1);
+                string indexStr = s.Substring(i, 1);
 
                 if (indexStr == "(" || indexStr == "{" || indexStr == "[")
                 {

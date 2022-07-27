@@ -3,7 +3,7 @@ using System;
 using System.Text;
 
 
-namespace dataProcessCheck
+namespace DataProcessCheck
 {
     /// <summary>
     ///  RegEx Pattern 中，若有明確的樣式，可以直接替換

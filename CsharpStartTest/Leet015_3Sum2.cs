@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet015_3Sum2
     {
@@ -21,14 +21,14 @@ namespace CsharpStartTest
             foreach (IList<int> i in result)
             {
                 Console.Write("[");
-                string output="";
+                string output = "";
                 foreach (int j in i)
-                {                
+                {
                     if (output != "")
                     {
                         output += ",";
                     }
-                    output+= Convert.ToString(j);
+                    output += Convert.ToString(j);
                 }
                 Console.Write(output);
                 Console.WriteLine("]");

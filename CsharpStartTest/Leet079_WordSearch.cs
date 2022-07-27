@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet079_WordSearch
     {
@@ -11,7 +11,7 @@ namespace CsharpStartTest
             int row = int.Parse(Console.ReadLine());
             int col = int.Parse(Console.ReadLine());
 
-            Char[][] checkArr = new char[row][];
+            char[][] checkArr = new char[row][];
 
             for (int i = 0; i < row; i++)
             {
@@ -21,7 +21,7 @@ namespace CsharpStartTest
                 string[] str = Console.ReadLine().Split(" ");
                 for (int j = 0; j < col; j++)
                 {
-                    Char x = Convert.ToChar(str[j]);
+                    char x = Convert.ToChar(str[j]);
                     checkArr[i][j] = x;
                 }
             }

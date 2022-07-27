@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dataProcessCheck.Model
+namespace DataProcessCheck.Model
 {
     class ValuesFromMeModel :ValueFather,ICloneable//使該物件可以被深複製
     {

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet001_2Sum4
     {
-        public static void main() {
+        public static void main()
+        {
             string[] numberStrings = Console.ReadLine().Split(' ');
             List<int> numList = new List<int>();
             for (int i = 0; i < numberStrings.Length; i++)
@@ -27,8 +28,8 @@ namespace CsharpStartTest
         {
             //var numsDictionary = new Dictionary <int, int>();
             Dictionary<int, int> numsDictionary = new Dictionary<int, int>();
-            
-            
+
+
             for (int i = 0; i < nums.Count(); i++)
             {
                 //暫存相加數

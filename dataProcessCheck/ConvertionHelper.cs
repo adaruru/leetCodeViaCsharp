@@ -4,7 +4,7 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 
-namespace dataProcessCheck
+namespace DataProcessCheck
 {
     public partial class ConvertionHelper
     {

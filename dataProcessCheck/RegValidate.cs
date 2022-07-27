@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;//注意這個要using
 using System.Threading.Tasks;
 
-namespace dataProcessCheck
+namespace DataProcessCheck
 {
     //正則驗證資料
     public class RegValidate

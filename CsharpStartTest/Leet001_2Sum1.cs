@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet001_2Sum1
     {
-        public static void main() {
+        public static void main()
+        {
             string[] numberStrings = Console.ReadLine().Split(' ');
             List<int> numList = new List<int>();
             for (int i = 0; i < numberStrings.Length; i++)
@@ -26,8 +27,10 @@ namespace CsharpStartTest
         static int[] TwoSum(int[] nums, int target)
         {
             //O(N^2)
-            for (int i = 0; i < nums.Length; i++) {
-                for (int j = i + 1; j < nums.Length; j++) {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                for (int j = i + 1; j < nums.Length; j++)
+                {
                     if (nums[i] + nums[j] == target)
                     {
                         int[] result = { i, j };

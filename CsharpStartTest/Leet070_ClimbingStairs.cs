@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     /// <summary>
     /// You are climbing a staircase. It takes n steps to reach the top.

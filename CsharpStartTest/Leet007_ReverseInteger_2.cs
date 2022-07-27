@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet007_ReverseInteger_2
     {
@@ -31,8 +31,8 @@ namespace CsharpStartTest
             Array.Reverse(reverseZ);
             //轉好的 Char[] 強轉成 string
             string longReversed = new string(reverseZ);
-            int result = int.Parse(longReversed);        
-           
+            int result = int.Parse(longReversed);
+
             //if (!int.TryParse(longReversed, out result))
             //{
             //    return 0;

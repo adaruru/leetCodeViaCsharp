@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     /// <summary>
     /// Share
@@ -34,7 +34,7 @@ namespace CsharpStartTest
             for (int i = 0; i < length; i++)//遍歷array
             {
                 //is not final one (last index > current index)
-                if ((length - 1 - i) > 0)
+                if (length - 1 - i > 0)
                 {
                     if (digits[length - 1 - i] > 9)//需要進位的時候 2位數
                     {
@@ -59,7 +59,7 @@ namespace CsharpStartTest
             //新知:int 1 tochar '1' 在convert int 會變 49 char要再轉string不然會數字會跑掉
             var digitsStr = string.Join("", digits);
             int number = 0;
-            if (Int32.TryParse(digitsStr, out number))
+            if (int.TryParse(digitsStr, out number))
             {
                 var numberString = (number + 1).ToString();
                 var resultArray = numberString.ToCharArray(0, numberString.Length).Select(c => c.ToString()).ToArray();

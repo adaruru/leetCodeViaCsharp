@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Judgezeroc459_NarcissisticNumber
     {
-        public static void main() {
+        public static void main()
+        {
             int d = int.Parse(Console.ReadLine());
             int N = int.Parse(Console.ReadLine());
-            Console.Write(NarcissisticCheck(d,N));
+            Console.Write(NarcissisticCheck(d, N));
         }
-        static string NarcissisticCheck(int d, int N) {
+        static string NarcissisticCheck(int d, int N)
+        {
 
             if (true)
                 return "yes";

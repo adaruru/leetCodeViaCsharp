@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
-    
+
     class Leet008_StringToIntegerATOI_3
     {
         public static void main()
@@ -12,7 +12,7 @@ namespace CsharpStartTest
             //string str = Console.ReadLine();
             double i = 0;
             i = i + 'b';
-                Console.Write(i);
+            Console.Write(i);
         }
         static int MyAtoi(string str)
         {
@@ -27,14 +27,14 @@ namespace CsharpStartTest
                 sign = str[0] == '-' ? -1 : 1;
                 index++;
             }
-            
-            else if (!Char.IsDigit(str[0])) return 0;
+
+            else if (!char.IsDigit(str[0])) return 0;
 
             string newStr = "";
 
             for (int i = index; i < str.Length; i++)
             {
-                if (!Char.IsDigit(str[i]))
+                if (!char.IsDigit(str[i]))
                 {
                     break;
                 }

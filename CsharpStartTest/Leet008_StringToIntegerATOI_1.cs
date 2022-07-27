@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet008_StringToIntegerATOI_1
     {
@@ -38,7 +38,7 @@ namespace CsharpStartTest
 
                 if (res * sign > Math.Pow(2, 31) - 1) return (int)Math.Pow(2, 31) - 1;
                 //直接加負號
-                if (res * sign < -(Math.Pow(2, 31))) return (int)-(Math.Pow(2, 31));
+                if (res * sign < -Math.Pow(2, 31)) return (int)-Math.Pow(2, 31);
                 //乘-1變負
                 //if (res * sign < Math.Pow(2, 31) * -1) return (int)(Math.Pow(2, 31) * -1);
                 //零減變負

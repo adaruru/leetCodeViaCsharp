@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\dataProcessCheck\dataProcessCheck.csproj">
+    <ProjectReference Include="..\dataProcessCheck\DataProcessCheck.csproj">
       <Project>{01C8DA13-FB18-4E1F-B70E-A37279ABF69F}</Project>
-      <Name>dataProcessCheck</Name>
+      <Name>DataProcessCheck</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

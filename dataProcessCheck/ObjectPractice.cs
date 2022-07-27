@@ -1,4 +1,4 @@
-﻿using dataProcessCheck.Model;
+﻿using DataProcessCheck.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using Dapper;
 using System.Data.SqlServerCe;
 using AutoMapper;
 
-namespace dataProcessCheck
+namespace DataProcessCheck
 {
 
     public class ObjectPractice

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dataProcessCheck.Extension
+namespace DataProcessCheck.Extension
 {
     /// <summary>
     /// 巡覽list 的擴展

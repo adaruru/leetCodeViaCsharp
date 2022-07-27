@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     /// <summary>
     ///  字串相加
@@ -30,7 +30,7 @@ namespace CsharpStartTest
             ListNode Head = new ListNode(-1);
             ListNode tail = Head;
             //carry!=0暫存變數不為0要往下進位
-            while (l1 != null || l2 != null|| carry!=0)
+            while (l1 != null || l2 != null || carry != 0)
             {
                 //非null取值 null取0
                 int l1val = l1 != null ? l1.val : 0;
@@ -46,10 +46,10 @@ namespace CsharpStartTest
 
                 //tail指向下一個
                 tail = tail.next;
-                
+
                 //l1&l2往下一個
                 if (l1 != null) l1 = l1.next;
-                if (l2 != null) l2 = l2.next; 
+                if (l2 != null) l2 = l2.next;
             }
             ListNode newHead = Head.next;
             return newHead;

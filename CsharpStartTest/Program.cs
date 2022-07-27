@@ -1,11 +1,11 @@
-﻿using dataProcessCheck;
+﻿using DataProcessCheck;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Program
     {

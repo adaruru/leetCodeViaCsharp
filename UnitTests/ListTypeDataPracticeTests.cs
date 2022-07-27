@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using dataProcessCheck;
+using DataProcessCheck;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace dataProcessCheckTests
+namespace DataProcessCheckTests
 {
     [TestClass()]
     public class ListTypeDataPracticeTests

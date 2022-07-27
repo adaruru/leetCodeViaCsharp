@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet007_ReverseInteger_1
     {
@@ -14,13 +14,13 @@ namespace CsharpStartTest
         static int reverse(int intNum)
         {
             long retNum = 0;
-            long longNum = (long)intNum;
+            long longNum = intNum;
             while (longNum != 0)
             {
                 retNum = retNum * 10 + longNum % 10;
                 longNum /= 10;
             }
-            if (retNum < -(Math.Pow(2, 31)) || retNum > (Math.Pow(2, 31)) - 1)
+            if (retNum < -Math.Pow(2, 31) || retNum > Math.Pow(2, 31) - 1)
             { return 0; }
             int result = (int)retNum;
             return result;

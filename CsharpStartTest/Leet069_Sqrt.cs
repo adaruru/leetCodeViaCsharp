@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CsharpStartTest
+namespace LeetCode
 {
     class Leet069_Sqrt
     {
@@ -20,12 +20,13 @@ namespace CsharpStartTest
             long end = x;
 
             //如果end是1或0的話
-            if (end * end == x) {
+            if (end * end == x)
+            {
                 return (int)end;
             }
 
             //+1保留小數點的位置
-            while (start+1<end)
+            while (start + 1 < end)
             {
                 //隨start+1,mid不斷往前以找出
                 long mid = start + (end - start) / 2;
