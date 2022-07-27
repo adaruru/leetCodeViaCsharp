@@ -210,7 +210,7 @@ namespace DataProcessCheck.Reflect
             return result;
         }
     }
-    public class BaseEnumGetExecutingAssembly
+    public class BaseEnumAssembly
     {
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace DataProcessCheck.Reflect
         public static string GetName(object value)
         {
             var pros = MethodBase.GetCurrentMethod().DeclaringType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
-            var children = Assembly.GetExecutingAssembly().GetExportedTypes().Where(t => t.IsAssignableFrom(typeof(BaseEnumGetExecutingAssembly)) && t != typeof(BaseEnumGetExecutingAssembly));
+            var children = Assembly.GetExecutingAssembly().GetExportedTypes().Where(t => t.IsAssignableFrom(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
             var proName = children.Select(c => c.GetProperties(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(p => p.GetValue(null) == value))
                                   .Where(c => c != null)
                                   .FirstOrDefault()?.Name;

@@ -55,4 +55,22 @@ namespace DataProcessCheck.Reflect
         public static string DeptDataImport => "902";
 
     }
+
+    public class BatchAppEnumAssembly : BaseEnumAssembly
+    {
+        /// <summary>
+        /// 使用者資料匯入批次作業
+        /// </summary>
+        [Display(Name = "使用者資料匯入批次作業")]
+        [Description("使用者資料匯入批次作業")]
+        public static string UserDataImport => "901";
+
+        /// <summary>
+        /// 部門資料匯入批次作業
+        /// </summary>
+        [Display(Name = "部門資料匯入批次作業")]
+        [Description("部門資料匯入批次作業")]
+        public static string DeptDataImport => "902";
+
+    }
 }
