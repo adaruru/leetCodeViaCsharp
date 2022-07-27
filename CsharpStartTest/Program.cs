@@ -75,6 +75,7 @@ namespace LeetCode
 
             //資料轉型
             var convert = new DataConvert();
+            //convert.StrListParse();
             //convert.StringDecimalPoint();
             //convert.ConvertTry();
             //convert.ConvertDirect();
