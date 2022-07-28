@@ -210,15 +210,10 @@ namespace DataProcessCheck.Reflect
             return result;
         }
     }
+
+
     public class BaseEnumAssembly
     {
-
-        /// <summary>
-        /// 取得ITSEnum所有內容 
-        /// key Enum 值 int
-        /// value Enum 描述 string 中文
-        /// </summary>
-        /// <returns></returns>
         public static Dictionary<int, string> GetInfos()
         {
             var result = new Dictionary<int, string>();
@@ -238,13 +233,6 @@ namespace DataProcessCheck.Reflect
             return result;
         }
 
-        /// <summary>
-        /// 取得ITSEnum所有內容 
-        /// key Enum 值 string
-        /// value Enum 描述 string 中文
-        /// </summary>
-        /// <param name = "isStringType" ></ param >
-        /// < returns ></ returns >
         public static Dictionary<string, string> GetInfos(bool isStringType)
         {
             if (isStringType)
@@ -269,10 +257,6 @@ namespace DataProcessCheck.Reflect
             }
         }
 
-        /// <summary>
-        /// 取得 ITSEnum 所有 value int 
-        /// </summary>
-        /// <returns></returns>
         public static List<int> GetValues()
         {
             var pros = MethodBase.GetCurrentMethod().DeclaringType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
@@ -285,10 +269,6 @@ namespace DataProcessCheck.Reflect
             return result;
         }
 
-        /// <summary>
-        /// 取得 ITSEnum 所有 value int 
-        /// </summary>
-        /// <returns></returns>
         public static List<string> GetValues(bool isStringType)
         {
             if (isStringType)
@@ -321,8 +301,8 @@ namespace DataProcessCheck.Reflect
         /// <returns></returns>
         public static string GetName(object value)
         {
-            var pros = MethodBase.GetCurrentMethod().DeclaringType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
-            var children = Assembly.GetExecutingAssembly().GetExportedTypes().Where(t => t.IsAssignableFrom(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
+            var asb = Assembly.GetExecutingAssembly().GetExportedTypes();
+            var children = asb.Where(t => t.IsAssignableTo(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
             var proName = children.Select(c => c.GetProperties(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(p => p.GetValue(null) == value))
                                   .Where(c => c != null)
                                   .FirstOrDefault()?.Name;
@@ -336,10 +316,11 @@ namespace DataProcessCheck.Reflect
         public static string GetDescription(object value)
         {
 
-            var pros = MethodBase.GetCurrentMethod().DeclaringType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
-            // var pros = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Static);
-            var att = pros.FirstOrDefault(p => p.GetValue(null) == value)
-                          .GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
+            var children = Assembly.GetExecutingAssembly().GetExportedTypes().Where(t => t.IsAssignableFrom(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
+            var pro = children.Select(c => c.GetProperties(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(p => p.GetValue(null) == value))
+                                .Where(c => c != null)
+                                .FirstOrDefault();
+            var att = pro.GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
             var description = (DescriptionAttribute)att;
             var result = description.Description;
             return result;

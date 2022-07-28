@@ -1,5 +1,5 @@
 ﻿using DataProcessCheck.Reflect;
-using BatchApp = DataProcessCheck.Reflect.BaseEnumAssembly;
+using BatchApp = DataProcessCheck.Reflect.BatchAppEnumAssembly;
 namespace ReflectTest
 {
     public class ViaAssembly

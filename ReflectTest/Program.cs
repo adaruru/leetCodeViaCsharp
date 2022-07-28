@@ -2,7 +2,7 @@
 
 Console.WriteLine("Hello, World!");
 
-var app = new ViaMethodBase();
+var app = new ViaAssembly();
 try
 {
     app.GetLaunchProgram();
