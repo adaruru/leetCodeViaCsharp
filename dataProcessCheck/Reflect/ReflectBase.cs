@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 namespace DataProcessCheck.Reflect
 {
@@ -91,6 +92,7 @@ namespace DataProcessCheck.Reflect
         {
             var result = new Dictionary<int, string>();
             var pros = MethodBase.GetCurrentMethod().DeclaringType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            var stackTrace = new System.Diagnostics.StackTrace();
             for (int i = 0; i < pros.Length; i++)
             {
                 int num;
@@ -211,7 +213,6 @@ namespace DataProcessCheck.Reflect
         }
     }
 
-
     public class BaseEnumAssembly
     {
         public static Dictionary<int, string> GetInfos()
@@ -301,8 +302,8 @@ namespace DataProcessCheck.Reflect
         /// <returns></returns>
         public static string GetName(object value)
         {
-            var asb = Assembly.GetExecutingAssembly().GetExportedTypes();
-            var children = asb.Where(t => t.IsAssignableTo(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
+            var asb = Assembly.GetExecutingAssembly().GetTypes();//.GetExportedTypes();
+            var children = asb.Where(t => t.IsAssignableFrom(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
             var proName = children.Select(c => c.GetProperties(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(p => p.GetValue(null) == value))
                                   .Where(c => c != null)
                                   .FirstOrDefault()?.Name;
