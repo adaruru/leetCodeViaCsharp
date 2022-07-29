@@ -79,15 +79,26 @@ namespace DataProcessCheck.Reflect
         /// 使用者資料匯入批次作業
         /// </summary>
         [Display(Name = "使用者資料匯入批次作業")]
-        [Description("使用者資料匯入批次作業")]
         public static string UserDataImport => "901";
 
         /// <summary>
         /// 部門資料匯入批次作業
         /// </summary>
-        [Display(Name = "部門資料匯入批次作業")]
-        [Description("部門資料匯入批次作業")]
+        [Display(Name = "使用者資料匯入批次作業")]
         public static string DeptDataImport => "902";
+    }
+    public class AgentType : BaseEnumGeneric<AgentType>
+    {
+        /// <summary>
+        /// 使用者資料匯入批次作業
+        /// </summary>
+        [Display(Name = "AgentType123")]
+        public static int UserDataImport => 123;
 
+        /// <summary>
+        /// 部門資料匯入批次作業
+        /// </summary>
+
+        public static int DeptDataImport => 124;
     }
 }

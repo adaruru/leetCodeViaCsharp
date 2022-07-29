@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataProcessCheck.Reflect
 {
@@ -332,26 +333,36 @@ namespace DataProcessCheck.Reflect
     public class BaseEnumGeneric<T>
     {
         public static Type EnumType = typeof(T);
+
         public static Dictionary<int, string> GetInfos()
         {
             var result = new Dictionary<int, string>();
+
             var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
             for (int i = 0; i < pros.Length; i++)
             {
                 int num;
+                var value = string.Empty;
+                var key = string.Empty;
                 if (int.TryParse(pros[i].GetValue(null).ToString(), out num))
                 {
-                    var key = num;
-                    var att = pros[i].GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
-                    var description = (DescriptionAttribute)att;
-                    var value = description.Description;
-                    result.Add(key, value);
+                    key = pros[i].GetValue(null).ToString();
+                    try
+                    {
+                        var att = pros[i].GetCustomAttributes(typeof(DisplayAttribute), true)[0];
+                        value = ((DisplayAttribute)att).Name;
+                    }
+                    catch (Exception ex)
+                    {
+                        value = $"{key} Enum 取 Display Name 錯誤";
+                    }
+                    result.Add(num, value);
                 }
             }
             return result;
         }
 
-        public static Dictionary<string, string> GetInfos(bool isStringType)
+        public static Dictionary<string, string> GetInfos(bool isEnumString)
         {
             if (isStringType)
             {
@@ -359,11 +370,9 @@ namespace DataProcessCheck.Reflect
                 var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
                 for (int i = 0; i < pros.Length; i++)
                 {
-
                     var key = pros[i].GetValue(null).ToString();
-                    var att = pros[i].GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
-                    var description = (DescriptionAttribute)att;
-                    var value = description.Description;
+                    var att = pros[i].GetCustomAttributes(typeof(DisplayAttribute), true)?[0];
+                    var value = att == null ? $"{key} Enum 沒有 Display Name" : ((DisplayAttribute)att).Name;
                     result.Add(key, value);
                 }
                 return result;
@@ -387,9 +396,9 @@ namespace DataProcessCheck.Reflect
             return result;
         }
 
-        public static List<string> GetValues(bool isStringType)
+        public static List<string> GetValues(bool isEnumString)
         {
-            if (isStringType)
+            if (isEnumString)
             {
                 var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
                 var result = pros.Select(p => p.GetValue(null).ToString()).ToList();
@@ -419,9 +428,12 @@ namespace DataProcessCheck.Reflect
         public static string GetName(object value)
         {
             var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
-            var pro = pros.FirstOrDefault(p => p.GetValue(null) == value);
-
-            var result = pro.Name;
+            var pro = pros?.Where(p => p.GetValue(null).ToString() == value.ToString());
+            if (pro.Count() != 1 || pro == null)
+            {
+                return $"{value} Enum 值重複或不存在";
+            }
+            var result = pro.FirstOrDefault().Name;
             return result;
         }
 
@@ -432,10 +444,24 @@ namespace DataProcessCheck.Reflect
         public static string GetDescription(object value)
         {
             var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
-            var att = pros.FirstOrDefault(p => p.GetValue(EnumType, null) == value)
-                          .GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
-            var description = (DescriptionAttribute)att;
-            var result = description.Description;
+            var att = new object();
+            var pro = pros?.Where(p => p.GetValue(EnumType, null).ToString() == value.ToString());
+            if (pro.Count() != 1 || pro == null)
+            {
+                return $"{value} Enum 值重複或不存在";
+            }
+            try
+            {
+                att = pro.FirstOrDefault().GetCustomAttributes(typeof(DisplayAttribute), true)[0];
+            }
+            catch (Exception ex)
+            {
+
+                return $"{value} Enum 取 Display Name 錯誤";
+            }
+
+            var description = (DisplayAttribute)att;
+            var result = description.Name;
             return result;
         }
     }
