@@ -303,7 +303,8 @@ namespace DataProcessCheck.Reflect
         public static string GetName(object value)
         {
             var asb = Assembly.GetExecutingAssembly().GetTypes();//.GetExportedTypes();
-            var children = asb.Where(t => t.IsAssignableFrom(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
+            //mscrolib IsSubclassOf /System.Runtime IsAssignableTo
+            var children = asb.Where(t => t.IsSubclassOf(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
             var proName = children.Select(c => c.GetProperties(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(p => p.GetValue(null) == value))
                                   .Where(c => c != null)
                                   .FirstOrDefault()?.Name;
@@ -316,8 +317,8 @@ namespace DataProcessCheck.Reflect
         /// <returns></returns>
         public static string GetDescription(object value)
         {
-
-            var children = Assembly.GetExecutingAssembly().GetExportedTypes().Where(t => t.IsAssignableFrom(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
+            //mscrolib IsSubclassOf /System.Runtime IsAssignableTo
+            var children = Assembly.GetExecutingAssembly().GetExportedTypes().Where(t => t.IsSubclassOf(typeof(BaseEnumAssembly)) && t != typeof(BaseEnumAssembly));
             var pro = children.Select(c => c.GetProperties(BindingFlags.Public | BindingFlags.Static).FirstOrDefault(p => p.GetValue(null) == value))
                                 .Where(c => c != null)
                                 .FirstOrDefault();
@@ -327,8 +328,115 @@ namespace DataProcessCheck.Reflect
             return result;
         }
     }
+
     public class BaseEnumGeneric<T>
     {
+        public static Type EnumType = typeof(T);
+        public static Dictionary<int, string> GetInfos()
+        {
+            var result = new Dictionary<int, string>();
+            var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            for (int i = 0; i < pros.Length; i++)
+            {
+                int num;
+                if (int.TryParse(pros[i].GetValue(null).ToString(), out num))
+                {
+                    var key = num;
+                    var att = pros[i].GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
+                    var description = (DescriptionAttribute)att;
+                    var value = description.Description;
+                    result.Add(key, value);
+                }
+            }
+            return result;
+        }
 
+        public static Dictionary<string, string> GetInfos(bool isStringType)
+        {
+            if (isStringType)
+            {
+                var result = new Dictionary<string, string>();
+                var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+                for (int i = 0; i < pros.Length; i++)
+                {
+
+                    var key = pros[i].GetValue(null).ToString();
+                    var att = pros[i].GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
+                    var description = (DescriptionAttribute)att;
+                    var value = description.Description;
+                    result.Add(key, value);
+                }
+                return result;
+            }
+            else
+            {
+                return GetInfos().ToDictionary(entry => entry.Key.ToString(),
+                                               entry => entry.Value);
+            }
+        }
+
+        public static List<int> GetValues()
+        {
+            var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            var result = pros.Select(p =>
+            {
+                int num;
+                int.TryParse(p.GetValue(null).ToString(), out num);
+                return num;
+            }).ToList();
+            return result;
+        }
+
+        public static List<string> GetValues(bool isStringType)
+        {
+            if (isStringType)
+            {
+                var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+                var result = pros.Select(p => p.GetValue(null).ToString()).ToList();
+                return result;
+            }
+            else
+            {
+                return GetValues().ConvertAll<string>(x => x.ToString());
+            }
+        }
+
+        /// <summary>
+        /// 取得 ITSEnum 所有 value int 
+        /// </summary>
+        /// <returns></returns>
+        public static bool IsValueExist(object value)
+        {
+            var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            var pro = pros.FirstOrDefault(p => p.GetValue(null) == value);
+            return pro != null;
+        }
+
+        /// <summary>
+        /// 取得 ITSEnum 屬性名稱 英文
+        /// </summary>
+        /// <returns></returns>
+        public static string GetName(object value)
+        {
+            var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            var pro = pros.FirstOrDefault(p => p.GetValue(null) == value);
+
+            var result = pro.Name;
+            return result;
+        }
+
+        /// <summary>
+        /// 取得 ITSEnum 屬性描述 中文
+        /// </summary>
+        /// <returns></returns>
+        public static string GetDescription(object value)
+        {
+            var pros = EnumType?.GetProperties(BindingFlags.Public | BindingFlags.Static);
+            var att = pros.FirstOrDefault(p => p.GetValue(EnumType, null) == value)
+                          .GetCustomAttributes(typeof(DescriptionAttribute), true)[0];
+            var description = (DescriptionAttribute)att;
+            var result = description.Description;
+            return result;
+        }
     }
 }

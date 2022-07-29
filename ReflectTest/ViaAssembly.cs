@@ -9,6 +9,7 @@ namespace ReflectTest
             var batchAppEnum = BatchApp.UserDataImport;
             var arg = "901";
 
+
             Console.WriteLine("請輸入要執行的程式：");
 
             foreach (var p in BatchApp.GetInfos())
