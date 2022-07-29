@@ -73,7 +73,10 @@ namespace DataProcessCheck.Reflect
         public static string DeptDataImport => "902";
 
     }
-    public class BatchAppEnumGeneric : BaseEnumGeneric<BatchAppEnumGeneric>
+
+
+
+    public class BatchAppEnumGeneric : BaseEnum<BatchAppEnumGeneric>
     {
         /// <summary>
         /// 使用者資料匯入批次作業
@@ -87,7 +90,7 @@ namespace DataProcessCheck.Reflect
         [Display(Name = "使用者資料匯入批次作業")]
         public static string DeptDataImport => "902";
     }
-    public class AgentType : BaseEnumGeneric<AgentType>
+    public class AgentType : BaseEnum<AgentType>
     {
         /// <summary>
         /// 使用者資料匯入批次作業
@@ -100,5 +103,33 @@ namespace DataProcessCheck.Reflect
         /// </summary>
 
         public static int DeptDataImport => 124;
+    }
+
+    public class BatchAppEnumGeneric<T> : BaseEnum<T, BatchAppEnumGeneric>
+    {
+        /// <summary>
+        /// 使用者資料匯入批次作業
+        [Display(Name = "使用者資料匯入批次作業")]
+        public static string UserDataImport => "901";
+
+        /// <summary>
+        /// 部門資料匯入批次作業
+        /// </summary>
+        [Display(Name = "使用者資料匯入批次作業")]
+        public static string DeptDataImport => "902";
+    }
+
+    //public class BatchAppEnumGeneric<T1> : BatchAppEnumGeneric
+    //{
+    //}
+
+    //public class BatchAppEnumGeneric<T1> : BatchAppEnumGeneric<T1, BatchAppEnumGeneric>
+    //{
+    //}
+
+    public class CMPSBatchAppEnum : BatchAppEnumGeneric<CMPSBatchAppEnum>
+    {
+        [Display(Name = "台電媒體檔資料匯入")]
+        public static string TaiwanPowerImport => "101";
     }
 }

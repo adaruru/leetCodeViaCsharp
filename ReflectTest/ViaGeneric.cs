@@ -1,5 +1,5 @@
 ﻿using DataProcessCheck.Reflect;
-using BatchApp = DataProcessCheck.Reflect.AgentType;
+using BatchApp = DataProcessCheck.Reflect.BatchAppEnumGeneric;
 namespace ReflectTest
 {
     public class ViaGeneric
@@ -26,6 +26,11 @@ namespace ReflectTest
                 Console.WriteLine($"list value: {p}");
             }
 
+            foreach (var p in BatchApp.GetValues(true))
+            {
+                Console.WriteLine($"list value: {p}");
+            }
+
             // SystemEnum.LaunchProgram.GetEnumName();
             //var name = BatchApp.GetName<BatchApp>(batchAppEnum);
             var name = BatchApp.GetName(batchAppEnum);
@@ -33,7 +38,7 @@ namespace ReflectTest
 
             //var des = BatchApp.GetDescription<BatchApp>(batchAppEnum);
             var des = BatchApp.GetDescription(batchAppEnum);
-            System.Console.WriteLine(des);
+            Console.WriteLine(des);
 
 
             System.Console.WriteLine("請輸入要執行的程式：");
@@ -50,10 +55,15 @@ namespace ReflectTest
                 Console.WriteLine(k);
                 k = BatchApp.GetName(strProgram);
                 Console.WriteLine(k);
+                k = BatchApp.IsValueExist(strProgram).ToString();
+                Console.WriteLine(k);
+
                 var strProgram2 = Console.ReadLine();
                 k = BatchApp.GetDescription(strProgram2);
                 Console.WriteLine(k);
                 k = BatchApp.GetName(strProgram2);
+                Console.WriteLine(k);
+                k = BatchApp.IsValueExist(strProgram2).ToString();
                 Console.WriteLine(k);
 
             }
