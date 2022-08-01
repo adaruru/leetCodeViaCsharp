@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataProcessCheck.Reflect
+namespace Lib.Reflect
 {
     public class BaseEnumConstructor
     {
@@ -170,7 +170,7 @@ namespace DataProcessCheck.Reflect
             }
             else
             {
-                return GetValues().ConvertAll<string>(x => x.ToString());
+                return GetValues().ConvertAll(x => x.ToString());
             }
 
         }
@@ -281,7 +281,7 @@ namespace DataProcessCheck.Reflect
             }
             else
             {
-                return GetValues().ConvertAll<string>(x => x.ToString());
+                return GetValues().ConvertAll(x => x.ToString());
             }
 
         }
@@ -435,7 +435,7 @@ namespace DataProcessCheck.Reflect
             }
             else
             {
-                return GetValues().ConvertAll<string>(x => x.ToString());
+                return GetValues().ConvertAll(x => x.ToString());
             }
         }
 
@@ -493,7 +493,7 @@ namespace DataProcessCheck.Reflect
         }
     }
 
-    public class BaseEnum<T1, T2>
+    public class BaseEnum<T1, T2> 
     {
         private static PropertyInfo[] pros
         {
@@ -609,7 +609,7 @@ namespace DataProcessCheck.Reflect
             }
             else
             {
-                return GetValues().ConvertAll<string>(x => x.ToString());
+                return GetValues().ConvertAll(x => x.ToString());
             }
         }
 
@@ -666,5 +666,7 @@ namespace DataProcessCheck.Reflect
             return result;
         }
     }
+
+
 
 }

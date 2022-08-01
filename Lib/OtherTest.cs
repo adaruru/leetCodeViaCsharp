@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataProcessCheck
+namespace Lib
 {
     public class OtherTest
     {
@@ -50,7 +50,7 @@ namespace DataProcessCheck
         {
             Random rand = new Random(Guid.NewGuid().GetHashCode());
             List<int> listNumbers = new List<int>(Enumerable.Range(a, b));
-            listNumbers = listNumbers.OrderBy(num => rand.Next()).ToList<int>();
+            listNumbers = listNumbers.OrderBy(num => rand.Next()).ToList();
             List<int> list = new List<int>();
             list.AddRange(listNumbers.Take(6));
 

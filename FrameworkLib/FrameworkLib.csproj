@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dataProcessCheck</RootNamespace>
     <AssemblyName>dataProcessCheck</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -62,25 +62,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConvertionHelper.cs" />
-    <Compile Include="DataConvert.cs" />
-    <Compile Include="DateFormat.cs" />
-    <Compile Include="Extension\CommonEqualityComparer.cs" />
-    <Compile Include="Extension\DistinctExtensions.cs" />
-    <Compile Include="Reflect\ReflectChild.cs" />
-    <Compile Include="Reflect\ReflectBase.cs" />
-    <Compile Include="OtherTest.cs" />
-    <Compile Include="RegFormatter.cs" />
-    <Compile Include="ListTypeDataPractice.cs" />
-    <Compile Include="MainProfile.cs" />
-    <Compile Include="Model\NameAlikeModel.cs" />
-    <Compile Include="Model\ObjectWithDefaultValue.cs" />
-    <Compile Include="Model\SampleObjectModel.cs" />
-    <Compile Include="Model\ValuesFromMeModel.cs" />
-    <Compile Include="ObjectPractice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegValidate.cs" />
-    <Compile Include="StrProcess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

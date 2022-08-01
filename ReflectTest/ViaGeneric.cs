@@ -1,5 +1,5 @@
-﻿using DataProcessCheck.Reflect;
-using BatchApp = DataProcessCheck.Reflect.BatchAppEnumGeneric;
+﻿using Lib.Reflect;
+using BatchApp = Lib.Reflect.BatchAppEnumGeneric;
 namespace ReflectTest
 {
     public class ViaGeneric

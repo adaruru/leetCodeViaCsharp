@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.Core.Internal;
 
-namespace DataProcessCheck
+namespace Lib
 {
     public class StrProcess
     {
@@ -233,15 +233,17 @@ namespace DataProcessCheck
             var c = "";
 
             var check = string.IsNullOrEmpty(a);
+            Console.WriteLine("check: " + check);
+           
             //安裝Castle.Core 且 using Castle.Core.Internal; 可以直接對物件判斷
             //效果等同 string.IsNullOrEmpty(a);
-            var checka = a.IsNullOrEmpty();
-            var checkb = b.IsNullOrEmpty();
-            var checkc = c.IsNullOrEmpty();
-            Console.WriteLine("check: " + check);
-            Console.WriteLine("checka: " + checka);
-            Console.WriteLine("checkb: " + checkb);
-            Console.WriteLine("checkc: " + checkc);
+            //framework 4.7有效 net 6 無效 
+            //var checka = a.IsNullOrEmpty();
+            //var checkb = b.IsNullOrEmpty();
+            //var checkc = c.IsNullOrEmpty();
+            //Console.WriteLine("checka: " + checka);
+            //Console.WriteLine("checkb: " + checkb);
+            //Console.WriteLine("checkc: " + checkc);
         }
 
     }

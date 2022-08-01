@@ -1,13 +1,13 @@
-﻿using DataProcessCheck.Model;
-
+﻿
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using DataProcessCheck.Extension;
 using System.Threading.Tasks;
+using Lib.Model;
+using Lib.Extension;
 
-namespace DataProcessCheck
+namespace Lib
 {
     public class ListTypeDataPractice
     {
@@ -83,7 +83,7 @@ namespace DataProcessCheck
         public List<string> ListOrderBy(List<string> listStr = null)
         {
             listStr = new List<string> { "1", "A", "B", "11", "10", "2", "3", "1", "C", "D", "E" };
-            listStr= listStr.ToArray().OrderBy(x => x, new SemiNumericComparer()).ToList();
+            listStr = listStr.ToArray().OrderBy(x => x, new SemiNumericComparer()).ToList();
             Console.Write(string.Join(",", listStr));
             return listStr;
         }
@@ -94,7 +94,7 @@ namespace DataProcessCheck
         {
             List<int> list = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             var devide1 = list.GetRange(0, list.Count / 2); //1234
-            var devide2 = list.GetRange(list.Count / 2, list.Count - (list.Count / 2));//56789
+            var devide2 = list.GetRange(list.Count / 2, list.Count - list.Count / 2);//56789
 
             var devide3 = list.GetRange(0, list.Count / 2 + 1); //12345
             var devide4 = list.GetRange(list.Count / 2 + 1, list.Count - (list.Count / 2 + 1));//6789

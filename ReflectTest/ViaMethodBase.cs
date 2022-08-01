@@ -1,5 +1,5 @@
-﻿using DataProcessCheck.Reflect;
-using BatchApp = DataProcessCheck.Reflect.BatchAppEnumMethodBase;
+﻿using Lib.Reflect;
+using BatchApp = Lib.Reflect.BatchAppEnumMethodBase;
 
 
 namespace ReflectTest

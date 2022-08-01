@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace DataProcessCheck.Reflect
+namespace Lib.Reflect
 {
     public class BatchAppEnum : BaseEnumConstructor
     {

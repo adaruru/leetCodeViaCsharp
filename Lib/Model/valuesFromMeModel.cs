@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataProcessCheck.Model
+namespace Lib.Model
 {
-    class ValuesFromMeModel :ValueFather,ICloneable//使該物件可以被深複製
+    class ValuesFromMeModel : ValueFather, ICloneable//使該物件可以被深複製
     {
         public string ValuelikeString { get; set; }
         public string ValueIsString { get; set; }
@@ -17,7 +17,8 @@ namespace DataProcessCheck.Model
         }
     }
 
-    class ValueFather {
+    class ValueFather
+    {
         public string ValueForFather { get; set; }
     }
 

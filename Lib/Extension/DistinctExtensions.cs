@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Lib.Extension;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataProcessCheck.Extension
+namespace Lib.Extension
 {
     public static class DistinctExtensions
     {

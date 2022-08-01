@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;//注意這個要using
 using System.Threading.Tasks;
 
-namespace DataProcessCheck
+namespace Lib
 {
     //正則驗證資料
     public class RegValidate
@@ -73,7 +73,7 @@ namespace DataProcessCheck
 
         public void boolPractice()
         {
-            https://web.stanford.edu/class/cs103/tools/truth-table-tool/
+        https://web.stanford.edu/class/cs103/tools/truth-table-tool/
             var a = true;
             var b = true;
             var c = a && b;
@@ -82,7 +82,7 @@ namespace DataProcessCheck
 
 
             var e = !(a && b);
-            var f = (a || b);
+            var f = a || b;
             var g = !a || !b;
             var h = !(a || b);
             var i = !(!a && !b);
@@ -91,7 +91,7 @@ namespace DataProcessCheck
             Console.WriteLine("!(!a || !b)  :" + j);
             Console.WriteLine("----------------------");
             Console.WriteLine(" !a || !b    :" + g);
-            Console.WriteLine("!(a && b)    :" + e);     
+            Console.WriteLine("!(a && b)    :" + e);
             Console.WriteLine("----------------------");
             Console.WriteLine(" !a && !b    :" + d);
             Console.WriteLine("!(a || b)    :" + h);

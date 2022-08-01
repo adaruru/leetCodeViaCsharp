@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataProcessCheck
+namespace Lib
 {
     public class DateFormat
     {
@@ -14,7 +14,7 @@ namespace DataProcessCheck
         {
 
             DateTime dNow = DateTime.Now;
-            System.Globalization.TaiwanCalendar tc = new System.Globalization.TaiwanCalendar();
+            TaiwanCalendar tc = new TaiwanCalendar();
             DateTime d = new DateTime(2010, 8, 18, 1, 0, 0);
 
 
@@ -34,7 +34,7 @@ namespace DataProcessCheck
         /// <returns></returns>
         private string GetTaiwanCalendarDateTime()
         {
-            System.Globalization.TaiwanCalendar tc = new System.Globalization.TaiwanCalendar();
+            TaiwanCalendar tc = new TaiwanCalendar();
             DateTime d = DateTime.Now;
             int hour = d.Hour;
             if (d.Minute != 0 || d.Second != 0)//判斷非整點無條件進位

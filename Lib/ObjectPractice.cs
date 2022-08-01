@@ -1,5 +1,4 @@
-﻿using DataProcessCheck.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +13,9 @@ using System.Data;
 using Dapper;
 using System.Data.SqlServerCe;
 using AutoMapper;
+using Lib.Model;
 
-namespace DataProcessCheck
+namespace Lib
 {
 
     public class ObjectPractice
@@ -74,7 +74,7 @@ namespace DataProcessCheck
                 ValuelikeString = "222",
                 ValueString = "333"
             };
-            System.Reflection.PropertyInfo[] properties = item.GetType().GetProperties();
+            PropertyInfo[] properties = item.GetType().GetProperties();
             for (int i = 0; i < properties.Length; i++)
             {
                 var properity = item.GetType().GetProperty($"weAreAlike{i + 1}");
@@ -157,7 +157,7 @@ namespace DataProcessCheck
             Thread.Sleep(100); //等個0.1秒看有沒有跑0.1秒
 
 
-            System.Reflection.PropertyInfo[] properties = item.GetType().GetProperties();
+            PropertyInfo[] properties = item.GetType().GetProperties();
             for (int i = 0; i < properties.Length; i++)
             {
                 //遍歷物件 賦值1~物件數量數
@@ -173,7 +173,7 @@ namespace DataProcessCheck
             TimeSpan ts = StopWatch.Elapsed;
 
             //Format and display the TimeSpan value. 可以格式化初耗時毫秒、微秒
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
             Console.WriteLine("RunTime " + elapsedTime);
@@ -343,7 +343,7 @@ UPDATE T_Set_POInfo
             TimeSpan ts = StopWatch.Elapsed;
 
             //Format and display the TimeSpan value. 可以格式化初耗時毫秒、微秒
-            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            string elapsedTime = string.Format("{0:00}:{1:00}:{2:00}.{3:00}",
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
             Console.WriteLine("10000000 RunTime " + elapsedTime);   //00:00:00.02

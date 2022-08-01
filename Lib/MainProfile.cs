@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataProcessCheck
+namespace Lib
 {
     public class MainProfile : Profile
     {
