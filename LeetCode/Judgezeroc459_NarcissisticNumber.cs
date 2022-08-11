@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeetCode
 {
-    class Judgezeroc459_NarcissisticNumber
+    public class Judgezeroc459_NarcissisticNumber
     {
         public static void main()
         {

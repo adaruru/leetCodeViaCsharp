@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeetCode
 {
-    class Algorithm
+    public class Algorithm
     {
 
         //1.請設計一支程式，可以輸入N個數字(如: 11, 7, 23, 18, 22, 90)，輸入完後顯示其排序結果(如: 7, 11, 18, 22, 23, 90)

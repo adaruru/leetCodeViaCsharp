@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LeetCode
 {
-    class Leet012_IntegerToRoman
+    public class Leet012_IntegerToRoman
     {
         public static void main()
         {

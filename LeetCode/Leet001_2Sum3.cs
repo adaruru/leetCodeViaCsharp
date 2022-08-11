@@ -5,7 +5,7 @@ using System.Text;
 
 namespace LeetCode
 {
-    class Leet001_2Sum3
+    public class Leet001_2Sum3
     {
         public static void main()
         {

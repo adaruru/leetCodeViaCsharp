@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeetCode
 {
-    class Judgezeroa010_PrimeFactorization
+    public class Judgezeroa010_PrimeFactorization
     {
         public static void main()
         {

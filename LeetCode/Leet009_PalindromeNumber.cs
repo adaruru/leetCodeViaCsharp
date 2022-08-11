@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LeetCode
 {
-    class Leet009_PalindromeNumber
+    public class Leet009_PalindromeNumber
     {
         public static void main()
         {

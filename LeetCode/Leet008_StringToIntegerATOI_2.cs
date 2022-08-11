@@ -5,9 +5,8 @@ using System.Text;
 namespace LeetCode
 {
     class Leet008_StringToIntegerATOI_2
-
     {
-        public static void main()
+         public static void main()
         {
             string str = Console.ReadLine();
             Console.Write(MyAtoi(str));
