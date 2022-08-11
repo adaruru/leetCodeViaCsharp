@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FrameworkLib\FrameworkLib.csproj" />
+    <ProjectReference Include="..\LeetCode\LeetCode.csproj" />
     <ProjectReference Include="..\Lib\Lib.csproj" />
   </ItemGroup>
 
