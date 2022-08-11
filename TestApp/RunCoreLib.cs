@@ -11,7 +11,6 @@ public class RunCoreLib
         //演算法實作
         //Algorithm.BubbleSort();
 
-
         /*
          * 基礎練習
         */

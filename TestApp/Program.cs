@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using TestApp;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("TestApp Run");
 
 var test = new RunLeetCode();
 //var test = new RunCoreLib();

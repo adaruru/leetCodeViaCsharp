@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LeetCode;
+﻿namespace LeetCode;
 
 /// <summary>
 ///You are given an array of variable pairs equations and an array of real numbers values,
@@ -18,19 +14,15 @@ namespace LeetCode;
 ///Note: The input is always valid. 
 ///You may assume that evaluating the queries will not result in division by zero and that there is no contradiction.
 /// </summary>
-class Leet399_EvaluateDivision
+public class Leet399_EvaluateDivision
 {
-    public static void run()
+    public static void Run()
     {
         var coinChange = new Leet518_CoinChange();
         Console.Write("set coin denominations array split with space: ");
-        int[] coins = Array.ConvertAll(Console.ReadLine().Split(" "), str => int.Parse(str));
-        Console.Write("set amount: ");
-        int amount = int.Parse(Console.In.ReadLine());
-        var result = coinChange.CoinChange2(coins, amount);
-        Console.WriteLine("result: " + result);
+        var a = CalcEquation(null, null, null);
     }
-    public double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
+    public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
         return new double[] { };
     }
