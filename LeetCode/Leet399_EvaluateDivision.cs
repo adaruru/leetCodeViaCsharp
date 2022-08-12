@@ -19,7 +19,7 @@ public class Leet399_EvaluateDivision
     public static void Run()
     {
         var coinChange = new Leet518_CoinChange();
-        Console.Write("set coin denominations array split with space: ");
+        Console.Write("Leet399_EvaluateDivision");
         var a = CalcEquation(null, null, null);
     }
     public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
