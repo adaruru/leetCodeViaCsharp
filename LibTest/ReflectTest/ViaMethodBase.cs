@@ -2,7 +2,7 @@
 using BatchApp = Lib.Reflect.BatchAppEnumMethodBase;
 
 
-namespace ReflectTest
+namespace LibTest.ReflectTest
 {
     public class ViaMethodBase
     {
@@ -13,27 +13,27 @@ namespace ReflectTest
 
             Console.WriteLine("請輸入要執行的程式：");
 
-            foreach (var p in BatchApp.GetInfos())
+            foreach (var p in BaseEnumMethodBase.GetInfos())
             {
                 Console.WriteLine($"{p.Key}.{p.Value}");
             }
 
-            foreach (var p in BatchApp.GetValues())
+            foreach (var p in BaseEnumMethodBase.GetValues())
             {
                 Console.WriteLine($"list value: {p}");
             }
 
             // SystemEnum.LaunchProgram.GetEnumName();
             //var name = BatchApp.GetName<BatchApp>(batchAppEnum);
-            var name = BatchApp.GetName(batchAppEnum);
-            System.Console.WriteLine(name);
+            var name = BaseEnumMethodBase.GetName(batchAppEnum);
+            Console.WriteLine(name);
 
             //var des = BatchApp.GetDescription<BatchApp>(batchAppEnum);
-            var des = BatchApp.GetDescription(batchAppEnum);
-            System.Console.WriteLine(des);
+            var des = BaseEnumMethodBase.GetDescription(batchAppEnum);
+            Console.WriteLine(des);
 
 
-            System.Console.WriteLine("請輸入要執行的程式：");
+            Console.WriteLine("請輸入要執行的程式：");
             //foreach (var p in BatchAppEnum.GetValues())
             //{
             //    Enum.TryParse(p.ToString(), true, out SystemEnum.LaunchProgram program);
@@ -43,7 +43,7 @@ namespace ReflectTest
             {
                 var strProgram = Console.ReadLine();
                 // var k = BatchApp.GetDescription<BatchApp>(strProgram);
-                var k = BatchApp.GetDescription(strProgram);
+                var k = BaseEnumMethodBase.GetDescription(strProgram);
 
                 Console.WriteLine(k);
             }

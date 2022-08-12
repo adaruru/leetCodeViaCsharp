@@ -1,6 +1,6 @@
 ﻿using LeetCode;
 
-namespace TestApp;
+namespace LeetCodeTest;
 
 public class RunLeetCode
 {

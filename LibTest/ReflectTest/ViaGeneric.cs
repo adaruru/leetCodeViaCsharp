@@ -1,18 +1,22 @@
 ﻿using Lib.Reflect;
-using BatchApp = Lib.Reflect.BatchAppEnumAssembly;
-namespace ReflectTest
+using BatchApp = Lib.Reflect.BatchAppEnumGeneric;
+namespace LibTest.ReflectTest
 {
-    public class ViaAssembly
+    public class ViaGeneric
     {
         public void GetLaunchProgram()
         {
             var batchAppEnum = BatchApp.UserDataImport;
             var arg = "901";
 
-
             Console.WriteLine("請輸入要執行的程式：");
 
             foreach (var p in BatchApp.GetInfos())
+            {
+                Console.WriteLine($"{p.Key}.{p.Value}");
+            }
+
+            foreach (var p in BatchApp.GetInfos(true))
             {
                 Console.WriteLine($"{p.Key}.{p.Value}");
             }
@@ -22,17 +26,22 @@ namespace ReflectTest
                 Console.WriteLine($"list value: {p}");
             }
 
+            foreach (var p in BatchApp.GetValues(true))
+            {
+                Console.WriteLine($"list value: {p}");
+            }
+
             // SystemEnum.LaunchProgram.GetEnumName();
             //var name = BatchApp.GetName<BatchApp>(batchAppEnum);
             var name = BatchApp.GetName(batchAppEnum);
-            System.Console.WriteLine(name);
+            Console.WriteLine(name);
 
             //var des = BatchApp.GetDescription<BatchApp>(batchAppEnum);
             var des = BatchApp.GetDescription(batchAppEnum);
-            System.Console.WriteLine(des);
+            Console.WriteLine(des);
 
 
-            System.Console.WriteLine("請輸入要執行的程式：");
+            Console.WriteLine("請輸入要執行的程式：");
             //foreach (var p in BatchAppEnum.GetValues())
             //{
             //    Enum.TryParse(p.ToString(), true, out SystemEnum.LaunchProgram program);
@@ -43,8 +52,20 @@ namespace ReflectTest
                 var strProgram = Console.ReadLine();
                 // var k = BatchApp.GetDescription<BatchApp>(strProgram);
                 var k = BatchApp.GetDescription(strProgram);
-
                 Console.WriteLine(k);
+                k = BatchApp.GetName(strProgram);
+                Console.WriteLine(k);
+                k = BatchApp.IsValueExist(strProgram).ToString();
+                Console.WriteLine(k);
+
+                var strProgram2 = Console.ReadLine();
+                k = BatchApp.GetDescription(strProgram2);
+                Console.WriteLine(k);
+                k = BatchApp.GetName(strProgram2);
+                Console.WriteLine(k);
+                k = BatchApp.IsValueExist(strProgram2).ToString();
+                Console.WriteLine(k);
+
             }
             catch (Exception ex)
             {
