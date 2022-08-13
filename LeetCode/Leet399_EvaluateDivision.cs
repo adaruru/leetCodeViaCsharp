@@ -21,14 +21,15 @@
 /// and that there is no contradiction.
 /// 且不存在任何矛盾的結果。
 ///
-/// Input: equations = [["a","b"],["b","c"]]
-/// values = [2.0,3.0]
-/// queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
-/// Output: [6.00000,0.50000,-1.00000,1.00000,-1.00000]
+/// Input: 
+///     equations = [["a","b"],["b","c"]]
+///     values    = [2.0,3.0]
+///     queries   = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
+/// Output:         [6.00000,0.50000,-1.00000,1.00000,-1.00000]
 /// 
-/// Input: equations = [["a","b"],["b","c"],["bc","cd"]]
+/// Input: equations = [["a","b"],["b","c"],["e","f"]]
 /// values = [1.5,2.5,5.0]
-/// queries = [["a","c"],["c","b"],["bc","cd"],["cd","bc"]]
+/// queries = [["a","c"],["c","b"],["e","f"],["f","e"]]
 /// Output: [3.75000,0.40000,5.00000,0.20000]
 /// 
 /// Input: equations = [["a","b"]]
@@ -54,32 +55,82 @@ public class Leet399_EvaluateDivision
              new List<string> {"x", "x"},
          };
 
-        var a = CalcEquation(Input, values, queries);
+        var ans = CalcEquation(Input, values, queries);
+        Console.Write("  ans = [");
+        for (int i = 0; i < ans.Count(); i++)
+        {
+            Console.Write($"{ ans[i]} ,");
+        }
+        Console.WriteLine("]");
     }
     public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
-        var routeMap = new Dictionary<List<string>, double>();
+        //var routeMap = new Dictionary<List<string>, double>();
+        //for (int i = 0; i < equations.Count; i++)
+        //{
+        //    double ov = 0;
+        //    if (!routeMap.TryGetValue(equations[i].ToList(), out ov))//加入正續
+        //    {
+        //        routeMap.Add(equations[i].ToList(), values[i]);
+        //    }
+        //    if (!routeMap.TryGetValue(new List<string> { equations[i][1], equations[i][0] }, out ov))//加入倒續
+        //    {
+        //        routeMap.Add(equations[i].ToList(), 1 / values[i]);
+        //    }
+        //}
+
+        var valueMap = new Dictionary<string, double>();
         for (int i = 0; i < equations.Count; i++)
         {
-            double ov = 0;
+            double v = 0;
+            bool isFirst = valueMap.TryGetValue(equations[i][0], out v);
+            bool isSecond = valueMap.TryGetValue(equations[i][1], out v);
 
-            if (!routeMap.TryGetValue(equations[i].ToList(), out ov))//加入正續
+            if (!isFirst && !isSecond)
             {
-                routeMap.Add(equations[i].ToList(), values[i]);
-            }
-            if (!routeMap.TryGetValue(new List<string> { equations[i][1], equations[i][0] }, out ov))//加入倒續
-            {
-                routeMap.Add(equations[i].ToList(), 1 / values[i]);
-            }
-
-            for (int j = 0; j < queries.Count(); j++)
-            {
-
+                valueMap.Add(equations[i][0], 1);
+                valueMap.Add(equations[i][1], 1 / values[i]);
             }
 
+            if (!isFirst && isSecond)
+            {
+                valueMap.Add(equations[i][0], valueMap[equations[i][1]] * values[i]);
+            }
 
+            if (isFirst && !isSecond)
+            {
+                valueMap.Add(equations[i][1], valueMap[equations[i][0]] / values[i]);
+            }
         }
-        return new double[] { };
+
+        double[] answer = new double[queries.Count];
+        for (int i = 0; i < queries.Count; i++)
+        {
+            double v = 0;
+            double first = 0;
+            double second = 0;
+            if (!valueMap.TryGetValue(queries[i][0], out v))
+            {
+                answer[i] = -1;
+                continue;
+            }
+            else
+            {
+                first = v;
+            }
+            if (!valueMap.TryGetValue(queries[i][1], out v))
+            {
+                answer[i] = -1;
+                continue;
+            }
+            else
+            {
+                second = v;
+            }
+
+            answer[i] = first / second;
+        }
+        return answer;
     }
 
 }
