@@ -63,22 +63,103 @@ public class Leet399_EvaluateDivision
         }
         Console.WriteLine("]");
     }
+
     public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
-        //var routeMap = new Dictionary<List<string>, double>();
-        //for (int i = 0; i < equations.Count; i++)
-        //{
-        //    double ov = 0;
-        //    if (!routeMap.TryGetValue(equations[i].ToList(), out ov))//加入正續
-        //    {
-        //        routeMap.Add(equations[i].ToList(), values[i]);
-        //    }
-        //    if (!routeMap.TryGetValue(new List<string> { equations[i][1], equations[i][0] }, out ov))//加入倒續
-        //    {
-        //        routeMap.Add(equations[i].ToList(), 1 / values[i]);
-        //    }
-        //}
+        var routeMap = new Dictionary<List<string>, double>();
+        for (int i = 0; i < equations.Count; i++)
+        {
+            double ov = 0;
+            if (!routeMap.TryGetValue(equations[i].ToList(), out ov))//加入正續
+            {
+                routeMap.Add(equations[i].ToList(), values[i]);
+            }
+            if (!routeMap.TryGetValue(new List<string> { equations[i][1], equations[i][0] }, out ov))//加入倒續
+            {
+                routeMap.Add(equations[i].ToList(), 1 / values[i]);
+            }
+        }
+        var equMap = new Dictionary<string, string>();
 
+        var ans = new double[queries.Count()];
+        for (int i = 0; i < queries.Count(); i++)
+        {
+            double v;
+            if (queries[i][0] == queries[i][1])
+            {
+                ans[i] = 1;
+            }
+            else if (routeMap.TryGetValue(queries[i].ToList(), out v))
+            {
+                ans[i] = v;
+            }
+            else
+            {
+                if (GotNext(routeMap, queries[i][1], out v))
+                {
+
+                }
+                ans[i] = v;
+            }
+        }
+
+        return ans;
+    }
+    static bool GotNext(Dictionary<List<string>, double> routeMap, string second, out double v)
+    {
+        var result = false;
+        var allKey = routeMap.Select(r => r.Key).ToList();
+        foreach (var route in routeMap)
+        {
+            double vin;
+            if (route.Key[0] == second)
+            {
+                result = GotNext(routeMap, second, out vin);
+            }
+        }
+
+        bool isFirst = allKey.TryGetValue(query[0], out v);
+        bool isSecond = routeMap.TryGetValue(query[1], out v);
+        if (true)
+        {
+
+        }
+        v = 0;
+        return true;
+    }
+
+    static List<string> FindRoute(IList<IList<string>> equations, string key)
+    {
+        var result = new List<string>();
+
+        foreach (var equ in equations)
+        {
+            if (equ[0] == key)
+            {
+                result.Add(equ[0]);
+            }
+            if (equ[1] == key)
+            {
+                result.Add(equ[1]);
+                if (true)
+                {
+
+                }
+            }
+        }
+        return new List<string>();
+    }
+
+
+    /// <summary>
+    /// 設第一個 base 1 但是要判斷的例外太多了
+    /// </summary>
+    /// <param name="equations"></param>
+    /// <param name="values"></param>
+    /// <param name="queries"></param>
+    /// <returns></returns>
+    public static double[] CalcEquation2(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
+    {
         var valueMap = new Dictionary<string, double>();
         for (int i = 0; i < equations.Count; i++)
         {
