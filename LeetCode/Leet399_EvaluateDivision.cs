@@ -66,6 +66,7 @@ public class Leet399_EvaluateDivision
 
     public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
+        var allKey = new List<string>();
         var routeMap = new Dictionary<List<string>, double>();
         for (int i = 0; i < equations.Count; i++)
         {
@@ -78,14 +79,29 @@ public class Leet399_EvaluateDivision
             {
                 routeMap.Add(equations[i].ToList(), 1 / values[i]);
             }
+
+            if (!allKey.Contains(equations[i][0]))
+            {
+                allKey.Add(equations[i][0]);
+            }
+            if (!allKey.Contains(equations[i][1]))
+            {
+                allKey.Add(equations[i][1]);
+            }
         }
+
         var equMap = new Dictionary<string, string>();
 
         var ans = new double[queries.Count()];
         for (int i = 0; i < queries.Count(); i++)
         {
             double v;
-            if (queries[i][0] == queries[i][1])
+            if (!allKey.Contains(queries[i][0]) ||
+                !allKey.Contains(queries[i][1]))
+            {
+                ans[i] = -1;
+            }
+            else if (queries[i][0] == queries[i][1])
             {
                 ans[i] = 1;
             }
@@ -95,7 +111,7 @@ public class Leet399_EvaluateDivision
             }
             else
             {
-                if (GotNext(routeMap, queries[i][1], out v))
+                if (GotNext(routeMap, queries[i][0], out v))
                 {
 
                 }
@@ -105,16 +121,17 @@ public class Leet399_EvaluateDivision
 
         return ans;
     }
-    static bool GotNext(Dictionary<List<string>, double> routeMap, string second, out double v)
+    static bool GotNext(Dictionary<List<string>, double> routeMap, string first, out double v)
     {
+        var tempList = new Dictionary<List<string>, double>();
         var result = false;
         var allKey = routeMap.Select(r => r.Key).ToList();
         foreach (var route in routeMap)
         {
             double vin;
-            if (route.Key[0] == second)
-            {
-                result = GotNext(routeMap, second, out vin);
+            if (route.Key[0] == first)
+            {   
+                result = GotNext(routeMap, first, out vin);
             }
         }
 
