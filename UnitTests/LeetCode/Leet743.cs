@@ -19,9 +19,11 @@ namespace UnitTests.LeetCode
         public void Leet743Case1()
         {
             //arrange
-            int[][] times1 = new int[][] { new int[] { 1, 2, 1 } };
-            int n1 = 2;
-            int k1 = 1;
+            int[][] times1 = new int[][] { new int[]  { 2, 1, 1 },
+                                           new int[]  { 2, 3, 1 },
+                                           new int[]  { 3, 4, 1 }};
+            int n1 = 4;
+            int k1 = 2;
 
             int Expected1 = 1;
 

@@ -10,6 +10,7 @@ namespace LeetCode
     /// 求最短路徑 #sortestPath
     /// #有向圖 #directedGraph #digraph
     /// #DijkstraAlgorithm,
+    /// #七橋問題
     /// 
     /// You are given a network of n nodes, labeled from 1 to n.You are also given times,
     /// a list of travel times as directed edges times[i] = (ui, vi, wi), 
@@ -30,16 +31,91 @@ namespace LeetCode
     /// </summary>
     public class Leet743_NetworkDelayTime
     {
-
+        /// <summary>
+        /// NetworkDelayTime
+        /// </summary>
+        /// <param name="times">{sourceNode, targetNode ,value}</param>
+        /// <param name="n">visit node number</param>
+        /// <param name="k">start node</param>
+        /// <returns></returns>
         public int NetworkDelayTime(int[][] times, int n, int k)
         {
-            var result = Dijkstra();
+            List<(int node, int wht)>[] routeMap = new List<(int node, int wht)>[n + 1];
+            for (var i = 0; i <= n; i++)
+            {
+                routeMap[i] = new List<(int node, int wht)>();
+            }
+
+            foreach (var time in times)
+            {
+                routeMap[time[0]].Add((time[1], time[2]));
+            }
+
+            var result = Dijkstra(routeMap, n, k);
             return result;
         }
 
-        public int Dijkstra()
+        public int Dijkstra(List<(int node, int wht)>[] routeMap, int n, int k)
         {
-            return 1;
+            bool[] visited = new bool[n + 1];
+            PriorityQueue<int, int> pq = new PriorityQueue<int, int>();
+
+            pq.Enqueue(k, 0);
+            int result = 0;
+            int visitedCount = 0;
+            while (pq.TryDequeue(out int node, out int weight))
+            {
+                if (visited[node]) continue;
+                visitedCount++;
+                visited[node] = true;
+                result = Math.Max(result, weight);
+                foreach (var adj in routeMap[node])
+                {
+                    var totalWT = weight + adj.wht;
+                    pq.Enqueue(adj.node, totalWT);
+                }
+            }
+            return visitedCount == n ? result : -1;
+        }
+
+        public int NetworkDelayTime2(int[][] times, int n, int k)
+        {
+            List<(int node, int wht)>[] routeMap = new List<(int node, int wht)>[n + 1];
+            for (var i = 0; i <= n; i++)
+            {
+                routeMap[i] = new List<(int node, int wht)>();
+            }
+
+            foreach (var time in times)
+            {
+                routeMap[time[0]].Add((time[1], time[2]));
+            }
+
+            var result = Dijkstra2(routeMap, n, k);
+            return result;
+        }
+
+        public int Dijkstra2(List<(int node, int wht)>[] routeMap, int n, int k)
+        {
+            bool[] visited = new bool[n + 1];
+            PriorityQueue<int, int> pq = new PriorityQueue<int, int>();
+
+            pq.Enqueue(k, 0);
+            int result = 0;
+            int visitedCount = 0;
+            while (pq.TryDequeue(out int node, out int weight))
+            {
+                if (visited[node]) continue;
+                visitedCount++;
+                visited[node] = true;
+                result = Math.Max(result, weight);
+                foreach (var adj in routeMap[node])
+                {
+                    var totalWT = weight + adj.wht;
+                    pq.Enqueue(adj.node, totalWT);
+                }
+            }
+            return visitedCount == n ? result : -1;
         }
     }
 

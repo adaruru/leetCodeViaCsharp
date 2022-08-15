@@ -35,12 +35,11 @@ public class Leet399_EvaluateDivision
             var equ1 = equations[i][0];
             var equ2 = equations[i][1];
 
-            double ov = 0;
-            if (!routeMap.TryGetValue(equations[i].ToList(), out ov))//加入正續
+            if (!routeMap.TryGetValue(equations[i].ToList(), out double v1))//加入正續
             {
                 routeMap.Add(equations[i].ToList(), values[i]);
             }
-            if (!routeMap.TryGetValue(new List<string> { equ2, equ1 }, out ov))//加入倒續
+            if (!routeMap.TryGetValue(new List<string> { equ2, equ1 }, out double v2))//加入倒續
             {
                 routeMap.Add(new List<string> { equ2, equ1 }, 1 / values[i]);
             }
@@ -63,7 +62,6 @@ public class Leet399_EvaluateDivision
             var query1 = queries[i][0];
             var query2 = queries[i][1];
 
-            double v;
             if (!neighborsMap.ContainsKey(query1) ||
                 !neighborsMap.ContainsKey(query2))
             {
@@ -73,7 +71,7 @@ public class Leet399_EvaluateDivision
             {
                 ans[i] = 1;
             }
-            else if (routeMap.TryGetValue(queries[i].ToList(), out v))
+            else if (routeMap.TryGetValue(queries[i].ToList(), out double v))
             {
                 ans[i] = v;
             }
@@ -130,9 +128,8 @@ public class Leet399_EvaluateDivision
         var valueMap = new Dictionary<string, double>();
         for (int i = 0; i < equations.Count; i++)
         {
-            double v = 0;
-            bool isFirst = valueMap.TryGetValue(equations[i][0], out v);
-            bool isSecond = valueMap.TryGetValue(equations[i][1], out v);
+            bool isFirst = valueMap.TryGetValue(equations[i][0], out double v1);
+            bool isSecond = valueMap.TryGetValue(equations[i][1], out double v2);
 
             if (!isFirst && !isSecond)
             {
@@ -154,26 +151,25 @@ public class Leet399_EvaluateDivision
         double[] answer = new double[queries.Count];
         for (int i = 0; i < queries.Count; i++)
         {
-            double v = 0;
             double first = 0;
             double second = 0;
-            if (!valueMap.TryGetValue(queries[i][0], out v))
+            if (!valueMap.TryGetValue(queries[i][0], out double v1))
             {
                 answer[i] = -1;
                 continue;
             }
             else
             {
-                first = v;
+                first = v1;
             }
-            if (!valueMap.TryGetValue(queries[i][1], out v))
+            if (!valueMap.TryGetValue(queries[i][1], out double v2))
             {
                 answer[i] = -1;
                 continue;
             }
             else
             {
-                second = v;
+                second = v2;
             }
 
             answer[i] = first / second;
