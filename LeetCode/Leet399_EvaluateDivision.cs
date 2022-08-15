@@ -20,50 +20,10 @@
 /// 你可以假設除法運算中不會出現除數為 0 的情況
 /// and that there is no contradiction.
 /// 且不存在任何矛盾的結果。
-///
-/// Input: 
-///     equations = [["a","b"],["b","c"]]
-///     values    = [2.0,3.0]
-///     queries   = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
-/// Output:         [6.00000,0.50000,-1.00000,1.00000,-1.00000]
-/// 
-/// Input: equations = [["a","b"],["b","c"],["e","f"]]
-/// values = [1.5,2.5,5.0]
-/// queries = [["a","c"],["c","b"],["e","f"],["f","e"]]
-/// Output: [3.75000,0.40000,5.00000,0.20000]
-/// 
-/// Input: equations = [["a","b"]]
-/// values = [0.5]
-/// queries = [["a","b"],["b","a"],["a","c"],["x","y"]]
-/// Output: [0.50000,2.00000,-1.00000,-1.00000]
 /// 
 /// </summary>
 public class Leet399_EvaluateDivision
 {
-    public void Run()
-    {
-        Console.Write("Leet399_EvaluateDivision");
-
-        IList<IList<string>> Input = new List<IList<string>> { new List<string> { "a", "b" }, new List<string> { "b", "c" } };
-        double[] values = { 2.0, 3.0 };
-        IList<IList<string>> queries = new List<IList<string>> {
-             new List<string> {"a", "c"},
-             new List<string> {"b", "a"},
-             new List<string> {"a", "e"},
-             new List<string> {"a", "a"},
-             new List<string> {"x", "x"},
-         };
-
-        var ans = new Leet399_EvaluateDivision().CalcEquation(Input, values, queries);
-        Console.Write("  ans = [");
-        for (int i = 0; i < ans.Count(); i++)
-        {
-            Console.Write($"{ ans[i]} ,");
-        }
-        Console.WriteLine("]");
-    }
-
-
     public double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
         var routeMap = new Dictionary<List<string>, double>();
@@ -130,25 +90,27 @@ public class Leet399_EvaluateDivision
                        Dictionary<string, List<string>> neighborsMap,
                        HashSet<string> visiting)
     {
-        if (source == target) return value;
+        if (source == target) return value; //找到 target 遞迴結束
 
         visiting.Add(source); // Mark it as visiting if a visits b , we do not want b to visit a 
 
         List<string> neighbors = neighborsMap[source];
-        double result = -1.0;
-        foreach (string neighbor in neighbors)
+        double result = -1.0; //預設 target 找不到
+        foreach (string neighbor in neighbors) //所有 source 的 neighbor 都要找
         {
-            if (!visiting.Contains(neighbor))
+            if (!visiting.Contains(neighbor)) //往下找可能的路徑時 須排除經過的 source 避免遞迴有迴圈 (a->b b->a a->b)
             {
                 // visiting each neighbor to find the final destination
-                result = Dfs(neighbor,
-                             target,
-                             value * routeMap.FirstOrDefault(r => r.Key[0] == source && r.Key[1] == neighbor).Value,
+                result = Dfs(neighbor, //neighbor 變 source 往下找可能的路徑 
+                             target, //最終 target 不可變
+                             value * routeMap.FirstOrDefault(r => r.Key[0] == source && r.Key[1] == neighbor).Value, //相乘抵銷中間路徑值
                              routeMap,
                              neighborsMap,
                              visiting);
                 if (result != -1.0)
-                    break;
+                {
+                    break;//遞迴結束 找到 target, 迴圈結束
+                }
             }
         }
         visiting.Remove(source); // remove source from visiting so it can be visited again from a different path
