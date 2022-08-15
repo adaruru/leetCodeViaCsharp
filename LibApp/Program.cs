@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using LibTest;
-using LibTest.ReflectTest;
+using LibApp;
+using LibApp.ReflectTest;
 
 Console.WriteLine("LibTest Run");
 

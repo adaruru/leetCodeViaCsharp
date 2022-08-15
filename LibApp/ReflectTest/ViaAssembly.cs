@@ -1,6 +1,6 @@
 ﻿using Lib.Reflect;
 using BatchApp = Lib.Reflect.BatchAppEnumAssembly;
-namespace LibTest.ReflectTest
+namespace LibApp.ReflectTest
 {
     public class ViaAssembly
     {

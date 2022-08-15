@@ -11,7 +11,6 @@ namespace Lib
 {
     public class ListTypeDataPractice
     {
-
         public void DictionaryPractice()
         {
             Dictionary<int, int> numsDictionary = new Dictionary<int, int>();
@@ -80,9 +79,9 @@ namespace Lib
             }
         }
 
-        public List<string> ListOrderBy(List<string> listStr = null)
+        public List<string> SemiNumericListOrderBy(List<string> listStr = null)
         {
-            listStr = new List<string> { "1", "A", "B", "11", "10", "2", "3", "1", "C", "D", "E" };
+            //listStr = new List<string> { "1", "A", "B", "11", "10", "2", "3", "1", "C", "D", "E" };
             listStr = listStr.ToArray().OrderBy(x => x, new SemiNumericComparer()).ToList();
             Console.Write(string.Join(",", listStr));
             return listStr;

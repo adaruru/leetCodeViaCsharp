@@ -2,7 +2,7 @@
 using BatchApp = Lib.Reflect.BatchAppEnumMethodBase;
 
 
-namespace LibTest.ReflectTest
+namespace LibApp.ReflectTest
 {
     public class ViaMethodBase
     {

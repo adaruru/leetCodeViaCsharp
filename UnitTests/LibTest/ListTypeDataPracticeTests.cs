@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace UnitTests
+namespace UnitTests.LibTest
 {
     [TestClass()]
     public class ListTypeDataPracticeTests
@@ -24,16 +24,14 @@ namespace UnitTests
         public void ListOrderByTest()
         {
             //arrange
-            List<string> input = new List<string> { "1", "A", "B", "11", "10", "2", "03", "1" };
-            List<string> expected = new List<string> { "1", "A", "B", "11", "10", "2", "03", "1" };
+            List<string> input1 = new List<string> { "1", "A", "B", "11", "10", "2", "03", "1" };
+            List<string> expected1 = new List<string> { "1", "1", "2", "03", "10", "11", "A", "B", };
 
             //act
-            var output = service.ListOrderBy(input);
+            var output = service.SemiNumericListOrderBy(input1);
 
             //assert
-            // Assert.AreEqual(expected, output);
-            CollectionAssert.AreEqual(expected, output, StructuralComparisons.StructuralComparer);
-
+            CollectionAssert.AreEqual(expected1, output);
         }
     }
 }

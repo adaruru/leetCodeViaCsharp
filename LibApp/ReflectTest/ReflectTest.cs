@@ -1,4 +1,4 @@
-﻿namespace LibTest.ReflectTest;
+﻿namespace LibApp.ReflectTest;
 
 public static class ReflectTest
 {

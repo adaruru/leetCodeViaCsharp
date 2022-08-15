@@ -1,7 +1,7 @@
 ﻿namespace LeetCode;
 
 /// <summary>
-/// #medium Depth-First Search(DFS，深度優先搜尋)
+/// #medium #Depth-First Search(#DFS，深度優先搜尋) #sortestPath 
 /// 
 /// You are given an array of variable pairs equations and an array of real numbers values,
 /// where equations[i] = [Ai, Bi] and values[i] represent the equation Ai / Bi = values[i]. 
@@ -59,10 +59,11 @@ public static class Leet399_EvaluateDivision
         Console.Write("  ans = [");
         for (int i = 0; i < ans.Count(); i++)
         {
-            Console.Write($"{ ans[i].ToString("#.####")} ,");
+            Console.Write($"{ ans[i]} ,");
         }
         Console.WriteLine("]");
     }
+
 
     public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {

@@ -1,6 +1,6 @@
 ﻿using Lib.Reflect;
 using BatchApp = Lib.Reflect.BatchAppEnumGeneric;
-namespace LibTest.ReflectTest
+namespace LibApp.ReflectTest
 {
     public class ViaGeneric
     {

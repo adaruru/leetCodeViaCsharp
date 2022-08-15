@@ -1,7 +1,7 @@
 ﻿using LeetCode;
 using Lib;
 
-namespace LibTest;
+namespace LibApp;
 
 public static class CoreLib
 {

@@ -1,6 +1,6 @@
 ﻿using LeetCode;
 
-namespace LibTest;
+namespace LibApp;
 
 public static class PlayGround
 {

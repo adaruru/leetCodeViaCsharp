@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LibTest.ReflectTest
+namespace LibApp.ReflectTest
 {
     public class ViaConstructor
     {
