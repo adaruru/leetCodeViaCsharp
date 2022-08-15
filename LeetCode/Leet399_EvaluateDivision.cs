@@ -39,7 +39,7 @@
 /// 
 /// 
 /// </summary>
-public class Leet399_EvaluateDivision
+public static class Leet399_EvaluateDivision
 {
     public static void Run()
     {
@@ -59,49 +59,56 @@ public class Leet399_EvaluateDivision
         Console.Write("  ans = [");
         for (int i = 0; i < ans.Count(); i++)
         {
-            Console.Write($"{ ans[i]} ,");
+            Console.Write($"{ ans[i].ToString("#.####")} ,");
         }
         Console.WriteLine("]");
     }
 
     public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
-        var allKey = new List<string>();
         var routeMap = new Dictionary<List<string>, double>();
+        var neighborsMap = new Dictionary<string, List<string>>();
+
         for (int i = 0; i < equations.Count; i++)
         {
+            var equ1 = equations[i][0];
+            var equ2 = equations[i][1];
+
             double ov = 0;
             if (!routeMap.TryGetValue(equations[i].ToList(), out ov))//加入正續
             {
                 routeMap.Add(equations[i].ToList(), values[i]);
             }
-            if (!routeMap.TryGetValue(new List<string> { equations[i][1], equations[i][0] }, out ov))//加入倒續
+            if (!routeMap.TryGetValue(new List<string> { equ2, equ1 }, out ov))//加入倒續
             {
-                routeMap.Add(equations[i].ToList(), 1 / values[i]);
+                routeMap.Add(new List<string> { equ2, equ1 }, 1 / values[i]);
             }
 
-            if (!allKey.Contains(equations[i][0]))
+            if (equ1 != equ2)
             {
-                allKey.Add(equations[i][0]);
-            }
-            if (!allKey.Contains(equations[i][1]))
-            {
-                allKey.Add(equations[i][1]);
+                if (!neighborsMap.ContainsKey(equ1))
+                    neighborsMap[equ1] = new List<string>();
+                if (!neighborsMap.ContainsKey(equ2))
+                    neighborsMap[equ2] = new List<string>();
+
+                neighborsMap[equ1].Add(equ2);
+                neighborsMap[equ2].Add(equ1);
             }
         }
-
-        var equMap = new Dictionary<string, string>();
 
         var ans = new double[queries.Count()];
         for (int i = 0; i < queries.Count(); i++)
         {
+            var query1 = queries[i][0];
+            var query2 = queries[i][1];
+
             double v;
-            if (!allKey.Contains(queries[i][0]) ||
-                !allKey.Contains(queries[i][1]))
+            if (!neighborsMap.ContainsKey(query1) ||
+                !neighborsMap.ContainsKey(query2))
             {
                 ans[i] = -1;
             }
-            else if (queries[i][0] == queries[i][1])
+            else if (query1 == query2)
             {
                 ans[i] = 1;
             }
@@ -111,62 +118,42 @@ public class Leet399_EvaluateDivision
             }
             else
             {
-                if (GotNext(routeMap, queries[i][0], out v))
-                {
-
-                }
-                ans[i] = v;
+                ans[i] = Dfs(query1, query2, 1, routeMap, neighborsMap, new HashSet<string>());
             }
         }
-
         return ans;
     }
-    static bool GotNext(Dictionary<List<string>, double> routeMap, string first, out double v)
+    private static double Dfs(string source,
+                       string target,
+                       double value,
+                       Dictionary<List<string>, double> routeMap,
+                       Dictionary<string, List<string>> neighborsMap,
+                       HashSet<string> visiting)
     {
-        var tempList = new Dictionary<List<string>, double>();
-        var result = false;
-        var allKey = routeMap.Select(r => r.Key).ToList();
-        foreach (var route in routeMap)
+        if (source == target) return value;
+
+        visiting.Add(source); // Mark it as visiting if a visits b , we do not want b to visit a 
+
+        List<string> neighbors = neighborsMap[source];
+        double result = -1.0;
+        foreach (string neighbor in neighbors)
         {
-            double vin;
-            if (route.Key[0] == first)
-            {   
-                result = GotNext(routeMap, first, out vin);
-            }
-        }
-
-        bool isFirst = allKey.TryGetValue(query[0], out v);
-        bool isSecond = routeMap.TryGetValue(query[1], out v);
-        if (true)
-        {
-
-        }
-        v = 0;
-        return true;
-    }
-
-    static List<string> FindRoute(IList<IList<string>> equations, string key)
-    {
-        var result = new List<string>();
-
-        foreach (var equ in equations)
-        {
-            if (equ[0] == key)
+            if (!visiting.Contains(neighbor))
             {
-                result.Add(equ[0]);
-            }
-            if (equ[1] == key)
-            {
-                result.Add(equ[1]);
-                if (true)
-                {
-
-                }
+                // visiting each neighbor to find the final destination
+                result = Dfs(neighbor,
+                             target,
+                             value * routeMap.FirstOrDefault(r => r.Key[0] == source && r.Key[1] == neighbor).Value,
+                             routeMap,
+                             neighborsMap,
+                             visiting);
+                if (result != -1.0)
+                    break;
             }
         }
-        return new List<string>();
+        visiting.Remove(source); // remove source from visiting so it can be visited again from a different path
+        return result;
     }
-
 
     /// <summary>
     /// 設第一個 base 1 但是要判斷的例外太多了
