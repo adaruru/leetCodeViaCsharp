@@ -37,11 +37,10 @@
 /// queries = [["a","b"],["b","a"],["a","c"],["x","y"]]
 /// Output: [0.50000,2.00000,-1.00000,-1.00000]
 /// 
-/// 
 /// </summary>
-public static class Leet399_EvaluateDivision
+public class Leet399_EvaluateDivision
 {
-    public static void Run()
+    public void Run()
     {
         Console.Write("Leet399_EvaluateDivision");
 
@@ -55,7 +54,7 @@ public static class Leet399_EvaluateDivision
              new List<string> {"x", "x"},
          };
 
-        var ans = CalcEquation(Input, values, queries);
+        var ans = new Leet399_EvaluateDivision().CalcEquation(Input, values, queries);
         Console.Write("  ans = [");
         for (int i = 0; i < ans.Count(); i++)
         {
@@ -65,7 +64,7 @@ public static class Leet399_EvaluateDivision
     }
 
 
-    public static double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
+    public double[] CalcEquation(IList<IList<string>> equations, double[] values, IList<IList<string>> queries)
     {
         var routeMap = new Dictionary<List<string>, double>();
         var neighborsMap = new Dictionary<string, List<string>>();
@@ -124,7 +123,7 @@ public static class Leet399_EvaluateDivision
         }
         return ans;
     }
-    private static double Dfs(string source,
+    private double Dfs(string source,
                        string target,
                        double value,
                        Dictionary<List<string>, double> routeMap,
