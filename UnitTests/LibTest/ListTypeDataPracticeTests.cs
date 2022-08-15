@@ -21,17 +21,22 @@ namespace UnitTests.LibTest
         }
 
         [TestMethod()]
-        public void ListOrderByTest()
+        public void SemiNumericListOrderByTest()
         {
             //arrange
-            List<string> input1 = new List<string> { "1", "A", "B", "11", "10", "2", "03", "1" };
-            List<string> expected1 = new List<string> { "1", "1", "2", "03", "10", "11", "A", "B", };
+            List<string> input1 = new List<string> { "3", "2", "6", "02", "01", "1", "001" };
+            List<string> expected1 = new List<string> { "01", "1", "001", "2", "02", "3", "6" };
+
+            List<string> input2 = new List<string> { "1", "A", "B", "11", "10", "2", "03", "1" };
+            List<string> expected2 = new List<string> { "1", "1", "2", "03", "10", "11", "A", "B", };
 
             //act
-            var output = service.SemiNumericListOrderBy(input1);
+            var output1 = service.SemiNumericListOrderBy(input1);
+            var output2 = service.SemiNumericListOrderBy(input2);
 
             //assert
-            CollectionAssert.AreEqual(expected1, output);
+            CollectionAssert.AreEqual(expected1, output1);
+            CollectionAssert.AreEqual(expected2, output2);
         }
     }
 }
