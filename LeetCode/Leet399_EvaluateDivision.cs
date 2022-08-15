@@ -2,6 +2,7 @@
 
 /// <summary>
 /// #medium #Depth-First Search(#DFS，深度優先搜尋) #sortestPath 
+/// #有向圖 #directedGraph #digraph
 /// 
 /// You are given an array of variable pairs equations and an array of real numbers values,
 /// where equations[i] = [Ai, Bi] and values[i] represent the equation Ai / Bi = values[i]. 
