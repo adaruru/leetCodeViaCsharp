@@ -25,7 +25,7 @@ namespace UnitTests.LeetCode
             int n1 = 4;
             int k1 = 2;
 
-            int Expected1 = 1;
+            int Expected1 = 2;
 
             //act
             var act1 = service.NetworkDelayTime(times1, n1, k1);

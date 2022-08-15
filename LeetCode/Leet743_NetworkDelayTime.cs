@@ -40,19 +40,37 @@ namespace LeetCode
         /// <returns></returns>
         public int NetworkDelayTime(int[][] times, int n, int k)
         {
-            List<(int node, int wht)>[] routeMap = new List<(int node, int wht)>[n + 1];
-            for (var i = 0; i <= n; i++)
+            var routeMap = new Dictionary<int, Dictionary<int, int>>();
+            foreach (var edge in times)
             {
-                routeMap[i] = new List<(int node, int wht)>();
+                if (!routeMap.ContainsKey(edge[0]))
+                {
+                    routeMap[edge[0]] = new Dictionary<int, int>();
+                }
+                routeMap[edge[0]][edge[1]] = edge[2];
             }
-
-            foreach (var time in times)
+            var pq = new PriorityQueue<(int, int), int>();
+            pq.Enqueue((0, k), 0);
+            var seen = new HashSet<int>();
+            var res = 0;
+            while (pq.Count > 0)
             {
-                routeMap[time[0]].Add((time[1], time[2]));
+                var (dist, node) = pq.Dequeue();
+                if (!seen.Contains(node))
+                {
+                    seen.Add(node);
+                    res = dist;
+                    if (routeMap.ContainsKey(node))
+                    {
+                        foreach (var next in routeMap[node].Keys)
+                        {
+                            var newDist = dist + routeMap[node][next];
+                            pq.Enqueue((newDist, next), newDist);
+                        }
+                    }
+                }
             }
-
-            var result = Dijkstra(routeMap, n, k);
-            return result;
+            return seen.Count == n ? res : -1;
         }
 
         public int Dijkstra(List<(int node, int wht)>[] routeMap, int n, int k)
