@@ -28,10 +28,12 @@ namespace UnitTests.LeetCode
             int Expected1 = 2;
 
             //act
-            var act1 = service.NetworkDelayTime(times1, n1, k1);
+            var act1 = service.NetworkDelayTime2(times1, n1, k1);
+            var act2 = service.NetworkDelayTime3(times1, n1, k1);
 
             //assert
             Assert.AreEqual(Expected1, act1);
+            Assert.AreEqual(Expected1, act2);
         }
 
         [TestMethod]
@@ -45,12 +47,13 @@ namespace UnitTests.LeetCode
             int Expected1 = 1;
 
             //act
-            var act1 = service.NetworkDelayTime(times1, n1, k1);
+            var act1 = service.NetworkDelayTime2(times1, n1, k1);
+            var act2 = service.NetworkDelayTime3(times1, n1, k1);
 
             //assert
             Assert.AreEqual(Expected1, act1);
+            Assert.AreEqual(Expected1, act2);
         }
-
 
     }
 }

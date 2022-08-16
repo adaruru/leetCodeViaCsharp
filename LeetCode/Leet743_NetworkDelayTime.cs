@@ -34,43 +34,23 @@ namespace LeetCode
         /// <summary>
         /// NetworkDelayTime
         /// </summary>
-        /// <param name="times">{sourceNode, targetNode ,value}</param>
+        /// <param name="routeSource">{sourceNode, targetNode ,value}</param>
         /// <param name="n">visit node number</param>
         /// <param name="k">start node</param>
         /// <returns></returns>
-        public int NetworkDelayTime(int[][] times, int n, int k)
+        public int NetworkDelayTime(int[][] routeSource, int n, int k)
         {
-            var routeMap = new Dictionary<int, Dictionary<int, int>>();
-            foreach (var edge in times)
+            //new Dictionary<int source, Dictionary<int target, int value>>();
+            var routeMap = new Dictionary<int, List<int>>();
+            foreach (var route in routeSource)
             {
-                if (!routeMap.ContainsKey(edge[0]))
+                if (!routeMap.ContainsKey(route[0]))
                 {
-                    routeMap[edge[0]] = new Dictionary<int, int>();
-                }
-                routeMap[edge[0]][edge[1]] = edge[2];
-            }
-            var pq = new PriorityQueue<(int, int), int>();
-            pq.Enqueue((0, k), 0);
-            var seen = new HashSet<int>();
-            var res = 0;
-            while (pq.Count > 0)
-            {
-                var (dist, node) = pq.Dequeue();
-                if (!seen.Contains(node))
-                {
-                    seen.Add(node);
-                    res = dist;
-                    if (routeMap.ContainsKey(node))
-                    {
-                        foreach (var next in routeMap[node].Keys)
-                        {
-                            var newDist = dist + routeMap[node][next];
-                            pq.Enqueue((newDist, next), newDist);
-                        }
-                    }
+                    routeMap.Add(route[0], new List<int>() { route[1], route[2] });
                 }
             }
-            return seen.Count == n ? res : -1;
+
+            return 1;
         }
 
         public int Dijkstra(List<(int node, int wht)>[] routeMap, int n, int k)
@@ -83,7 +63,10 @@ namespace LeetCode
             int visitedCount = 0;
             while (pq.TryDequeue(out int node, out int weight))
             {
-                if (visited[node]) continue;
+                if (visited[node])
+                {
+                    continue;
+                }
                 visitedCount++;
                 visited[node] = true;
                 result = Math.Max(result, weight);
@@ -134,6 +117,47 @@ namespace LeetCode
                 }
             }
             return visitedCount == n ? result : -1;
+        }
+
+        public int NetworkDelayTime3(int[][] times, int n, int k)
+        {
+            //new Dictionary<int source, Dictionary<int target, int value>>();
+            var routeMap = new Dictionary<int, Dictionary<int, int>>();
+            foreach (var edge in times)
+            {
+                if (!routeMap.ContainsKey(edge[0]))
+                {
+                    routeMap[edge[0]] = new Dictionary<int, int>();
+                }
+                routeMap[edge[0]][edge[1]] = edge[2];
+            }
+            return Dijkstra3(routeMap, n, k);
+        }
+
+        public int Dijkstra3(Dictionary<int, Dictionary<int, int>> routeMap, int n, int k)
+        {
+            var pq = new PriorityQueue<(int, int), int>();
+            pq.Enqueue((0, k), 0);
+            var seen = new HashSet<int>();
+            var res = 0;
+            while (pq.Count > 0)
+            {
+                var (dist, node) = pq.Dequeue();
+                if (!seen.Contains(node))
+                {
+                    seen.Add(node);
+                    res = dist;
+                    if (routeMap.ContainsKey(node))
+                    {
+                        foreach (var next in routeMap[node].Keys)
+                        {
+                            var newDist = dist + routeMap[node][next];
+                            pq.Enqueue((newDist, next), newDist);
+                        }
+                    }
+                }
+            }
+            return seen.Count == n ? res : -1;
         }
     }
 
