@@ -1,12 +1,13 @@
 ﻿namespace LeetCode;
 public class Its001_BestSum
 {
-    public (Dictionary<string, decimal>, Dictionary<string, decimal>) BestSumUnderCount(Dictionary<string, decimal> bills, decimal givenMax)
+    public (Dictionary<string, decimal>, Dictionary<string, decimal>) BestSumUnderMax(Dictionary<string, decimal> bills, decimal givenMax)
     {
         return (null, null);
     }
-    public int[] BestSumUnderMax(int[] nums, int target)
+
+    public (Dictionary<string, decimal>, Dictionary<string, decimal>) BestSumUnderCount(Dictionary<string, decimal> bills, int givenCount)
     {
-        return null;
+        return (null, null);
     }
 }

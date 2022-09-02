@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace UnitTests.LeetCode
 {
     [TestClass]
-    public class Leet743
+    public class Leet743_NetworkDelayTimeTest
     {
         Leet743_NetworkDelayTime service;
 

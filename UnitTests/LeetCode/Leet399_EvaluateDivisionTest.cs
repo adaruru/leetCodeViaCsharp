@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace UnitTests.LeetCode
 {
     [TestClass]
-    public class Leet399
+    public class Leet399_EvaluateDivisionTest
     {
         Leet399_EvaluateDivision service;
 
