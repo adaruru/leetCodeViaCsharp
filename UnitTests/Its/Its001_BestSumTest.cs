@@ -21,23 +21,28 @@ public class Its001_BestSumTest
         //arrange
         Dictionary<string, decimal> txn = new Dictionary<string, decimal>
         {
-            ["水費"] = 500,
-            ["電費"] = 2000,
-            ["瓦斯費"] = 1500,
+            ["a"] = 1,
+            ["b"] = 2,
+            ["c"] = 3,
+            ["d"] = 4,
+            ["e"] = 5,
         };
-        decimal rest = 3000;
+        decimal deposits = 11;
         Dictionary<string, decimal> exDebit = new Dictionary<string, decimal>
         {
-            ["電費"] = 2000,
+            ["b"] = 2,
+            ["d"] = 4,
+            ["e"] = 5,
         };
         Dictionary<string, decimal> extInsufficient = new Dictionary<string, decimal>
         {
-            ["水費"] = 500,
-            ["瓦斯費"] = 1500,
+            ["b"] = 2,
+            ["d"] = 4,
+            ["e"] = 5,
         };
 
         //act
-        (var actDebit, var actInsufficient) = service.BestSumUnderMax(txn, rest);
+        (var actDebit, var actInsufficient) = service.BestSumUnderMax(txn, deposits);
 
         //assert
         CollectionAssert.AreEqual(exDebit, actDebit);

@@ -1,6 +1,8 @@
 ﻿using LeetCode;
 
 Console.WriteLine("LeetCodeTest Run");
+var s = new ru001_CnQm();
+s.Run();
 
 //Day4_Class_vs_Instance.Run();
 //JudgeZeroa022_PalindromeString.Run();
