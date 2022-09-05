@@ -3,44 +3,28 @@
 namespace LeetCode;
 public class ru001_CnQm
 {
-    public void Run2()
+    public List<Dictionary<string, decimal>> DictionaryCmQn(Dictionary<string, decimal> txns)
     {
-
-        Dictionary<string, decimal> txns = new Dictionary<string, decimal>
-        {
-            ["a"] = 1,
-            ["b"] = 2,
-            ["c"] = 3,
-            ["d"] = 4,
-            ["e"] = 5,
-        };
-        var TxnMaps = new List<Dictionary<string, decimal>>();
+        var result = new List<Dictionary<string, decimal>>();
         var tempKeys = txns.Keys.ToList();
 
         for (int i = 1; i < Math.Pow(2, txns.Count) - 1; i++)
         {
-            var TempMaps = new List<Dictionary<string, decimal>>();
-            var TempMap = new Dictionary<string, decimal>();
+            var tempTxn = new Dictionary<string, decimal>();
             for (int j = 0; j < txns.Count; j++)
             {
-                TempMaps.Add(new Dictionary<string, decimal>());
                 if ((i & (int)Math.Pow(2, j)) == Math.Pow(2, j))
                 {
-                    if (!TempMaps[j].ContainsKey(tempKeys[j]))
-                    {
-                        TempMaps[j].Add(tempKeys[j], txns[tempKeys[j]]);
-                    }
+                    tempTxn.Add(tempKeys[j], txns[tempKeys[j]]);
                 }
-                TempMap = TempMaps[j];
             }
-            TxnMaps.Add(TempMap);
+            result.Add(tempTxn);
         }
-        var maps = TxnMaps;
-        Console.Read();
+        return result;
     }
-    public void Run()
+
+    public List<List<string>> StringCmQn(string[] values)
     {
-        string[] values = { "a", "b", "c", "d" };
         var res = new List<List<string>>();
 
         for (int i = 1; i < Math.Pow(2, values.Length) - 1; i++)//2的4次方 16
@@ -55,6 +39,6 @@ public class ru001_CnQm
             }
             res.Add(temp);
         }
-        var r = res;
+        return res;
     }
 }
