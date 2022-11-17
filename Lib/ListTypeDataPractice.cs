@@ -11,6 +11,20 @@ namespace Lib
 {
     public class ListTypeDataPractice
     {
+        public List<string[]> ChuckdObject(int length, List<string> source)
+        {
+            var result = source.Chunk(length).ToList();
+            return result;
+        }
+
+        public List<List<string>> ChuckdObjectByLoop(int length, List<string> source)
+        {
+            var result = Enumerable.Range(0, (source.Count + length - 1) / length)
+                      .Select(n => source.Skip(n * length).Take(length).ToList())
+                      .ToList();
+            return result;
+        }
+
         public void DictionaryPractice()
         {
             Dictionary<int, int> numsDictionary = new Dictionary<int, int>();

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
+using Lib.Model;
 
 namespace UnitTests.LibTest
 {
@@ -18,6 +19,60 @@ namespace UnitTests.LibTest
         public void TestInitialize()
         {
             service = new ListTypeDataPractice();
+        }
+
+        [TestMethod()]
+        public void ChuckdObjectTest()
+        {
+            //arrange
+            var temp = new List<ObjectWithDefaultValue>();
+            var packedNumber1 = 3;//每兩筆一包
+            List<string> input1 = new List<string> {
+                "1", "2", "3",
+                "4", "5", "6",
+                "7", "8", "9",
+                "10", "11" };
+            List<string[]> expected1 = new List<string[]> {
+                new string[]{"1","2","3" },
+                new string[]{"4","5","6" },
+                new string[]{"7","8","9" },
+                new string[]{"10", "11" },
+            };
+            //act
+            var output1 = service.ChuckdObject(packedNumber1, input1);
+
+            //assert
+            for (int i = 0; i < expected1.Count(); i++)
+            {
+                CollectionAssert.AreEqual(expected1[i], output1[i]);
+            }
+        }
+
+        [TestMethod()]
+        public void ChuckdObjectByLoopTest()
+        {
+            //arrange
+            var temp = new List<ObjectWithDefaultValue>();
+            var packedNumber1 = 3;//每兩筆一包
+            List<string> input1 = new List<string> {
+                "1", "2", "3",
+                "4", "5", "6",
+                "7", "8", "9",
+                "10", "11" };
+            List<List<string>> expected1 = new List<List<string>> {
+                new List<string> {"1","2","3" },
+                new List<string> {"4","5","6" },
+                new List<string> {"7","8","9" },
+                new List<string> {"10", "11" },
+            };
+            //act
+            var output1 = service.ChuckdObjectByLoop(packedNumber1, input1);
+
+            //assert
+            for (int i = 0; i < expected1.Count(); i++)
+            {
+                CollectionAssert.AreEqual(expected1[i], output1[i]);
+            }
         }
 
         [TestMethod()]
