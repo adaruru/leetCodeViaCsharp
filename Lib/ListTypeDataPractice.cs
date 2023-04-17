@@ -11,6 +11,20 @@ namespace Lib
 {
     public class ListTypeDataPractice
     {
+        public string ListValidate2(List<ObjectWithDefaultValue> list)
+        {
+            var a = string.IsNullOrEmpty("");
+            var validate = list.FirstOrDefault(x => x.ValuelikeString == "123").ValuelikeString;
+            return validate;
+        }
+
+        public bool ListValidate(List<ObjectWithDefaultValue> list)
+        {
+            var validate = list.All(x => x.ValuelikeString.Length == 3 || x.ValuelikeString.Length == 4 || x.ValuelikeString.Length == 5 || x.ValuelikeString.Length == 6);
+            validate = !list.Where(v => v.numberInt == 1).All(x => x.ValuelikeString == x.numberInt.ToString());
+            return validate;
+        }
+
         public List<string[]> ChuckdObject(int length, List<string> source)
         {
             var result = source.Chunk(length).ToList();

@@ -22,6 +22,55 @@ namespace UnitTests.LibTest
         }
 
         [TestMethod()]
+        public void ListValidateTest2()
+        {
+            //arrange
+            List<ObjectWithDefaultValue> list = new List<ObjectWithDefaultValue>() {
+                new ObjectWithDefaultValue {
+                    ValuelikeString ="123",
+                    ValueIsString ="123",
+                    numberInt=123},
+                new ObjectWithDefaultValue {
+                    ValuelikeString ="1233",
+                    ValueIsString ="1233",
+                    numberInt=1233},
+                new ObjectWithDefaultValue {
+                    ValuelikeString ="123123",
+                    ValueIsString ="123123",
+                    numberInt=123123},
+            };
+            //act
+            var output1 = service.ListValidate2(list);
+            //assert
+            Assert.AreEqual("123", output1);
+        }
+
+        [TestMethod()]
+        public void ListValidateTest()
+        {
+            //arrange
+            List<ObjectWithDefaultValue> list = new List<ObjectWithDefaultValue>() {
+                new ObjectWithDefaultValue {
+                    ValuelikeString ="123",
+                    ValueIsString ="123",
+                    numberInt=123},
+                new ObjectWithDefaultValue {
+                    ValuelikeString ="1233",
+                    ValueIsString ="1233",
+                    numberInt=1233},
+                new ObjectWithDefaultValue {
+                    ValuelikeString ="123123",
+                    ValueIsString ="123123",
+                    numberInt=123123},
+            };
+            //act
+            var output1 = service.ListValidate(list);
+            //assert
+            Assert.AreEqual(true, output1);
+        }
+
+
+        [TestMethod()]
         public void ChuckdObjectTest()
         {
             //arrange

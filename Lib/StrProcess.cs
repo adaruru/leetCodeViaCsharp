@@ -30,6 +30,35 @@ namespace Lib
             Console.WriteLine("EFFDATE pasResult: " + EFFDATE + " :" + pasResult);
         }
 
+        public string GetApplyCode(string VACCIDNO)
+        {
+            List<string> a  = new List<string>();
+            var applyCode = string.Empty;
+            switch (VACCIDNO.Length)
+            {
+                case 13:
+                    applyCode = VACCIDNO.Substring(0, 6);
+                    break;
+                case 14:
+                    if (VACCIDNO.Substring(0, 5).Substring(3, 2) == "00")
+                    {
+                        applyCode = VACCIDNO.Substring(0, 3);
+                    }
+                    else
+                    {
+                        applyCode = VACCIDNO.Substring(0, 5);
+                    }
+                    break;
+                case 16:
+                    applyCode = VACCIDNO.Substring(0, 4);
+                    break;
+                default:
+                    break;
+            }
+            return applyCode;
+        }
+
+
         public void StrSubAll()
         {
             var s = "0123456789";
@@ -234,7 +263,7 @@ namespace Lib
 
             var check = string.IsNullOrEmpty(a);
             Console.WriteLine("check: " + check);
-           
+
             //安裝Castle.Core 且 using Castle.Core.Internal; 可以直接對物件判斷
             //效果等同 string.IsNullOrEmpty(a);
             //framework 4.7有效 net 6 無效 
