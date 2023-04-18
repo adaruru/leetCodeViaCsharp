@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 using Lib.Model;
+using static Lib.StrProcess;
 
 namespace UnitTests.LibTest
 {
@@ -19,6 +20,25 @@ namespace UnitTests.LibTest
         public void TestInitialize()
         {
             service = new StrProcess();
+        }
+        public enum TestEnum
+        {
+            DefaultTest = 0,
+            FirstTest = 1,
+            SecondTest = 2,
+        }
+
+        [TestMethod()]
+        public void EnumStringTest()
+        {
+            //arrange
+            var arrange = TestEnum.FirstTest;
+            //act
+            var key = (int)arrange;
+            var value = arrange.ToString();
+            //assert
+            Assert.AreEqual(1, key);
+            Assert.AreEqual("FirstTest", value);
         }
 
         [TestMethod()]

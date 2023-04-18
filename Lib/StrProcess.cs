@@ -10,7 +10,6 @@ namespace Lib
 {
     public class StrProcess
     {
-
         public void playGround()
         {
             var userId = "ada";
@@ -32,7 +31,7 @@ namespace Lib
 
         public string GetApplyCode(string VACCIDNO)
         {
-            List<string> a  = new List<string>();
+            VACCIDNO = VACCIDNO.Trim().TrimStart('0');
             var applyCode = string.Empty;
             switch (VACCIDNO.Length)
             {

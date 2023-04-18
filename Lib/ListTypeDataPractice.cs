@@ -21,7 +21,6 @@ namespace Lib
         public bool ListValidate(List<ObjectWithDefaultValue> list)
         {
             var validate = list.All(x => x.ValuelikeString.Length == 3 || x.ValuelikeString.Length == 4 || x.ValuelikeString.Length == 5 || x.ValuelikeString.Length == 6);
-            validate = !list.Where(v => v.numberInt == 1).All(x => x.ValuelikeString == x.numberInt.ToString());
             return validate;
         }
 
