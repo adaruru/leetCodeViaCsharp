@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Collections;
 using Lib.Model;
 using static Lib.StrProcess;
+using System.IO;
 
 namespace UnitTests.LibTest
 {
@@ -29,16 +30,42 @@ namespace UnitTests.LibTest
         }
 
         [TestMethod()]
+        public void SplitTest()
+        {
+            //arrange
+            var arrange = "sadfaaa_aaa_sdf_sdf_sdfsdf";
+            var arrange2 = "Test_TestImport_temp_20230419094657.json";
+
+            //act
+            var act1 = arrange.Split('_')[0];
+
+            var act2 = arrange2.Substring(0, arrange2.LastIndexOf('_'));
+            var act3 = act2.Substring(0, act2.LastIndexOf('_'));
+            var act4 = act2.Substring(act2.LastIndexOf('_') + 1);
+            //assert
+            Assert.AreEqual("sadfaaa", act1);
+            Assert.AreEqual("Test_TestImport_temp", act2);
+            Assert.AreEqual("Test_TestImport", act3);
+            Assert.AreEqual("temp", act4);
+        }
+
+        [TestMethod()]
         public void EnumStringTest()
         {
             //arrange
-            var arrange = TestEnum.FirstTest;
+            TestEnum? arrange = TestEnum.FirstTest;
             //act
             var key = (int)arrange;
             var value = arrange.ToString();
+
+            arrange = null;
+            //var nullkey = (int)arrange; runtime error
+            var nullValue = arrange.ToString();
+
             //assert
             Assert.AreEqual(1, key);
             Assert.AreEqual("FirstTest", value);
+            Assert.AreEqual("", nullValue);
         }
 
         [TestMethod()]
@@ -64,6 +91,14 @@ namespace UnitTests.LibTest
             Assert.AreEqual("123", applyCode3);
             Assert.AreEqual("1234", applyCode4);
             Assert.AreEqual("1234", applyCode5);
+        }
+
+        [TestMethod()]
+        public void StrSubAllTest()
+        {
+           service.StrSubAll();
+            //assert
+            Assert.AreEqual(1, 1);
         }
     }
 }

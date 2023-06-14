@@ -62,12 +62,18 @@ namespace Lib
         {
             var s = "0123456789";
             var id = "PTL274O3";
+
+            string n = null; //null 不能Substring也不能Pad 會ex
+            var c = n ?? "";
+            c.PadLeft(20, ' ');
+
             // var s1 = s.Sub();          js才有
             // var s2 = s.Substr(3, 5);   js才有
             var s3 = s.Substring(3, 5); //34567 startIndex 位置 length 幾個數字
             var a = id.Substring(6, 1);
             Console.WriteLine(s3);
             Console.WriteLine(a);
+            Console.WriteLine($"___{n}____");
         }
 
         public void StrFuncTry()
