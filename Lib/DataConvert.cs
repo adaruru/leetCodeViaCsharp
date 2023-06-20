@@ -14,9 +14,15 @@ namespace Lib
             decimal a = 400;
             decimal b = 150.22345M;
             decimal c = 0;
+            decimal? d = null;
+
+            var dd = d.GetValueOrDefault().ToString("####").PadLeft(10, '0');
+            dd = dd.Substring(dd.Length - 10, 10);//四捨五入取整數
+
             var aKeepPoint = a.ToString("0.00");
             var bKeepPoint = b.ToString("0.00");
             var cKeepPoint = c.ToString("0.00");
+
             var aNoKeepPoint = a.ToString("0.##");
             var bNoKeepPoint = b.ToString("0.##");
             var cNoKeepPoint = c.ToString("0.##");
