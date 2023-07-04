@@ -22,6 +22,16 @@ namespace UnitTests.LibTest
         }
 
         [TestMethod()]
+        public void ListUpdateTest()
+        {
+            //arrange
+            //act
+            service.ListUpdate();
+            //assert
+            Assert.AreEqual("123", "123");
+        }
+
+        [TestMethod()]
         public void ListValidateTest2()
         {
             //arrange

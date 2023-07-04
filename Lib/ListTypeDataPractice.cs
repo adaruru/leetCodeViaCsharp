@@ -11,6 +11,24 @@ namespace Lib
 {
     public class ListTypeDataPractice
     {
+        public void ListUpdate()
+        {
+            var list = new List<ObjectWithDefaultValue>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                var a = new ObjectWithDefaultValue();
+                list.Add(a);
+            }
+            list = list.Select(
+                (v, i) =>
+                {
+                    v.Seq = (++i).ToString("D8");
+                    return v;
+                }
+                ).ToList();
+        }
+
         public string ListValidate2(List<ObjectWithDefaultValue> list)
         {
             var a = string.IsNullOrEmpty("");
@@ -24,6 +42,12 @@ namespace Lib
             return validate;
         }
 
+        /// <summary>
+        /// 每 n 筆一包
+        /// </summary>
+        /// <param name="length"></param>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public List<string[]> ChuckdObject(int length, List<string> source)
         {
             var result = source.Chunk(length).ToList();

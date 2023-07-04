@@ -30,6 +30,32 @@ namespace UnitTests.LibTest
         }
 
         [TestMethod()]
+        public void ContainTest()
+        {
+            //arrange
+            var arrange = "TDRr";
+           
+            //act null 不能執行contain
+            var act1 = arrange.Contains("R");
+            var act2 = arrange.Contains("r");
+
+            //assert
+            Assert.AreEqual(true, act1);
+            Assert.AreEqual(false, act2);
+        }
+
+        [TestMethod()]
+        public void GetCheckCodeTest()
+        {
+            //arrange
+            var arrange = "008100";
+            //act
+            var act1 = service.GetCheckCode(arrange);
+            //assert
+            Assert.AreEqual("5", act1);
+        }
+
+        [TestMethod()]
         public void SplitTest()
         {
             //arrange
@@ -96,7 +122,7 @@ namespace UnitTests.LibTest
         [TestMethod()]
         public void StrSubAllTest()
         {
-           service.StrSubAll();
+            service.StrSubAll();
             //assert
             Assert.AreEqual(1, 1);
         }

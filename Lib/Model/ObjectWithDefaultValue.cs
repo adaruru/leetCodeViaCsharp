@@ -14,6 +14,7 @@ namespace Lib.Model
         public string ValuelikeString { get; set; } = "";
         public string ValueIsString { get; set; } = "default";
         public int numberInt { get; set; } = 123;
+        public string Seq { get; set; }
         //public ObjectWithDefaultValue()
         //{
         //    ValuelikeString = "";

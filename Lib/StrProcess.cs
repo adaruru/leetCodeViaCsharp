@@ -29,6 +29,29 @@ namespace Lib
             Console.WriteLine("EFFDATE pasResult: " + EFFDATE + " :" + pasResult);
         }
 
+        public string GetCheckCode(string accountNo)
+        {
+            int sum = 0;
+            for (int i = 0; i < accountNo.Length - 1; i++)
+            {
+                switch (i % 3)
+                {
+                    case 0:
+                        sum += int.Parse(accountNo.Substring(i, 1)) * 3;
+                        break;
+                    case 1:
+                        sum += int.Parse(accountNo.Substring(i, 1)) * 7;
+                        break;
+                    case 2:
+                        sum += int.Parse(accountNo.Substring(i, 1)) * 9;
+                        break;
+                }
+            }
+            int remainder = sum % 10;
+            int checkCode = (10 - remainder) % 10;
+            return checkCode.ToString();
+        }
+
         public string GetApplyCode(string VACCIDNO)
         {
             VACCIDNO = VACCIDNO.Trim().TrimStart('0');
