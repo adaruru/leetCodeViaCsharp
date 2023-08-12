@@ -14,15 +14,9 @@ namespace Lib
             decimal a = 400;
             decimal b = 150.22345M;
             decimal c = 0;
-            decimal? d = null;
-
-            var dd = d.GetValueOrDefault().ToString("####").PadLeft(10, '0');
-            dd = dd.Substring(dd.Length - 10, 10);//四捨五入取整數
-
             var aKeepPoint = a.ToString("0.00");
             var bKeepPoint = b.ToString("0.00");
             var cKeepPoint = c.ToString("0.00");
-
             var aNoKeepPoint = a.ToString("0.##");
             var bNoKeepPoint = b.ToString("0.##");
             var cNoKeepPoint = c.ToString("0.##");
@@ -33,14 +27,11 @@ namespace Lib
 
             //Ideal for displaying currency fixed to Second decimal place
             var aCurrency = a.ToString("F");
+
             var bCurrency = b.ToString("F");
+            bCurrency = b.ToString("F2");//是一樣的
+
             var cCurrency = c.ToString("F");
-
-            Console.WriteLine("aKeepPoint: " + aKeepPoint + " ,bKeepPoint:" + bKeepPoint + " ,cKeepPoint" + cKeepPoint);
-            Console.WriteLine("aNoKeepPoint: " + aNoKeepPoint + " ,bNoKeepPoint:" + bNoKeepPoint + " cNoKeepPoint:" + cNoKeepPoint);
-            Console.WriteLine("aNoKeep: " + aNoKeep + " ,bNoKeep:" + bNoKeep + " ,cNoKeep:" + cNoKeep);
-            Console.WriteLine("aCurrency: " + aCurrency + " ,bCurrency:" + bCurrency + " ,cCurrency:" + cCurrency);
-
         }
 
         public void ConvertTry()
