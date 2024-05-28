@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using Castle.Core.Internal;
@@ -21,12 +23,48 @@ namespace Lib
 
             Console.WriteLine(a);
         }
+
         public void playGround2()
         {
             var EFFDATE = "20210728";
             var pasResult = DateTime.TryParseExact(EFFDATE, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
 
             Console.WriteLine("EFFDATE pasResult: " + EFFDATE + " :" + pasResult);
+        }
+
+        public string SecureStringToString2(SecureString input)
+        {
+            if (input == null) return "";
+            IntPtr valuePtr = IntPtr.Zero;
+            try
+            {
+                valuePtr = Marshal.SecureStringToGlobalAllocUnicode(input);
+                return Marshal.PtrToStringUni(valuePtr);
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
+        }
+
+        public string SecureStringToString1(SecureString input)
+        {
+            if (input == null) return "";
+            IntPtr valuePtr = Marshal.SecureStringToGlobalAllocUnicode(input);
+            try
+            {
+                StringBuilder stringBuilder = new StringBuilder();
+                for (int i = 0; i < input.Length; i++)
+                {
+                    char ch = (char)Marshal.ReadInt16(valuePtr, i * 2);
+                    stringBuilder.Append(ch);
+                }
+                return stringBuilder.ToString();
+            }
+            finally
+            {
+                Marshal.ZeroFreeGlobalAllocUnicode(valuePtr);
+            }
         }
 
         public string GetCheckCode(string accountNo)

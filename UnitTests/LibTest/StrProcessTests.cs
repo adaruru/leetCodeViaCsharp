@@ -9,6 +9,7 @@ using System.Collections;
 using Lib.Model;
 using static Lib.StrProcess;
 using System.IO;
+using System.Security;
 
 namespace UnitTests.LibTest
 {
@@ -27,6 +28,28 @@ namespace UnitTests.LibTest
             DefaultTest = 0,
             FirstTest = 1,
             SecondTest = 2,
+        }
+
+
+        [TestMethod()]
+        public void SecureStringToStringTest()
+        {
+            //arrange
+            var input = "ASSDFSDF3444";
+
+            //加密
+            SecureString arrange = new SecureString();
+            foreach (char c in input)
+            {
+                arrange.AppendChar(c);
+            }
+
+            //act 解密
+            var act1 = service.SecureStringToString1(arrange);
+            var act2 = service.SecureStringToString2(arrange);
+
+            //assert
+            Assert.AreEqual(act1, act1);
         }
 
         [TestMethod()]
