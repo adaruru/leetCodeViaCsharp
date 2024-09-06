@@ -12,4 +12,3 @@ String b = String.Intern(a);
 b = "223";
 a = "4";
 Console.WriteLine(b);
-PlayGround.Run(ref b);

@@ -6,30 +6,56 @@ using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
+using System.Xml;
 using Castle.Core.Internal;
+using Lib.Model.ParseJson;
+using Newtonsoft.Json;
 
 namespace Lib
 {
     public class StrProcess
     {
-        public void playGround()
+        public CustomParams ParseJson(string customParams)
         {
-            var userId = "ada";
-            var UnitId = "001";
-            var creditCaseFilters = new List<string>();
-
-            creditCaseFilters.Add($"CMId == {userId} || ((CMId==null && UnitId == \"{UnitId}\") || UnitIds.Split(',').Contains(\"{UnitId}\")");
-            var a = $"CMId == {userId} || ((CMId==null && UnitId == \"{UnitId}\") || UnitIds.Split(',').Contains(\"{UnitId}\")";
-
-            Console.WriteLine(a);
+            CustomParams customParamsObj = JsonConvert.DeserializeObject<CustomParams>(customParams);
+            return customParamsObj;
         }
 
-        public void playGround2()
-        {
-            var EFFDATE = "20210728";
-            var pasResult = DateTime.TryParseExact(EFFDATE, "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt);
 
-            Console.WriteLine("EFFDATE pasResult: " + EFFDATE + " :" + pasResult);
+        public string XMLString(string xmlString)
+        {
+            XmlNodeList xnlstData;
+            XmlNode xnBody, xnOccur;
+
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.LoadXml(xmlString);
+            int num = 0;
+
+            xnlstData = xmlDocument.GetElementsByTagName("OCCUR");
+            xnOccur = xnlstData[0];
+            num += Convert.ToInt16(xnOccur.InnerText.Trim());
+            xnlstData = xmlDocument.GetElementsByTagName("TxBody");
+            XmlNode xmlNode2 = xnlstData[xnlstData.Count - 1];
+
+
+            XmlDocument xmlDocument2 = new XmlDocument();
+            xmlDocument2.LoadXml(xmlString);
+
+            xnlstData = xmlDocument2.GetElementsByTagName("OCCUR");
+            num += Convert.ToInt16(xnlstData[0].InnerText.Trim());
+            xnlstData = xmlDocument2.GetElementsByTagName("TxRepeat");
+            for (int j = 0; j < xnlstData.Count; j++)
+            {
+                XmlElement xmlElement = xmlDocument.CreateElement(xnlstData[j].Name);
+                xmlElement.InnerXml = xnlstData[j].InnerXml;
+                xmlNode2.AppendChild(xmlElement);
+            }
+
+            xnOccur.InnerText = num.ToString("000");
+            var b = xmlDocument.ToString();
+            var c = xmlDocument.InnerXml;
+            return c;
         }
 
         public string SecureStringToString2(SecureString input)

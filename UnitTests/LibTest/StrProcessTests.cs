@@ -30,6 +30,33 @@ namespace UnitTests.LibTest
             SecondTest = 2,
         }
 
+        [TestMethod()]
+        public void TestJsonParse() {
+
+            //arrange
+            var arrange = "{\"redirectType\":\"1\",\"customParams\":\"1\"}";
+            //act
+            var act = service.ParseJson(arrange);
+            //assert
+            Assert.AreEqual("1", act.redirectType);
+        }
+
+
+        [TestMethod()]
+        public void XMLStringTest()
+        {
+            //arrange
+            var arrange1 = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><Tx><TxHead><HMSGID>P</HMSGID><HERRID>0000</HERRID><HSYDAY>1130722</HSYDAY><HSYTIME>161723</HSYTIME><HWSID>BONUS1    </HWSID><HSTANO>1202593</HSTANO><HDTLEN>0252</HDTLEN><HREQQ1/><HREPQ1>EA6PSQ    </HREPQ1><HDRVQ1>CCW00BHQ  </HDRVQ1><HPVDQ1>EA6PSQ    </HPVDQ1><HPVDQ2/><HSYCVD>1130720</HSYCVD><HTLID>DBBonus1  </HTLID><HTXTID>VB002</HTXTID><HFMTID>0001 </HFMTID><HRETRN>E</HRETRN><HSLGNF>1</HSLGNF><HSPSCK>Y8</HSPSCK><HRTNCD/><HSBTRF/><HFILL/></TxHead><TxBody><SPRefId>00001</SPRefId><CardNO>5157160105098703</CardNO><Name>李ＸＸＸＸ                              </Name><SEX>1</SEX><CrdCtyp>M</CrdCtyp><Y4M2>202812</Y4M2><GrpCode>0040</GrpCode><OrderCount>000025124</OrderCount><OfficeTel>02 28131232        </OfficeTel><HomeTel>02 28112312  </HomeTel><MobileTel>0903131303   </MobileTel><AreaCode>89049</AreaCode><Address>金門縣ＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸ</Address><EmailAddr>123i12io@gmail.com                      </EmailAddr></TxBody></Tx>";
+            var arrange2 = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?><Tx><TxHead><HMSGID>P</HMSGID><HERRID>0000</HERRID><HSYDAY>1130719</HSYDAY><HSYTIME>102104</HSYTIME><HWSID>BONUS1    </HWSID><HSTANO>1202516</HSTANO><HDTLEN>0252</HDTLEN><HREQQ1/><HREPQ1>EA6PSQ    </HREPQ1><HDRVQ1>CCW00BHQ  </HDRVQ1><HPVDQ1>EA6PSQ    </HPVDQ1><HPVDQ2/><HSYCVD>1130719</HSYCVD><HTLID>DBBonus1  </HTLID><HTXTID>VB002</HTXTID><HFMTID>0001 </HFMTID><HRETRN>E</HRETRN><HSLGNF>1</HSLGNF><HSPSCK>Y8</HSPSCK><HRTNCD/><HSBTRF/><HFILL/></TxHead><TxBody><SPRefId>00001</SPRefId><CardNO>4987138199737542</CardNO><Name>林ＸＸＸＸ                              </Name><SEX>2</SEX><CrdCtyp>M</CrdCtyp><Y4M2>202912</Y4M2><GrpCode/><OrderCount>000000000</OrderCount><OfficeTel>02 273*****  189***</OfficeTel><HomeTel>02 273*****  </HomeTel><MobileTel>092*****62   </MobileTel><AreaCode>10676</AreaCode><Address>臺北市ＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸＸ</Address><EmailAddr>***************ubon.com                 </EmailAddr></TxBody></Tx>";
+
+
+            //act 解密
+            var act1 = service.XMLString(arrange1);
+            var act2 = service.XMLString(arrange2);
+
+            //assert
+            Assert.AreEqual(act1, act1);
+        }
 
         [TestMethod()]
         public void SecureStringToStringTest()
@@ -56,15 +83,23 @@ namespace UnitTests.LibTest
         public void ContainTest()
         {
             //arrange
-            var arrange = "TDRr";
-           
+            var arrange1 = "該客戶未於本行登錄亞洲萬里通會員資料，請先進行航空會員登錄";
+            var arrange2 = "該客戶未於本行登錄中華航空會員資料，請先進行航空會員登錄";
+            var arrange3 = "該客戶未於本行登錄長榮航空會員資料，請先進行航空會員登錄";
+            var arrange4 = "該客戶未於本行登錄AirAsia會員資料，請先進行航空會員登錄";
+
             //act null 不能執行contain
-            var act1 = arrange.Contains("R");
-            var act2 = arrange.Contains("r");
+            var act1 = arrange1.Contains("請先進行航空會員登錄");
+            var act2 = arrange2.Contains("該客戶未於本行登");
+            var act3 = arrange3.Contains("該客戶未於本行");
+            var act4 = arrange4.Contains("該客戶未於本行登錄A");
+
 
             //assert
             Assert.AreEqual(true, act1);
-            Assert.AreEqual(false, act2);
+            Assert.AreEqual(true, act2);
+            Assert.AreEqual(true, act3);
+            Assert.AreEqual(true, act4);
         }
 
         [TestMethod()]
