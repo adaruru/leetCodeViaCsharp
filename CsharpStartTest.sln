@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetCodeApp", "LeetCodeApp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "UnitTests\UnitTests.csproj", "{DDB92EEB-653A-4D79-A885-95433B373BE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{8EC76483-239C-4C44-A583-E81497F3A4D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{DDB92EEB-653A-4D79-A885-95433B373BE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDB92EEB-653A-4D79-A885-95433B373BE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDB92EEB-653A-4D79-A885-95433B373BE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EC76483-239C-4C44-A583-E81497F3A4D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EC76483-239C-4C44-A583-E81497F3A4D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EC76483-239C-4C44-A583-E81497F3A4D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EC76483-239C-4C44-A583-E81497F3A4D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +68,7 @@ Global
 		{728C2443-B666-471C-92EF-03198F97FE19} = {1356A9BD-D173-422F-9957-7CA627B1D1F6}
 		{65536FAB-E261-4C36-930C-096E78072F48} = {1356A9BD-D173-422F-9957-7CA627B1D1F6}
 		{DDB92EEB-653A-4D79-A885-95433B373BE7} = {1356A9BD-D173-422F-9957-7CA627B1D1F6}
+		{8EC76483-239C-4C44-A583-E81497F3A4D3} = {1356A9BD-D173-422F-9957-7CA627B1D1F6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D844BEA-8625-4B60-98CF-9C45497F1E5E}

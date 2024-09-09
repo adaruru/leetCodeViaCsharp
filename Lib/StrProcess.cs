@@ -34,7 +34,7 @@ namespace Lib
 
             xnlstData = xmlDocument.GetElementsByTagName("OCCUR");
             xnOccur = xnlstData[0];
-            num += Convert.ToInt16(xnOccur.InnerText.Trim());
+            num += Convert.ToInt16(xnOccur?.InnerText?.Trim() ?? "0");
             xnlstData = xmlDocument.GetElementsByTagName("TxBody");
             XmlNode xmlNode2 = xnlstData[xnlstData.Count - 1];
 
@@ -43,7 +43,7 @@ namespace Lib
             xmlDocument2.LoadXml(xmlString);
 
             xnlstData = xmlDocument2.GetElementsByTagName("OCCUR");
-            num += Convert.ToInt16(xnlstData[0].InnerText.Trim());
+            num += Convert.ToInt16(xnlstData[0]?.InnerText?.Trim() ?? "0");
             xnlstData = xmlDocument2.GetElementsByTagName("TxRepeat");
             for (int j = 0; j < xnlstData.Count; j++)
             {
@@ -51,8 +51,10 @@ namespace Lib
                 xmlElement.InnerXml = xnlstData[j].InnerXml;
                 xmlNode2.AppendChild(xmlElement);
             }
-
-            xnOccur.InnerText = num.ToString("000");
+            if (xnOccur != null)
+            {
+                xnOccur.InnerText = num.ToString("000");
+            }
             var b = xmlDocument.ToString();
             var c = xmlDocument.InnerXml;
             return c;
