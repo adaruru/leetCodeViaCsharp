@@ -6,11 +6,10 @@ public class Its004_SeatWith
 {
     public static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
         Passenger[] passengers;
         Stopwatch stopwatch = new Stopwatch();
 
-        string json = File.ReadAllText("File/Passengers1000000.json");
+        string json = File.ReadAllText("File/Passengers100.json");
         List<Passenger>? people = JsonSerializer.Deserialize<List<Passenger>>(json);
         stopwatch.Restart();
         Solve(people);
@@ -59,6 +58,8 @@ public class Its004_SeatWith
 
         Console.WriteLine($"Groups Number: {totalGroups}");
         Console.WriteLine($"average member: {averageGroupSize}");
+        //Groups Number: 7
+        //average member: 3.5714285714285716
     }
 
     static void MapGroup(int id, Dictionary<int, List<int>> seatGroup, HashSet<int> visited, List<int> group)

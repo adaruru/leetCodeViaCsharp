@@ -12,7 +12,7 @@ namespace LeetCode
             Passenger[] passengers;
             Stopwatch stopwatch = new Stopwatch();
 
-            string json = File.ReadAllText("File/Passengers1000000.json");
+            string json = File.ReadAllText("File/Passengers100.json");
             List<Passenger>? people = JsonSerializer.Deserialize<List<Passenger>>(json);
             stopwatch.Restart();
             Solve(people);
@@ -50,7 +50,7 @@ namespace LeetCode
                 if (!visited.Contains(passenger.ID))
                 {
                     List<int> group = new List<int>();
-                    MapGroup(passenger.ID, seatGroup, visited, group);
+                    DFS(passenger.ID, seatGroup, visited, group);
                     groups.Add(group);
                 }
             }
@@ -63,7 +63,7 @@ namespace LeetCode
             Console.WriteLine($"average member: {averageGroupSize}");
         }
 
-        static void MapGroup(int id, Dictionary<int, List<int>> seatGroup, HashSet<int> visited, List<int> group)
+        static void DFS(int id, Dictionary<int, List<int>> seatGroup, HashSet<int> visited, List<int> group)
         {
             visited.Add(id);
             group.Add(id);
@@ -74,7 +74,7 @@ namespace LeetCode
                 {
                     if (!visited.Contains(neighbor))
                     {
-                        MapGroup(neighbor, seatGroup, visited, group);
+                        DFS(neighbor, seatGroup, visited, group);
                     }
                 }
             }

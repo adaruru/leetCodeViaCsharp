@@ -78,12 +78,12 @@ public class Leet399_EvaluateDivision
             }
             else
             {
-                ans[i] = Dfs(query1, query2, 1, routeMap, neighborsMap, new HashSet<string>());
+                ans[i] = DFS(query1, query2, 1, routeMap, neighborsMap, new HashSet<string>());
             }
         }
         return ans;
     }
-    private double Dfs(string source,
+    private double DFS(string source,
                        string target,
                        double value,
                        Dictionary<List<string>, double> routeMap,
@@ -101,7 +101,7 @@ public class Leet399_EvaluateDivision
             if (!visiting.Contains(neighbor)) //往下找可能的路徑時 須排除經過的 source 避免遞迴有迴圈 (a->b b->a a->b)
             {
                 // visiting each neighbor to find the final destination
-                result = Dfs(neighbor, //neighbor 變 source 往下找可能的路徑 
+                result = DFS(neighbor, //neighbor 變 source 往下找可能的路徑 
                              target, //最終 target 不可變
                              value * routeMap.FirstOrDefault(r => r.Key[0] == source && r.Key[1] == neighbor).Value, //相乘抵銷中間路徑值
                              routeMap,

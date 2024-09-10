@@ -3,21 +3,27 @@
 namespace LeetCode;
 public class Its001_BestSum
 {
+    /// <summary>
+    /// 已餘額判斷扣款項，取可扣款最多金額解
+    /// </summary>
+    /// <param name="txns"></param>
+    /// <param name="deposits"></param>
+    /// <returns></returns>
     public (Dictionary<string, decimal>, Dictionary<string, decimal>) BestSumUnderMax(Dictionary<string, decimal> txns, decimal deposits)
     {
-        //餘額全足
+        //餘額全足 全扣
         if (txns.Values.Sum() <= deposits)
         {
             return (txns, null);
         }
 
-        //全不足
+        //全不足 全不扣
         if (txns.Values.Min() > deposits)
         {
             return (null, txns);
         }
 
-        //一筆足夠
+        //一筆足夠 扣該筆
         if (txns.Values.Any(v => v == deposits))
         {
             var kv = txns.FirstOrDefault(t => t.Value == deposits);
@@ -29,14 +35,10 @@ public class Its001_BestSum
             return (debit1, txns);
         }
 
-        //找
+        //取得所有可扣金額解
         var routeMap = new Dictionary<decimal, Dictionary<string, decimal>>();
         decimal maxSum = 0;
         var exceptKeys = new List<string>();
-
-
-
-
 
         var tempKeys = txns.Keys.ToList();
         for (int j = 0; j < txns.Count(); j++)
@@ -51,8 +53,7 @@ public class Its001_BestSum
                 routeMap.Add(maxSum, pair.Value);
             }
         }
-
-
+        //取可扣金額最大解
         var debit = routeMap.MaxBy(r => r.Key).Value;
         foreach (var d in debit)
         {
@@ -88,6 +89,12 @@ public class Its001_BestSum
         return routeMap.MaxBy(r => r.Key);
     }
 
+    /// <summary>
+    ///  已餘額判斷扣款項，取可扣款最多筆數解
+    /// </summary>
+    /// <param name="bills"></param>
+    /// <param name="givenCount"></param>
+    /// <returns></returns>
     public (Dictionary<string, decimal>, Dictionary<string, decimal>) BestSumUnderCount(Dictionary<string, decimal> bills, int givenCount)
     {
         return (null, null);
