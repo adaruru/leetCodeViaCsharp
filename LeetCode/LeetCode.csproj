@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="File\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="File\Passengers100.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

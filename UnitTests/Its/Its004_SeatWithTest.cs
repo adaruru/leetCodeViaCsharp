@@ -22,7 +22,6 @@ public class Its004_SeatWithTest
     public void SeatWith()
     {
         Its004_SeatWith.Main(new string[] { "" }); // 使用類型名稱
-        TestContext.WriteLine("This is a test message.");
         Assert.AreEqual(true, true);
     }
 }

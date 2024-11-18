@@ -11,17 +11,118 @@ using System.Xml;
 using Castle.Core.Internal;
 using Lib.Model.ParseJson;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
 
 namespace Lib
 {
     public class StrProcess
     {
-        public CustomParams ParseJson(string customParams)
+        public string ValidId(string ID)
         {
-            CustomParams customParamsObj = JsonConvert.DeserializeObject<CustomParams>(customParams);
-            return customParamsObj;
+            if (ID[1] == '8' ||
+                ID[1] == '9')
+            {
+                //2位英文字母+8位數字 居留證/基資表統一證號 
+                return "12";
+            }
+            if (ID.Substring(1, 1) == "8" ||
+                ID.Substring(1, 1) == "9")
+            {
+                //2位英文字母+8位數字 居留證/基資表統一證號 
+                return "12";
+            }
+            return "11";
+        }
+        public void Random()
+        {
+            Random rnd = new Random(Guid.NewGuid().GetHashCode());
+            for (int i = 0; i < 5; i++)
+            {
+                var next = rnd.Next();
+                Console.WriteLine(next);
+            }
+            Console.WriteLine("_______________");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(SecureRandom(10));
+            }
+            Console.WriteLine("_______________");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(SecureRandom2(10));
+            }
+            Console.WriteLine("_______________");
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(SecureRandom3(9));
+            }
         }
 
+
+        public int SecureRandom(int minValue, int maxValue)
+        {
+            if (minValue > maxValue)
+                throw new ArgumentOutOfRangeException(nameof(minValue), "minValue 必須小於或等於 maxValue");
+            if (minValue == maxValue)
+                return minValue;
+
+            // 計算範圍
+            long diff = (long)maxValue - minValue + 1;
+            byte[] uint32Buffer = new byte[4];
+
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                while (true)
+                {
+                    rng.GetBytes(uint32Buffer);
+                    uint rand = BitConverter.ToUInt32(uint32Buffer, 0);
+
+                    // 避免偏差
+                    long max = (1 + (long)UInt32.MaxValue);
+                    long remainder = max % diff;
+                    if (rand < max - remainder)
+                    {
+                        return (int)(minValue + (rand % diff));
+                    }
+                }
+            }
+        }
+
+        public static string SecureRandom(int length)
+        {
+            var randomNumber = new byte[length];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+            }
+
+            var stringBuilder = new StringBuilder();
+            foreach (byte b in randomNumber)
+            {
+                stringBuilder.Append(b % 10);
+            }
+            return stringBuilder.ToString();
+        }
+        public static string SecureRandom2(int length)
+        {
+            var randomNumber = new byte[length];
+            RandomNumberGenerator.Fill(randomNumber);
+            return string.Concat(randomNumber.Select(b => (b % 10).ToString()));
+        }
+
+        public static int SecureRandom3(int length)
+        {
+            if (length < 1 || length > 9)
+                throw new ArgumentOutOfRangeException(nameof(length), "Length must be between 1 and 9.");//int長度限制
+
+            var randomNumber = new byte[length];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomNumber);
+            }
+            var result = string.Concat(randomNumber.Select(b => (b % 10).ToString()));
+            return int.Parse(result);
+        }
 
         public string XMLString(string xmlString)
         {

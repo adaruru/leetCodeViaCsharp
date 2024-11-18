@@ -12,7 +12,7 @@ namespace LeetCode
             Passenger[] passengers;
             Stopwatch stopwatch = new Stopwatch();
 
-            string json = File.ReadAllText("File/Passengers100.json");
+            string json = File.ReadAllText("File/Passengers1000000.json");
             List<Passenger>? people = JsonSerializer.Deserialize<List<Passenger>>(json);
             stopwatch.Restart();
             Solve(people);
@@ -26,7 +26,6 @@ namespace LeetCode
             // 過濾掉 ComeWithID == null 的乘客
             passengers = passengers.Where(p => p.ComeWithID.HasValue).ToList();
 
-            // 存儲乘客關聯的圖
             Dictionary<int, List<int>> seatGroup = new Dictionary<int, List<int>>();
 
             foreach (var passenger in passengers)

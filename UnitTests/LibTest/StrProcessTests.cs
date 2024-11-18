@@ -29,18 +29,41 @@ namespace UnitTests.LibTest
             FirstTest = 1,
             SecondTest = 2,
         }
-
         [TestMethod()]
-        public void TestJsonParse() {
+        public void ValidIdTest()
+        {
+            var act = "A823456789";
+            var assert = service.ValidId(act);
+            Assert.AreEqual("12", assert);
 
-            //arrange
-            var arrange = "{\"redirectType\":\"1\",\"customParams\":\"1\"}";
-            //act
-            var act = service.ParseJson(arrange);
-            //assert
-            Assert.AreEqual("1", act.redirectType);
+            var act1 = "A123456789";
+            var assert1 = service.ValidId(act1);
+            Assert.AreEqual("11", assert1);
         }
 
+        [TestMethod()]
+        public void SecureRandomTest()
+        {
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Console.WriteLine(service.SecureRandom(0, 5));
+            Assert.AreEqual(true, true);
+        }
+
+
+        [TestMethod()]
+        public void RandomTest()
+        {
+            service.Random();
+            Assert.AreEqual(true, true);
+        }
 
         [TestMethod()]
         public void XMLStringTest()
