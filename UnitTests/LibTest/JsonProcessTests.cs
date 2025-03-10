@@ -17,15 +17,45 @@ public class JsonProcessTests
     }
 
     [TestMethod()]
-    public void TestJsonParse()
+    public void ModelParseTest()
     {
 
         //arrange
         var arrange = "{\"redirectType\":\"1\",\"customParams\":\"1\"}";
         //act
-        var act = service.ParseJson(arrange);
+        var act = service.ModelParse(arrange);
         //assert
         Assert.AreEqual("1", act.redirectType);
+    }
+
+    [TestMethod()]
+    public void JObjectParseTest()
+    {
+
+        //arrange
+        var arrange = "{\"errorCode\":0,\"errorMessage\":\"Account: BNS login Success!\",\"data\":{\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjQ0MCwiVGhyZWFkSWQiOjY1MDYsImlzcyI6IlNTNiIsImZvciI6MiwidHlwZSI6MSwiZXhwIjoxNzQwNTY3NjM4LCJjcmVhdGVBdCI6MTc0MDU2NzMzODAxN30.THnF7J2cP9tDrmALyoi4D2-AdjYAAa6j7NKylhvYgXs\",\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjQ0MCwiVGhyZWFkSWQiOjY1MDYsImlzcyI6IlNTNiIsImZvciI6MiwidHlwZSI6MiwiZXhwIjoxNzQwNTY3OTM4LCJjcmVhdGVBdCI6MTc0MDU2NzMzODAxN30.-2s97LxRO_JltkjYm43-7iIp486TvsBhJoERvgOHX0c\",\"expiresIn\":5,\"tokenType\":\"Bearer\"}}";
+        //act
+        var act = service.JObjectParse(arrange);
+        //assert
+        Assert.AreEqual("0", act);
+    }
+
+
+    [TestMethod()]
+    public void JObjectDynamicParseTest()
+    {
+
+        //arrange
+        var plain = "plain";
+        var arrange = "{\"errorCode\":0,\"errorMessage\":\"Account: BNS login Success!\",\"data\":{\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjQ0MCwiVGhyZWFkSWQiOjY1MDYsImlzcyI6IlNTNiIsImZvciI6MiwidHlwZSI6MSwiZXhwIjoxNzQwNTY3NjM4LCJjcmVhdGVBdCI6MTc0MDU2NzMzODAxN30.THnF7J2cP9tDrmALyoi4D2-AdjYAAa6j7NKylhvYgXs\",\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjQ0MCwiVGhyZWFkSWQiOjY1MDYsImlzcyI6IlNTNiIsImZvciI6MiwidHlwZSI6MiwiZXhwIjoxNzQwNTY3OTM4LCJjcmVhdGVBdCI6MTc0MDU2NzMzODAxN30.-2s97LxRO_JltkjYm43-7iIp486TvsBhJoERvgOHX0c\",\"expiresIn\":5,\"tokenType\":\"Bearer\",\"plain\":\"" + plain + "\"}}";
+        var arrange2 = "{\"errorCode\":0,\"errorMessage\":\"Account: BNS login Success!\",\"data\":{\"accessToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjQ0MCwiVGhyZWFkSWQiOjY1MDYsImlzcyI6IlNTNiIsImZvciI6MiwidHlwZSI6MSwiZXhwIjoxNzQwNTY3NjM4LCJjcmVhdGVBdCI6MTc0MDU2NzMzODAxN30.THnF7J2cP9tDrmALyoi4D2-AdjYAAa6j7NKylhvYgXs\",\"refreshToken\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKV1RUb2tlbiIsInVzZXJfaWQiOjQ0MCwiVGhyZWFkSWQiOjY1MDYsImlzcyI6IlNTNiIsImZvciI6MiwidHlwZSI6MiwiZXhwIjoxNzQwNTY3OTM4LCJjcmVhdGVBdCI6MTc0MDU2NzMzODAxN30.-2s97LxRO_JltkjYm43-7iIp486TvsBhJoERvgOHX0c\",\"expiresIn\":5,\"tokenType\":\"Bearer\"}}";
+
+        //act
+        var act = service.JObjectDynamicParse(arrange);
+        var act2 = service.JObjectDynamicParse(arrange2);
+        //assert
+        Assert.AreEqual(plain, act);
+        Assert.AreEqual(string.Empty, act2);
     }
 
     [TestMethod()]
@@ -50,4 +80,8 @@ public class JsonProcessTests
         Assert.AreEqual(false, act2);
         Assert.AreEqual(false, act3);
     }
+
+
+
+
 }
