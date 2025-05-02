@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace DataProcessCheck
 {
-    public static class FortifyFixHelper
+    public static class SmrExtiosion
     {
         /// <summary>
         /// 取代 StreamReader sr, sr.ReadLine();
@@ -39,6 +39,40 @@ namespace DataProcessCheck
             return newlineIndex < 0
                 ? fullText
                 : fullText.Substring(0, (newlineIndex > 0 && fullText[newlineIndex - 1] == '\r') ? newlineIndex - 1 : newlineIndex);
+        }
+        public static string CustomReadLine2(this StreamReader reader)
+        {
+            const int maxLength = 31457280;
+            var sb = new StringBuilder();
+            int totalRead = 0;
+            while (true)
+            {
+                int ch = reader.Read();
+                if (ch == -1)
+                    break;
+
+                totalRead++;
+                if (totalRead > maxLength)
+                    throw new Exception("CustomReadLine 讀取異常，內容超過 30MB 限制");
+
+                if (ch == '\n')
+                    break;
+                if (ch == '\r')
+                {
+                    if (reader.Peek() == '\n')
+                    {
+                        int skip = reader.Read();
+                        if (skip == -1)
+                            throw new IOException("CustomReadLine 讀取異常，檔案有其他未知的截斷");
+                    }
+                    break;
+                }
+                sb.Append((char)ch);
+            }
+            if (sb.Length == 0 && reader.EndOfStream)
+                return null;
+
+            return sb.ToString();
         }
 
         /// <summary>

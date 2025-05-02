@@ -17,7 +17,7 @@ using DataProcessCheck;
 
 namespace Lib;
 
-public class JsonProcess
+public class JsonUtil
 {
     public CustomParams ModelParse(string customParams)
     {

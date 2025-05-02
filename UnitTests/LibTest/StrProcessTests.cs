@@ -17,11 +17,13 @@ namespace UnitTests.LibTest
     public class StrProcessTests
     {
         StrProcess service;
+        XmlHelper xmlService;
 
         [TestInitialize]
         public void TestInitialize()
         {
             service = new StrProcess();
+            xmlService = new XmlHelper();
         }
         public enum TestEnum
         {
@@ -74,8 +76,8 @@ namespace UnitTests.LibTest
 
 
             //act 解密
-            var act1 = service.XMLString(arrange1);
-            var act2 = service.XMLString(arrange2);
+            var act1 = xmlService.XMLString(arrange1);
+            var act2 = xmlService.XMLString(arrange2);
 
             //assert
             Assert.AreEqual(act1, act1);

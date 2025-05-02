@@ -123,44 +123,6 @@ namespace Lib
             var result = string.Concat(randomNumber.Select(b => (b % 10).ToString()));
             return int.Parse(result);
         }
-
-        public string XMLString(string xmlString)
-        {
-            XmlNodeList xnlstData;
-            XmlNode xnBody, xnOccur;
-
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.LoadXml(xmlString);
-            int num = 0;
-
-            xnlstData = xmlDocument.GetElementsByTagName("OCCUR");
-            xnOccur = xnlstData[0];
-            num += Convert.ToInt16(xnOccur?.InnerText?.Trim() ?? "0");
-            xnlstData = xmlDocument.GetElementsByTagName("TxBody");
-            XmlNode xmlNode2 = xnlstData[xnlstData.Count - 1];
-
-
-            XmlDocument xmlDocument2 = new XmlDocument();
-            xmlDocument2.LoadXml(xmlString);
-
-            xnlstData = xmlDocument2.GetElementsByTagName("OCCUR");
-            num += Convert.ToInt16(xnlstData[0]?.InnerText?.Trim() ?? "0");
-            xnlstData = xmlDocument2.GetElementsByTagName("TxRepeat");
-            for (int j = 0; j < xnlstData.Count; j++)
-            {
-                XmlElement xmlElement = xmlDocument.CreateElement(xnlstData[j].Name);
-                xmlElement.InnerXml = xnlstData[j].InnerXml;
-                xmlNode2.AppendChild(xmlElement);
-            }
-            if (xnOccur != null)
-            {
-                xnOccur.InnerText = num.ToString("000");
-            }
-            var b = xmlDocument.ToString();
-            var c = xmlDocument.InnerXml;
-            return c;
-        }
-
         public string SecureStringToString2(SecureString input)
         {
             if (input == null) return "";

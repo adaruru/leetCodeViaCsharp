@@ -73,7 +73,7 @@ namespace Lib
 
         public void boolPractice()
         {
-        https://web.stanford.edu/class/cs103/tools/truth-table-tool/
+            //https://web.stanford.edu/class/cs103/tools/truth-table-tool/
             var a = true;
             var b = true;
             var c = a && b;

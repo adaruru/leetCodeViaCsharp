@@ -8,12 +8,12 @@ namespace UnitTests.LibTest;
 [TestClass()]
 public class JsonProcessTests
 {
-    JsonProcess service;
+    JsonUtil service;
 
     [TestInitialize]
     public void TestInitialize()
     {
-        service = new JsonProcess();
+        service = new JsonUtil();
     }
 
     [TestMethod()]

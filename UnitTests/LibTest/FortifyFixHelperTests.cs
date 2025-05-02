@@ -132,5 +132,61 @@ namespace UnitTests.LibTest
             Assert.AreEqual(" [TestMethod()]", result);
             Assert.AreEqual(string.Empty, result2);
         }
+
+
+        [TestMethod()]
+        public void CustomReadLineWhileNoShare()
+        {
+            // Arrange 測試讀取一行一行
+            FileStream fileStream = null;
+            StreamReader bf = null;
+            fileStream = new FileStream("C:\\Users\\AmandaChou\\Downloads\\Test\\aaa.txt", FileMode.Open);
+            bf = new StreamReader(fileStream);
+            string strTemp = string.Empty;
+            string key = string.Empty;
+            while ((strTemp = bf.ReadLine()) != null)
+            {
+                if (!strTemp.StartsWith("-----"))
+                {
+                    key += strTemp;
+                }
+            }
+
+            // Assert
+            Assert.AreEqual("123456789---222", key);
+        }
+
+        /// <summary>
+        /// 測試讀取一行一行
+        /// </summary>
+        public static object getPrivateKeyObject = new object();
+        [TestMethod()]
+        public void CustomReadLineWhile2()
+        {
+            lock (getPrivateKeyObject)
+            {
+                // Arrange 測試讀取一行一行
+                FileStream fileStream = null;
+            
+                var before = DateTime.Now;
+                StreamReader bf = null;
+                fileStream = new FileStream("C:\\Users\\AmandaChou\\Downloads\\Test\\bbb.txt", FileMode.Open, FileAccess.Read, FileShare.Read);
+                bf = new StreamReader(fileStream);
+                string strTemp = string.Empty;
+                string key = string.Empty;
+                while ((strTemp = bf.CustomReadLine2()) != null)
+                {
+                    if (!strTemp.StartsWith("-----"))
+                    {
+                        key += strTemp;
+                    }
+                }
+                var adter = DateTime.Now;
+                Console.WriteLine($"CustomReadLineWhile2: {adter - before}ms");
+                // Assert
+                Assert.AreEqual("123456789---222", key);
+            }
+
+        }
     }
 }

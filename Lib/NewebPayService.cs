@@ -15,15 +15,17 @@ using Org.BouncyCastle.X509;
 
 namespace Lib;
 
-public class EncryptUtil
+/// <summary>
+/// 藍新支付
+/// </summary>
+public class NewebPayService
 {
-    public static class AESEBC
+    public static class AES
     {
         public static string Encrypt(string Source, string Key)//, string Iv)
         {
             try
             {
-                //AesCryptoServiceProvider aes = new AesCryptoServiceProvider();
                 using (Aes aes = Aes.Create())
                 {
                     aes.Mode = CipherMode.ECB;
@@ -116,7 +118,6 @@ public class EncryptUtil
 
         /// <summary>
         /// EBGS ECB加密 (轉為Hex String)
-        /// Add by ted 2021
         /// </summary>
         /// <param name="sourceText"></param>
         /// <param name="keyText"></param>
@@ -167,7 +168,6 @@ public class EncryptUtil
 
         /// <summary>
         /// EBGS CBC加密 (轉為Hex String)
-        /// Add by ted 2021
         /// </summary>
         /// <param name="sourceText"></param>
         /// <param name="keyText"></param>
